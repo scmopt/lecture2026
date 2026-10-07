@@ -10,7 +10,7 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 
-\title{Timefold Vehicle Routing (VRPTW) の解説と定式化}
+\title{Timefold Vehicle Routing (MDVRPTW) の解説と定式化}
 \author{Timefold Quickstarts Use-Case Analysis}
 \date{\today}
 
@@ -20,9 +20,9 @@
 
 \section{問題の概要}
 
-Timefold QuickstartsのVehicle Routing問題は、時間枠（Time Windows）および車両容量（Capacity）を考慮した配送計画問題（\textbf{VRPTW: Vehicle Routing Problem with Time Windows}）です。
+Timefold QuickstartsのVehicle Routing問題は、複数拠点（デポ）、時間枠（Time Windows）および車両容量（Capacity）を考慮した複数デポ配送計画問題（\textbf{MDVRPTW: Multi-Depot Vehicle Routing Problem with Time Windows}）です。
 
-デポ（拠点・車庫）を出発した複数台の車両が、指定された訪問先（顧客）の需要を満たしつつ効率的に巡回し、再びデポへ戻るルートを計画します。
+指定された複数のデポ（拠点・車庫）を出発した複数台の車両が、それぞれの拠点を起点として訪問先（顧客）の需要を満たしつつ効率的に巡回し、再びそれぞれの拠点へ戻るルートを計画します。
 
 Timefold内部では \texttt{HardMediumSoftScore} を用いた3階層のスコア評価が行われており、制約の分類は以下の通りです。
 
@@ -46,18 +46,20 @@ Timefold内部では \texttt{HardMediumSoftScore} を用いた3階層のスコ�
 \subsection{集合およびインデックス}
 \begin{itemize}
     \item $V = \{1, 2, \dots, n\}$ : 訪問先（顧客）の集合
-    \item $\{0\}$ : デポ（拠点・車庫）
-    \item $N = V \cup \{0\}$ : 全ノードの集合
+    \item $D = \{d_1, d_2, \dots, d_m\}$ : デポ（拠点・車庫）の集合
+    \item $N = V \cup D$ : 全ノードの集合
     \item $K = \{1, 2, \dots, m\}$ : 利用可能な車両の集合
 \end{itemize}
 
 \subsection{パラメータ（定数）}
 \begin{itemize}
-    \item $d_i$ : 訪問先 $i \in V$ の需要量（$d_0 = 0$）
+    \item $h(k) \in D$ : 車両 $k \in K$ に割り当てられた拠点デポ (\texttt{homeLocation})
+    \item $d_i$ : 訪問先 $i \in V$ の需要量（$i \in D$ のとき $d_i = 0$）
     \item $C_k$ : 車両 $k \in K$ の積載容量
-    \item $t_{ij}$ : ノード $i$ からノード $j$ への移動時間（$i, j \in N$）
-    \item $s_i$ : 訪問先 $i \in V$ でのサービス時間（$s_0 = 0$）
+    \item $t_{ijk}$ : 車両 $k$ がノード $i$ からノード $j$ へ移動する時間（$i, j \in N$）
+    \item $s_i$ : 訪問先 $i \in V$ でのサービス時間（$i \in D$ のとき $s_i = 0$）
     \item $[a_i, b_i]$ : 訪問先 $i \in V$ の時間枠（$a_i$: 開始可能時刻 \texttt{minStartTime}、$b_i$: 最大終了時刻 \texttt{maxEndTime}）
+    \item $e_k$ : 車両 $k \in K$ のデポ出発時刻 (\texttt{departureTime})
     \item $M$ : 十分に大きな正の実数（Big-$M$）
     \item $W_{\text{medium}}, W_{\text{soft}}$ : 目的関数の重みパラメータ（$W_{\text{medium}} \gg W_{\text{soft}} > 0$）
 \end{itemize}
@@ -65,7 +67,7 @@ Timefold内部では \texttt{HardMediumSoftScore} を用いた3階層のスコ�
 \subsection{決定変数}
 \begin{itemize}
     \item $x_{ijk} \in \{0, 1\}$ : 車両 $k$ がノード $i$ からノード $j$ へ直接移動するとき $1$、それ以外は $0$
-    \item $S_i \ge 0$ : ノード $i \in N$ でのサービス開始時刻
+    \item $S_i \ge 0$ : 訪問先 $i \in V$ でのサービス開始時刻
     \item $u_i \in \{0, 1\}$ : 訪問先 $i \in V$ がどの車両にも割り当てられない（未訪問）とき $1$、割当済のとき $0$
 \end{itemize}
 
@@ -74,7 +76,7 @@ Timefold内部では \texttt{HardMediumSoftScore} を用いた3階層のスコ�
 \subsection{目的関数}
 未訪問ペナルティ（Mediumレベル）および総移動時間（Softレベル）をペナルティ項として最小化します。
 \begin{equation}
-\min \quad W_{\text{medium}} \sum_{i \in V} u_i \;+\; W_{\text{soft}} \sum_{k \in K} \sum_{i \in N} \sum_{\substack{j \in N \\ j \neq i}} t_{ij} \, x_{ijk}
+\min \quad W_{\text{medium}} \sum_{i \in V} u_i \;+\; W_{\text{soft}} \sum_{k \in K} \sum_{i \in N} \sum_{\substack{j \in N \\ j \neq i}} t_{ijk} \, x_{ijk}
 \end{equation}
 
 \subsection{制約条件}
@@ -85,17 +87,25 @@ Timefold内部では \texttt{HardMediumSoftScore} を用いた3階層のスコ�
 \sum_{k \in K} \sum_{\substack{j \in N \\ j \neq i}} x_{ijk} = 1 - u_i \quad \forall i \in V
 \end{equation}
 
-各車両 $k$ および訪問先 $i$ における流出入の一致：
+各車両 $k$ および訪問先 $i \in V$ における流出入の一致：
 \begin{equation}
 \sum_{\substack{j \in N \\ j \neq i}} x_{ijk} - \sum_{\substack{j \in N \\ j \neq i}} x_{jik} = 0 \quad \forall i \in V, \, \forall k \in K
 \end{equation}
 
-各車両 $k$ はデポ（$0$）を出発し、再びデポに戻る：
+各車両 $k$ は割り当てられた拠点 $h(k)$ を出発し、再び同じ拠点に戻る：
 \begin{equation}
-\sum_{j \in V} x_{0jk} \le 1 \quad \forall k \in K
+\sum_{j \in V} x_{h(k) j k} \le 1 \quad \forall k \in K
 \end{equation}
 \begin{equation}
-\sum_{i \in V} x_{i0k} = \sum_{j \in V} x_{0jk} \quad \forall k \in K
+\sum_{i \in V} x_{i h(k) k} = \sum_{j \in V} x_{h(k) j k} \quad \forall k \in K
+\end{equation}
+
+車両 $k$ は割り当てられていない他車両の拠点 $d \in D \setminus \{h(k)\}$ からの出入りを行わない：
+\begin{equation}
+\sum_{\substack{j \in N \\ j \neq d}} x_{d j k} = 0 \quad \forall k \in K, \, \forall d \in D \setminus \{h(k)\}
+\end{equation}
+\begin{equation}
+\sum_{\substack{i \in N \\ i \neq d}} x_{i d k} = 0 \quad \forall k \in K, \, \forall d \in D \setminus \{h(k)\}
 \end{equation}
 
 \subsubsection{2. 車両容量制約 (Hard)}
@@ -107,7 +117,15 @@ Timefold内部では \texttt{HardMediumSoftScore} を用いた3階層のスコ�
 \subsubsection{3. 時間枠・完了時刻制約およびサブツアー排除 (Hard)}
 サービス開始時刻の推移（部分巡回路の排除を兼ねる）：
 \begin{equation}
-S_i + s_i + t_{ij} - M (1 - x_{ijk}) \le S_j \quad \forall i, j \in N, \, i \neq j, \, \forall k \in K
+\tau_{ik} + t_{ijk} - M (1 - x_{ijk}) \le S_j \quad \forall i \in N, \, \forall j \in V, \, i \neq j, \, \forall k \in K
+\end{equation}
+ただし、出発元の時刻 $\tau_{ik}$ は以下のように定義される：
+\begin{equation}
+\tau_{ik} = 
+\begin{cases}
+S_i + s_i & (i \in V \text{ の場合}) \\
+e_k & (i \in D \text{ の場合})
+\end{cases}
 \end{equation}
 
 最小開始可能時刻以降にサービスを開始する：
@@ -124,7 +142,8 @@ S_i + s_i \le b_i \quad \forall i \in V
 \begin{align}
 x_{ijk} &\in \{0, 1\} \quad \forall i, j \in N, \, \forall k \in K \\
 u_i &\in \{0, 1\} \quad \forall i \in V \\
-S_i &\ge 0 \quad \forall i \in N
+S_i &\ge 0 \quad \forall i \in V
 \end{align}
 
 \end{document}
+

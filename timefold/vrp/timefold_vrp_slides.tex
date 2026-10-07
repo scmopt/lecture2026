@@ -14,7 +14,7 @@
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 
-\title{Timefold Vehicle Routing (VRPTW)\\問題解説と数理定式化}
+\title{Timefold Vehicle Routing (MDVRPTW)\\問題解説と数理定式化}
 \subtitle{Timefold Quickstarts: Use-Case Analysis}
 \date{\today}
 \author{}
@@ -33,8 +33,8 @@
 
 \begin{frame}{Timefold Vehicle Routing とは}
   \begin{itemize}
-    \item \textbf{対象問題}: 時間枠付き車両巡回問題 (\alert{VRPTW}: Vehicle Routing Problem with Time Windows)
-    \item \textbf{目的}: デポ（拠点）を出発する複数台の車両が、訪問先（顧客）の需要を満たしつつ効率的な巡回経路を最適化する。
+    \item \textbf{対象問題}: 複数デポ時間枠付き車両巡回問題 (\alert{MDVRPTW}: Multi-Depot Vehicle Routing Problem with Time Windows)
+    \item \textbf{目的}: 指定された複数のデポ（拠点）を出発する複数台の車両が、それぞれの拠点を起点として訪問先（顧客）の需要を満たしつつ効率的な巡回経路を最適化する。
     \item \textbf{スコア構造}: Timefoldの \texttt{HardMediumSoftScore} による3階層優先度
   \end{itemize}
 
@@ -72,8 +72,8 @@
       \begin{block}{集合およびインデックス}
         \begin{itemize}
           \item $V = \{1, 2, \dots, n\}$ : 訪問先の集合
-          \item $\{0\}$ : デポ（拠点・車庫）
-          \item $N = V \cup \{0\}$ : 全ノードの集合
+          \item $D = \{d_1, d_2, \dots, d_m\}$ : デポの集合
+          \item $N = V \cup D$ : 全ノードの集合
           \item $K = \{1, 2, \dots, m\}$ : 車両の集合
         \end{itemize}
       \end{block}
@@ -81,11 +81,13 @@
     \begin{column}{0.48\textwidth}
       \begin{block}{パラメータ}
         \begin{itemize}
-          \item $d_i$ : 訪問先 $i \in V$ の需要量 ($d_0=0$)
+          \item $h(k) \in D$ : 車両 $k$ の拠点デポ
+          \item $d_i$ : 訪問先 $i \in V$ の需要量 ($d_i=0 \, \forall i \in D$)
           \item $C_k$ : 車両 $k \in K$ の積載容量
-          \item $t_{ij}$ : ノード $i \to j$ への移動時間
-          \item $s_i$ : 訪問先 $i$ での作業時間
-          \item $[a_i, b_i]$ : 時間枠（[\texttt{minStartTime}, \texttt{maxEndTime}]）
+          \item $t_{ijk}$ : ノード $i \to j$ への移動時間
+          \item $s_i$ : 作業時間 ($s_i=0 \, \forall i \in D$)
+          \item $[a_i, b_i]$ : 時間枠
+          \item $e_k$ : 車両 $k$ のデポ出発時刻
           \item $M$ : 十分大きな正の数 (Big-$M$)
         \end{itemize}
       \end{block}
@@ -97,7 +99,7 @@
   \begin{block}{決定変数}
     \begin{itemize}
       \item $x_{ijk} \in \{0, 1\}$ : 車両 $k$ がノード $i$ から $j$ へ直接移動する場合 $1$、それ以外は $0$
-      \item $S_i \ge 0$ : ノード $i \in N$ でのサービス開始時刻
+      \item $S_i \ge 0$ : 訪問先 $i \in V$ でのサービス開始時刻
       \item $u_i \in \{0, 1\}$ : 訪問先 $i \in V$ が未訪問（割り当てなし）の場合 $1$、訪問の場合 $0$
     \end{itemize}
   \end{block}
@@ -114,7 +116,7 @@
   未訪問ペナルティ（Mediumレベル）および総移動時間（Softレベル）の最小化：
 
   \[
-    \min \quad W_{\text{medium}} \sum_{i \in V} u_i \;+\; W_{\text{soft}} \sum_{k \in K} \sum_{i \in N} \sum_{\substack{j \in N \\ j \neq i}} t_{ij} \, x_{ijk}
+    \min \quad W_{\text{medium}} \sum_{i \in V} u_i \;+\; W_{\text{soft}} \sum_{k \in K} \sum_{i \in N} \sum_{\substack{j \in N \\ j \neq i}} t_{ijk} \, x_{ijk}
   \]
 
   \begin{itemize}
@@ -124,13 +126,15 @@
 \end{frame}
 
 \begin{frame}{制約条件 1: 訪問割当と流出入の保存}
+  \small
   \begin{itemize}
     \item \textbf{訪問割当制約}（各訪問先 $i$ は高々1回訪問）:
       \[ \sum_{k \in K} \sum_{\substack{j \in N \\ j \neq i}} x_{ijk} = 1 - u_i \quad \forall i \in V \]
-    \item \textbf{フロー保存則}（流入数と流出数の一致）:
+    \item \textbf{フロー保存則}（訪問先での流入数と流出数の一致）:
       \[ \sum_{\substack{j \in N \\ j \neq i}} x_{ijk} - \sum_{\substack{j \in N \\ j \neq i}} x_{jik} = 0 \quad \forall i \in V, \, \forall k \in K \]
-    \item \textbf{デポ発着制約}（デポ $0$ を出発しデポへ戻る）:
-      \[ \sum_{j \in V} x_{0jk} \le 1, \quad \sum_{i \in V} x_{i0k} = \sum_{j \in V} x_{0jk} \quad \forall k \in K \]
+    \item \textbf{指定デポ発着制約}（車両 $k$ は指定拠点 $h(k)$ を発着し他拠点へ出入りしない）:
+      \[ \sum_{j \in V} x_{h(k) j k} \le 1, \quad \sum_{i \in V} x_{i h(k) k} = \sum_{j \in V} x_{h(k) j k} \quad \forall k \in K \]
+      \[ \sum_{\substack{j \in N \\ j \neq d}} x_{d j k} = 0, \quad \sum_{\substack{i \in N \\ i \neq d}} x_{i d k} = 0 \quad \forall k \in K, \, \forall d \in D \setminus \{h(k)\} \]
   \end{itemize}
 \end{frame}
 
@@ -144,9 +148,11 @@
 \end{frame}
 
 \begin{frame}{制約条件 3: 時間枠・完了時刻制約 (Hard)}
+  \small
   \begin{itemize}
     \item \textbf{サービス開始時刻の推移}（サブツアー排除を兼ねる）:
-      \[ S_i + s_i + t_{ij} - M (1 - x_{ijk}) \le S_j \quad \forall i, j \in N, \, i \neq j, \, \forall k \in K \]
+      \[ \tau_{ik} + t_{ijk} - M (1 - x_{ijk}) \le S_j \quad \forall i \in N, \, \forall j \in V, \, i \neq j, \, \forall k \in K \]
+      \quad (ただし $\tau_{ik} = S_i + s_i \ (i \in V)$, $\tau_{ik} = e_k \ (i \in D)$)
     \item \textbf{最小開始可能時刻}（\texttt{minStartTime} 以降に開始）:
       \[ S_i \ge a_i \quad \forall i \in V \]
     \item \textbf{最大終了時刻}（\texttt{serviceFinishedAfterMaxEndTime}）:
@@ -159,15 +165,16 @@
 
 \begin{frame}{まとめ}
   \begin{itemize}
-    \item Timefold Quickstarts の Vehicle Routing は典型的かつ実践的な \textbf{VRPTW} モデル。
+    \item Timefold Quickstarts の Vehicle Routing は \textbf{MDVRPTW}（複数デポ時間枠付き車両巡回問題）モデル。
     \item 業務要件に応じた \texttt{HardMediumSoftScore} 階層構造：
       \begin{enumerate}
         \item 容量制約・完了時間枠の絶対遵守 (Hard)
         \item 顧客訪問数の最大化 (Medium)
         \item 移動コストの最適化 (Soft)
       \end{enumerate}
-    \item 数理最適化の視点からは、Big-$M$ 条件を用いた時間伝播・サブツアー排除を含む混合整数計画問題 (MIP) として定式化される。
+    \item 各車両の指定拠点発着と Big-$M$ 条件を用いた時間伝播・サブツアー排除を含む混合整数計画問題 (MIP) として定式化。
   \end{itemize}
 \end{frame}
 
 \end{document}
+

@@ -1,0 +1,211 @@
+import json
+import math
+import time
+from datetime import datetime
+from amplpy import AMPL, modules
+
+modules.load()
+
+def haversine_distance_meters(loc1, loc2):
+    R = 6371000.0
+    lat1, lon1 = math.radians(loc1[0]), math.radians(loc1[1])
+    lat2, lon2 = math.radians(loc2[0]), math.radians(loc2[1])
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    a = math.sin(dlat / 2.0)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2.0)**2
+    c = 2.0 * math.atan2(math.sqrt(a), math.sqrt(1.0 - a))
+    return R * c
+
+def compute_travel_time_seconds(loc1, loc2, speed_kmh=50.0):
+    dist_m = haversine_distance_meters(loc1, loc2)
+    speed_mps = (speed_kmh * 1000.0) / 3600.0
+    return round(dist_m / speed_mps)
+
+def solve_with_solver(solver_name, timelimit=30):
+    json_path = "timefold/vrp/フィラデルフィア.json"
+    with open(json_path, encoding="utf-8") as f:
+        data = json.load(f)["problem"]
+
+    start_dt = datetime.fromisoformat(data["startDateTime"])
+    vehicles = data["vehicles"]
+    visits = data["visits"]
+
+    visit_ids = [str(v["id"]) for v in visits]
+    vehicle_ids = [str(v["id"]) for v in vehicles]
+    depot_id = "0"
+    all_nodes = [depot_id] + visit_ids
+
+    visit_map = {str(v["id"]): v for v in visits}
+    vehicle_map = {str(v["id"]): v for v in vehicles}
+
+    min_st_data = {}
+    max_et_data = {}
+    for vid in visit_ids:
+        v = visit_map[vid]
+        min_st = (datetime.fromisoformat(v["minStartTime"]) - start_dt).total_seconds()
+        max_et = (datetime.fromisoformat(v["maxEndTime"]) - start_dt).total_seconds()
+        min_st_data[vid] = max(0, min_st)
+        max_et_data[vid] = max_et
+    min_st_data[depot_id] = 0.0
+    max_et_data[depot_id] = 86400.0
+
+    service_dur_data = {vid: visit_map[vid]["serviceDuration"] for vid in visit_ids}
+    service_dur_data[depot_id] = 0
+
+    demand_data = {vid: visit_map[vid]["demand"] for vid in visit_ids}
+    capacity_data = {vid: vehicle_map[vid]["capacity"] for vid in vehicle_ids}
+
+    travel_time_tuples = {}
+    for k in vehicle_ids:
+        veh_home = vehicle_map[k]["homeLocation"]
+        for i in all_nodes:
+            loc_i = veh_home if i == depot_id else visit_map[i]["location"]
+            for j in all_nodes:
+                if i == j:
+                    travel_time_tuples[(i, j, k)] = 0
+                else:
+                    loc_j = veh_home if j == depot_id else visit_map[j]["location"]
+                    travel_time_tuples[(i, j, k)] = compute_travel_time_seconds(loc_i, loc_j)
+
+    # Filter feasible ARCS
+    valid_arcs = []
+    for k in vehicle_ids:
+        veh_cap = capacity_data[k]
+        for i in all_nodes:
+            for j in all_nodes:
+                if i != j:
+                    if demand_data.get(i, 0) + demand_data.get(j, 0) > veh_cap:
+                        continue
+                    tt = travel_time_tuples[(i, j, k)]
+                    if min_st_data[i] + service_dur_data[i] + tt > max_et_data[j]:
+                        continue
+                    valid_arcs.append((i, j, k))
+
+    model_str = """
+    set VISITS;
+    param depot_id symbolic default "0";
+    set NODES = VISITS union {depot_id};
+    set VEHICLES;
+
+    set ARCS dimen 3;
+
+    param demand{VISITS} >= 0;
+    param capacity{VEHICLES} >= 0;
+    param travel_time{ARCS} >= 0;
+    param service_duration{VISITS} >= 0;
+    param min_start_time{VISITS} >= 0;
+    param max_end_time{VISITS} >= 0;
+
+    param M_pair{ARCS} >= 0;
+    param W_medium default 1000000;
+    param W_soft default 1;
+
+    var x{ARCS} binary;
+    var S{NODES} >= 0;
+    var u{VISITS} binary;
+
+    minimize Total_Cost:
+        W_medium * sum {i in VISITS} u[i]
+      + W_soft * sum {(i,j,k) in ARCS} travel_time[i,j,k] * x[i,j,k];
+
+    subject to Visit_Assignment {i in VISITS}:
+        sum {(i,j,k) in ARCS: j != i} x[i,j,k] = 1 - u[i];
+
+    subject to Flow_Conservation {i in VISITS, k in VEHICLES}:
+        sum {(i,j,k) in ARCS} x[i,j,k] - sum {(j,i,k) in ARCS} x[j,i,k] = 0;
+
+    subject to Depot_Departure {k in VEHICLES}:
+        sum {(depot_id, j, k) in ARCS} x[depot_id, j, k] <= 1;
+
+    subject to Depot_Return {k in VEHICLES}:
+        sum {(i, depot_id, k) in ARCS} x[i, depot_id, k] = sum {(depot_id, j, k) in ARCS} x[depot_id, j, k];
+
+    subject to Vehicle_Capacity {k in VEHICLES}:
+        sum {i in VISITS} demand[i] * (sum {(i,j,k) in ARCS} x[i,j,k]) <= capacity[k];
+
+    subject to Time_Propagation {(i,j,k) in ARCS: j != depot_id}:
+        S[i] + (if i in VISITS then service_duration[i] else 0) + travel_time[i,j,k] 
+        - M_pair[i,j,k] * (1 - x[i,j,k]) <= S[j];
+
+    subject to Min_Start_Time {i in VISITS}:
+        S[i] >= min_start_time[i];
+
+    subject to Max_End_Time {i in VISITS}:
+        S[i] + service_duration[i] <= max_end_time[i];
+    """
+
+    ampl = AMPL()
+    ampl.eval(model_str)
+
+    ampl.get_set("VISITS").set_values(visit_ids)
+    ampl.get_set("VEHICLES").set_values(vehicle_ids)
+    ampl.get_set("ARCS").set_values(valid_arcs)
+
+    ampl.get_parameter("demand").set_values(demand_data)
+    ampl.get_parameter("service_duration").set_values({vid: service_dur_data[vid] for vid in visit_ids})
+    ampl.get_parameter("min_start_time").set_values({vid: min_st_data[vid] for vid in visit_ids})
+    ampl.get_parameter("max_end_time").set_values({vid: max_et_data[vid] for vid in visit_ids})
+    ampl.get_parameter("capacity").set_values(capacity_data)
+
+    travel_time_filtered = {(i,j,k): travel_time_tuples[(i,j,k)] for (i,j,k) in valid_arcs}
+    ampl.get_parameter("travel_time").set_values(travel_time_filtered)
+
+    M_pair_data = {}
+    for (i, j, k) in valid_arcs:
+        b_i = max_et_data[i]
+        s_i = service_dur_data[i]
+        t_ijk = travel_time_tuples[(i, j, k)]
+        a_j = min_st_data[j]
+        M_pair_data[(i, j, k)] = max(0.0, b_i + s_i + t_ijk - a_j)
+
+    ampl.get_parameter("M_pair").set_values(M_pair_data)
+
+    ampl.set_option("solver", solver_name)
+    if solver_name in ["gurobi", "cplex", "scip", "highs"]:
+        ampl.set_option(f"{solver_name}_options", f"outlev=1 timelimit={timelimit}")
+    elif solver_name in ["xpress", "copt"]:
+        ampl.set_option(f"{solver_name}_options", f"outlev=1 maxtime={timelimit}")
+
+    t0 = time.time()
+    print(f"\n=======================================================")
+    print(f"Running Solver: {solver_name.upper()} (Timelimit: {timelimit}s)")
+    print(f"=======================================================")
+    try:
+        ampl.solve()
+        t1 = time.time()
+        res_status = ampl.get_value("solve_result")
+        obj_val = ampl.get_objective("Total_Cost").value()
+        u_var = ampl.get_variable("u").get_values().to_dict()
+        unassigned = sum(1 for v, val in u_var.items() if val > 0.5)
+        assigned = len(visit_ids) - unassigned
+        print(f"\n---> {solver_name.upper()} Finished in {t1-t0:.2f}s | Status: {res_status} | Obj: {obj_val:.1f} | Assigned: {assigned}/{len(visit_ids)} | Unassigned: {unassigned}")
+        return {
+            "solver": solver_name.upper(),
+            "status": res_status,
+            "elapsed": t1 - t0,
+            "obj": obj_val,
+            "assigned": assigned,
+            "unassigned": unassigned
+        }
+    except Exception as e:
+        print(f"Error running {solver_name}: {e}")
+        return None
+
+def main():
+    solvers = ["gurobi", "cplex", "xpress", "copt", "scip", "highs"]
+    results = []
+    for s in solvers:
+        res = solve_with_solver(s, timelimit=30)
+        if res:
+            results.append(res)
+
+    print("\n\n=======================================================")
+    print("FINAL COMMERCIAL SOLVER BENCHMARK SUMMARY (30s timelimit)")
+    print("=======================================================")
+    print(f"{'Solver':<12} | {'Status':<12} | {'Assigned':<10} | {'Unassigned':<12} | {'Objective Cost':<16} | {'Elapsed (s)':<10}")
+    print("-" * 80)
+    for r in results:
+        print(f"{r['solver']:<12} | {r['status']:<12} | {r['assigned']:>2d} / 55     | {r['unassigned']:>2d}           | {r['obj']:>16.1f} | {r['elapsed']:>10.2f}")
+
+if __name__ == "__main__":
+    main()

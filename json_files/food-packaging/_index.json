@@ -1,0 +1,14 @@
+[
+  {
+    "id": "BASIC",
+    "shortDescription": "Demonstrates a food packaging problem with product-dependent changeover cleaning.",
+    "longDescription": "Schedules 100 packaging jobs of 60 vegetable-bag products on 5 production lines run by 5 operators. Switching a line to a product that does not share the previous product's ingredients costs a full cleaning, so the order the jobs end up in decides how much of the day is spent cleaning instead of producing. Once solved, the jobs are sequenced so as many as possible finish before their ideal end time, no job finishes after its maximum end time, and no operator has to clean two of their lines at once.",
+    "tags": [
+      "changeover cleaning",
+      "job sequencing",
+      "due dates",
+      "operator conflicts"
+    ],
+    "config": []
+  }
+]

@@ -1,0 +1,509 @@
+{
+  "config": {
+    "run": {
+      "name": "BASIC",
+      "tags": []
+    },
+    "model": {}
+  },
+  "modelInput": {
+    "people": [
+      {
+        "id": "P1",
+        "fullName": "Amy Cole"
+      },
+      {
+        "id": "P2",
+        "fullName": "Beth Rye"
+      },
+      {
+        "id": "P3",
+        "fullName": "Carl Carr"
+      },
+      {
+        "id": "P4",
+        "fullName": "Dan Fox"
+      },
+      {
+        "id": "P5",
+        "fullName": "Elsa Smith"
+      },
+      {
+        "id": "P6",
+        "fullName": "Flo Hood"
+      },
+      {
+        "id": "P7",
+        "fullName": "Gus Green"
+      },
+      {
+        "id": "P8",
+        "fullName": "Hugo Watt"
+      },
+      {
+        "id": "P9",
+        "fullName": "Ivy Long"
+      },
+      {
+        "id": "P10",
+        "fullName": "Jay Jones"
+      },
+      {
+        "id": "P11",
+        "fullName": "Jeri Howe"
+      },
+      {
+        "id": "P12",
+        "fullName": "Hope Horn"
+      },
+      {
+        "id": "P13",
+        "fullName": "Avis King"
+      },
+      {
+        "id": "P14",
+        "fullName": "Lino Lowe"
+      },
+      {
+        "id": "P15",
+        "fullName": "Lyle Haas"
+      },
+      {
+        "id": "P16",
+        "fullName": "Nick Li"
+      },
+      {
+        "id": "P17",
+        "fullName": "Dino Wise"
+      },
+      {
+        "id": "P18",
+        "fullName": "Otha Meza"
+      },
+      {
+        "id": "P19",
+        "fullName": "Gwen Poe"
+      },
+      {
+        "id": "P20",
+        "fullName": "Jose Clay"
+      }
+    ],
+    "rooms": [
+      {
+        "id": "R1",
+        "name": "Room 1",
+        "capacity": 30
+      },
+      {
+        "id": "R2",
+        "name": "Room 2",
+        "capacity": 20
+      },
+      {
+        "id": "R3",
+        "name": "Room 3",
+        "capacity": 16
+      }
+    ],
+    "timeConfiguration": {
+      "granularityInMinutes": 15,
+      "days": [
+        {
+          "startDateTime": "2026-10-12T08:00:00Z",
+          "endDateTime": "2026-10-12T18:00:00Z"
+        },
+        {
+          "startDateTime": "2026-10-13T08:00:00Z",
+          "endDateTime": "2026-10-13T18:00:00Z"
+        },
+        {
+          "startDateTime": "2026-10-14T08:00:00Z",
+          "endDateTime": "2026-10-14T18:00:00Z"
+        },
+        {
+          "startDateTime": "2026-10-15T08:00:00Z",
+          "endDateTime": "2026-10-15T18:00:00Z"
+        },
+        {
+          "startDateTime": "2026-10-16T08:00:00Z",
+          "endDateTime": "2026-10-16T18:00:00Z"
+        }
+      ]
+    },
+    "meetings": [
+      {
+        "id": "M1",
+        "topic": "Strategize B2B",
+        "durationInMinutes": 120,
+        "requiredAttendeeIds": [
+          "P7",
+          "P2"
+        ],
+        "preferredAttendeeIds": [
+          "P16"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M2",
+        "topic": "Fast track e-business",
+        "durationInMinutes": 180,
+        "requiredAttendeeIds": [
+          "P10",
+          "P8"
+        ],
+        "preferredAttendeeIds": [
+          "P13",
+          "P17"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M3",
+        "topic": "Cross sell virtualization",
+        "durationInMinutes": 240,
+        "requiredAttendeeIds": [
+          "P15",
+          "P1"
+        ],
+        "preferredAttendeeIds": [
+          "P5",
+          "P4"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M4",
+        "topic": "Profitize multitasking",
+        "durationInMinutes": 120,
+        "requiredAttendeeIds": [
+          "P1",
+          "P2"
+        ],
+        "preferredAttendeeIds": [
+          "P17",
+          "P6"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M5",
+        "topic": "Transform one stop shop",
+        "durationInMinutes": 180,
+        "requiredAttendeeIds": [
+          "P3",
+          "P9"
+        ],
+        "preferredAttendeeIds": [
+          "P6",
+          "P17",
+          "P1"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M6",
+        "topic": "Engage braindumps",
+        "durationInMinutes": 240,
+        "requiredAttendeeIds": [
+          "P11",
+          "P9"
+        ],
+        "preferredAttendeeIds": [
+          "P19",
+          "P18",
+          "P1"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M7",
+        "topic": "Downsize data mining",
+        "durationInMinutes": 120,
+        "requiredAttendeeIds": [
+          "P19",
+          "P4"
+        ],
+        "preferredAttendeeIds": [
+          "P17",
+          "P2",
+          "P1"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M8",
+        "topic": "Ramp up policies",
+        "durationInMinutes": 180,
+        "requiredAttendeeIds": [
+          "P11",
+          "P16"
+        ],
+        "preferredAttendeeIds": [
+          "P9",
+          "P17",
+          "P8",
+          "P20"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M9",
+        "topic": "On board synergies",
+        "durationInMinutes": 240,
+        "requiredAttendeeIds": [
+          "P19",
+          "P5",
+          "P17"
+        ],
+        "preferredAttendeeIds": [
+          "P2",
+          "P11"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M10",
+        "topic": "Reinvigorate user experience",
+        "durationInMinutes": 120,
+        "requiredAttendeeIds": [
+          "P15",
+          "P7",
+          "P4"
+        ],
+        "preferredAttendeeIds": [
+          "P11",
+          "P9",
+          "P6",
+          "P1",
+          "P8"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M11",
+        "topic": "Strategize e-business",
+        "durationInMinutes": 180,
+        "requiredAttendeeIds": [
+          "P9",
+          "P5",
+          "P16"
+        ],
+        "preferredAttendeeIds": [
+          "P12",
+          "P19"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M12",
+        "topic": "Fast track virtualization",
+        "durationInMinutes": 240,
+        "requiredAttendeeIds": [
+          "P4",
+          "P15",
+          "P7"
+        ],
+        "preferredAttendeeIds": [
+          "P6",
+          "P8"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M13",
+        "topic": "Cross sell multitasking",
+        "durationInMinutes": 120,
+        "requiredAttendeeIds": [
+          "P16",
+          "P5",
+          "P18"
+        ],
+        "preferredAttendeeIds": [
+          "P9",
+          "P2",
+          "P11"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M14",
+        "topic": "Profitize one stop shop",
+        "durationInMinutes": 180,
+        "requiredAttendeeIds": [
+          "P14",
+          "P4",
+          "P10",
+          "P19"
+        ],
+        "preferredAttendeeIds": [
+          "P20",
+          "P7"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M15",
+        "topic": "Transform braindumps",
+        "durationInMinutes": 240,
+        "requiredAttendeeIds": [
+          "P18",
+          "P10",
+          "P14",
+          "P2"
+        ],
+        "preferredAttendeeIds": [
+          "P11",
+          "P19",
+          "P1"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M16",
+        "topic": "Engage data mining",
+        "durationInMinutes": 120,
+        "requiredAttendeeIds": [
+          "P7",
+          "P17",
+          "P4",
+          "P8"
+        ],
+        "preferredAttendeeIds": [
+          "P9",
+          "P20",
+          "P6",
+          "P3"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M17",
+        "topic": "Downsize policies",
+        "durationInMinutes": 180,
+        "requiredAttendeeIds": [
+          "P15",
+          "P3",
+          "P11",
+          "P14",
+          "P6"
+        ],
+        "preferredAttendeeIds": [
+          "P8",
+          "P19",
+          "P7",
+          "P18",
+          "P13",
+          "P10",
+          "P17"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M18",
+        "topic": "Ramp up synergies",
+        "durationInMinutes": 240,
+        "requiredAttendeeIds": [
+          "P8",
+          "P14"
+        ],
+        "preferredAttendeeIds": [
+          "P2",
+          "P13"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M19",
+        "topic": "On board user experience",
+        "durationInMinutes": 120,
+        "requiredAttendeeIds": [
+          "P20",
+          "P8"
+        ],
+        "preferredAttendeeIds": [
+          "P6",
+          "P19",
+          "P15"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M20",
+        "topic": "Reinvigorate B2B",
+        "durationInMinutes": 180,
+        "requiredAttendeeIds": [
+          "P5",
+          "P12",
+          "P11"
+        ],
+        "preferredAttendeeIds": [
+          "P16"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M21",
+        "topic": "Strategize virtualization",
+        "durationInMinutes": 240,
+        "requiredAttendeeIds": [
+          "P5",
+          "P17",
+          "P20"
+        ],
+        "preferredAttendeeIds": [
+          "P11",
+          "P19"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M22",
+        "topic": "Fast track multitasking",
+        "durationInMinutes": 120,
+        "requiredAttendeeIds": [
+          "P16",
+          "P13",
+          "P15"
+        ],
+        "preferredAttendeeIds": [
+          "P14",
+          "P3",
+          "P19"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M23",
+        "topic": "Cross sell one stop shop",
+        "durationInMinutes": 180,
+        "requiredAttendeeIds": [
+          "P5",
+          "P19"
+        ],
+        "preferredAttendeeIds": [
+          "P6",
+          "P14",
+          "P17",
+          "P16"
+        ],
+        "pinned": false
+      },
+      {
+        "id": "M24",
+        "topic": "Reinvigorate multitasking",
+        "durationInMinutes": 240,
+        "requiredAttendeeIds": [
+          "P1",
+          "P5"
+        ],
+        "preferredAttendeeIds": [
+          "P18",
+          "P16"
+        ],
+        "pinned": false
+      }
+    ]
+  }
+}

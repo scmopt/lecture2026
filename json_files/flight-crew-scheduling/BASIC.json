@@ -1,0 +1,1983 @@
+{
+  "config": {
+    "run": {
+      "name": "BASIC",
+      "tags": []
+    },
+    "model": {}
+  },
+  "modelInput": {
+    "airports": [
+      {
+        "code": "LHR",
+        "name": "London Heathrow",
+        "latitude": 51.4775,
+        "longitude": -0.461389
+      },
+      {
+        "code": "JFK",
+        "name": "New York JFK",
+        "latitude": 40.639722,
+        "longitude": -73.778889
+      },
+      {
+        "code": "CNF",
+        "name": "Belo Horizonte Confins",
+        "latitude": -19.624444,
+        "longitude": -43.971944
+      },
+      {
+        "code": "BRU",
+        "name": "Brussels",
+        "latitude": 50.901389,
+        "longitude": 4.484444
+      },
+      {
+        "code": "ATL",
+        "name": "Atlanta",
+        "latitude": 33.636667,
+        "longitude": -84.428056
+      },
+      {
+        "code": "BNE",
+        "name": "Brisbane",
+        "latitude": -27.383333,
+        "longitude": 153.118333
+      }
+    ],
+    "employees": [
+      {
+        "id": "crew-1",
+        "name": "Amy Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-2",
+        "name": "Beth Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-3",
+        "name": "Carl Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": [
+          "2026-10-12"
+        ]
+      },
+      {
+        "id": "crew-4",
+        "name": "Dan Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-5",
+        "name": "Elsa Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-6",
+        "name": "Flo Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-7",
+        "name": "Gus Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": [
+          "2026-10-14",
+          "2026-10-15"
+        ]
+      },
+      {
+        "id": "crew-8",
+        "name": "Hugo Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-9",
+        "name": "Ivy Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-10",
+        "name": "Jay Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": [
+          "2026-10-16"
+        ]
+      },
+      {
+        "id": "crew-11",
+        "name": "Jeri Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-12",
+        "name": "Hope Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": [
+          "2026-10-13"
+        ]
+      },
+      {
+        "id": "crew-13",
+        "name": "Avis Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-14",
+        "name": "Lino Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-15",
+        "name": "Lyle Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": [
+          "2026-10-13"
+        ]
+      },
+      {
+        "id": "crew-16",
+        "name": "Nick Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-17",
+        "name": "Dino Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-18",
+        "name": "Otha Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-19",
+        "name": "Gwen Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": [
+          "2026-10-15",
+          "2026-10-16"
+        ]
+      },
+      {
+        "id": "crew-20",
+        "name": "Jose Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-21",
+        "name": "Dena Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-22",
+        "name": "Jana Cole",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-23",
+        "name": "Amy Fox",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-24",
+        "name": "Beth Fox",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": [
+          "2026-10-12"
+        ]
+      },
+      {
+        "id": "crew-25",
+        "name": "Carl Fox",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-26",
+        "name": "Dan Fox",
+        "homeAirportCode": "LHR",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": [
+          "2026-10-14"
+        ]
+      },
+      {
+        "id": "crew-27",
+        "name": "Elsa Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-28",
+        "name": "Flo Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-29",
+        "name": "Gus Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-30",
+        "name": "Hugo Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": [
+          "2026-10-12",
+          "2026-10-13"
+        ]
+      },
+      {
+        "id": "crew-31",
+        "name": "Ivy Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-32",
+        "name": "Jay Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-33",
+        "name": "Jeri Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": [
+          "2026-10-17"
+        ]
+      },
+      {
+        "id": "crew-34",
+        "name": "Hope Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": [
+          "2026-10-15"
+        ]
+      },
+      {
+        "id": "crew-35",
+        "name": "Avis Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-36",
+        "name": "Lino Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": [
+          "2026-10-14"
+        ]
+      },
+      {
+        "id": "crew-37",
+        "name": "Lyle Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Pilot"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-38",
+        "name": "Nick Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-39",
+        "name": "Dino Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": [
+          "2026-10-16",
+          "2026-10-17"
+        ]
+      },
+      {
+        "id": "crew-40",
+        "name": "Otha Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-41",
+        "name": "Gwen Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": [
+          "2026-10-12"
+        ]
+      },
+      {
+        "id": "crew-42",
+        "name": "Jose Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-43",
+        "name": "Dena Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-44",
+        "name": "Jana Fox",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": [
+          "2026-10-13"
+        ]
+      },
+      {
+        "id": "crew-45",
+        "name": "Amy Green",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-46",
+        "name": "Beth Green",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-47",
+        "name": "Carl Green",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      },
+      {
+        "id": "crew-48",
+        "name": "Dan Green",
+        "homeAirportCode": "BRU",
+        "skills": [
+          "Flight attendant"
+        ],
+        "unavailableDays": []
+      }
+    ],
+    "flights": [
+      {
+        "flightNumber": "XQ200",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-12T06:00:00Z",
+        "arrivalAirportCode": "JFK",
+        "arrivalUTCDateTime": "2026-10-12T14:00:00Z"
+      },
+      {
+        "flightNumber": "ZJ217",
+        "departureAirportCode": "JFK",
+        "departureUTCDateTime": "2026-10-13T08:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-13T16:00:00Z"
+      },
+      {
+        "flightNumber": "QY234",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-13T06:00:00Z",
+        "arrivalAirportCode": "ATL",
+        "arrivalUTCDateTime": "2026-10-13T15:00:00Z"
+      },
+      {
+        "flightNumber": "JX251",
+        "departureAirportCode": "ATL",
+        "departureUTCDateTime": "2026-10-14T08:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-14T17:00:00Z"
+      },
+      {
+        "flightNumber": "WV268",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-14T05:00:00Z",
+        "arrivalAirportCode": "CNF",
+        "arrivalUTCDateTime": "2026-10-14T17:00:00Z"
+      },
+      {
+        "flightNumber": "YF285",
+        "departureAirportCode": "CNF",
+        "departureUTCDateTime": "2026-10-15T06:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-15T18:00:00Z"
+      },
+      {
+        "flightNumber": "KG302",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-15T05:00:00Z",
+        "arrivalAirportCode": "BNE",
+        "arrivalUTCDateTime": "2026-10-16T02:00:00Z"
+      },
+      {
+        "flightNumber": "VK319",
+        "departureAirportCode": "BNE",
+        "departureUTCDateTime": "2026-10-16T08:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-17T05:00:00Z"
+      },
+      {
+        "flightNumber": "JH336",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-12T07:00:00Z",
+        "arrivalAirportCode": "JFK",
+        "arrivalUTCDateTime": "2026-10-12T21:00:00Z"
+      },
+      {
+        "flightNumber": "XD353",
+        "departureAirportCode": "JFK",
+        "departureUTCDateTime": "2026-10-13T09:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-13T23:00:00Z"
+      },
+      {
+        "flightNumber": "YJ370",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-13T07:00:00Z",
+        "arrivalAirportCode": "ATL",
+        "arrivalUTCDateTime": "2026-10-13T16:00:00Z"
+      },
+      {
+        "flightNumber": "XN387",
+        "departureAirportCode": "ATL",
+        "departureUTCDateTime": "2026-10-14T09:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-14T18:00:00Z"
+      },
+      {
+        "flightNumber": "ZF404",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-14T04:00:00Z",
+        "arrivalAirportCode": "BNE",
+        "arrivalUTCDateTime": "2026-10-15T01:00:00Z"
+      },
+      {
+        "flightNumber": "XQ421",
+        "departureAirportCode": "BNE",
+        "departureUTCDateTime": "2026-10-15T08:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-16T05:00:00Z"
+      },
+      {
+        "flightNumber": "ZJ438",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-12T08:00:00Z",
+        "arrivalAirportCode": "ATL",
+        "arrivalUTCDateTime": "2026-10-12T17:00:00Z"
+      },
+      {
+        "flightNumber": "QY455",
+        "departureAirportCode": "ATL",
+        "departureUTCDateTime": "2026-10-13T09:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-13T18:00:00Z"
+      },
+      {
+        "flightNumber": "JX472",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-13T10:00:00Z",
+        "arrivalAirportCode": "JFK",
+        "arrivalUTCDateTime": "2026-10-13T18:00:00Z"
+      },
+      {
+        "flightNumber": "WV489",
+        "departureAirportCode": "JFK",
+        "departureUTCDateTime": "2026-10-14T10:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-14T18:00:00Z"
+      },
+      {
+        "flightNumber": "YF506",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-15T07:00:00Z",
+        "arrivalAirportCode": "CNF",
+        "arrivalUTCDateTime": "2026-10-15T19:00:00Z"
+      },
+      {
+        "flightNumber": "KG523",
+        "departureAirportCode": "CNF",
+        "departureUTCDateTime": "2026-10-16T07:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-16T19:00:00Z"
+      },
+      {
+        "flightNumber": "VK540",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-16T06:00:00Z",
+        "arrivalAirportCode": "ATL",
+        "arrivalUTCDateTime": "2026-10-16T15:00:00Z"
+      },
+      {
+        "flightNumber": "JH557",
+        "departureAirportCode": "ATL",
+        "departureUTCDateTime": "2026-10-17T08:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-17T17:00:00Z"
+      },
+      {
+        "flightNumber": "XD574",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-12T08:00:00Z",
+        "arrivalAirportCode": "ATL",
+        "arrivalUTCDateTime": "2026-10-12T17:00:00Z"
+      },
+      {
+        "flightNumber": "YJ591",
+        "departureAirportCode": "ATL",
+        "departureUTCDateTime": "2026-10-15T09:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-15T18:00:00Z"
+      },
+      {
+        "flightNumber": "XN608",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-15T06:00:00Z",
+        "arrivalAirportCode": "BNE",
+        "arrivalUTCDateTime": "2026-10-16T03:00:00Z"
+      },
+      {
+        "flightNumber": "ZF625",
+        "departureAirportCode": "BNE",
+        "departureUTCDateTime": "2026-10-16T09:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-17T06:00:00Z"
+      },
+      {
+        "flightNumber": "XQ642",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-17T07:00:00Z",
+        "arrivalAirportCode": "ATL",
+        "arrivalUTCDateTime": "2026-10-17T16:00:00Z"
+      },
+      {
+        "flightNumber": "ZJ659",
+        "departureAirportCode": "ATL",
+        "departureUTCDateTime": "2026-10-18T09:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-18T18:00:00Z"
+      },
+      {
+        "flightNumber": "QY676",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-12T10:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-12T12:00:00Z"
+      },
+      {
+        "flightNumber": "JX693",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-12T14:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-12T16:00:00Z"
+      },
+      {
+        "flightNumber": "WV710",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-14T11:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-14T13:00:00Z"
+      },
+      {
+        "flightNumber": "YF727",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-14T15:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-14T17:00:00Z"
+      },
+      {
+        "flightNumber": "KG744",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-16T10:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-16T12:00:00Z"
+      },
+      {
+        "flightNumber": "VK761",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-16T14:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-16T16:00:00Z"
+      },
+      {
+        "flightNumber": "JH778",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-12T09:00:00Z",
+        "arrivalAirportCode": "BNE",
+        "arrivalUTCDateTime": "2026-10-13T06:00:00Z"
+      },
+      {
+        "flightNumber": "XD795",
+        "departureAirportCode": "BNE",
+        "departureUTCDateTime": "2026-10-13T09:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-14T06:00:00Z"
+      },
+      {
+        "flightNumber": "YJ812",
+        "departureAirportCode": "JFK",
+        "departureUTCDateTime": "2026-10-16T10:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-17T00:00:00Z"
+      },
+      {
+        "flightNumber": "XN829",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-12T07:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-12T09:00:00Z"
+      },
+      {
+        "flightNumber": "ZF846",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-12T11:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-12T13:00:00Z"
+      },
+      {
+        "flightNumber": "XQ863",
+        "departureAirportCode": "ATL",
+        "departureUTCDateTime": "2026-10-12T07:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-12T16:00:00Z"
+      },
+      {
+        "flightNumber": "ZJ880",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-15T08:00:00Z",
+        "arrivalAirportCode": "JFK",
+        "arrivalUTCDateTime": "2026-10-15T16:00:00Z"
+      },
+      {
+        "flightNumber": "QY897",
+        "departureAirportCode": "JFK",
+        "departureUTCDateTime": "2026-10-16T09:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-16T17:00:00Z"
+      },
+      {
+        "flightNumber": "JX914",
+        "departureAirportCode": "BRU",
+        "departureUTCDateTime": "2026-10-17T06:00:00Z",
+        "arrivalAirportCode": "CNF",
+        "arrivalUTCDateTime": "2026-10-17T18:00:00Z"
+      },
+      {
+        "flightNumber": "WV931",
+        "departureAirportCode": "CNF",
+        "departureUTCDateTime": "2026-10-18T06:00:00Z",
+        "arrivalAirportCode": "BRU",
+        "arrivalUTCDateTime": "2026-10-18T18:00:00Z"
+      },
+      {
+        "flightNumber": "YF948",
+        "departureAirportCode": "LHR",
+        "departureUTCDateTime": "2026-10-17T07:00:00Z",
+        "arrivalAirportCode": "ATL",
+        "arrivalUTCDateTime": "2026-10-17T16:00:00Z"
+      },
+      {
+        "flightNumber": "KG965",
+        "departureAirportCode": "ATL",
+        "departureUTCDateTime": "2026-10-18T08:00:00Z",
+        "arrivalAirportCode": "LHR",
+        "arrivalUTCDateTime": "2026-10-18T17:00:00Z"
+      }
+    ],
+    "flightAssignments": [
+      {
+        "id": "XQ200-seat-1",
+        "flightNumber": "XQ200",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XQ200-seat-2",
+        "flightNumber": "XQ200",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XQ200-seat-3",
+        "flightNumber": "XQ200",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XQ200-seat-4",
+        "flightNumber": "XQ200",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZJ217-seat-1",
+        "flightNumber": "ZJ217",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZJ217-seat-2",
+        "flightNumber": "ZJ217",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZJ217-seat-3",
+        "flightNumber": "ZJ217",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZJ217-seat-4",
+        "flightNumber": "ZJ217",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "QY234-seat-1",
+        "flightNumber": "QY234",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "QY234-seat-2",
+        "flightNumber": "QY234",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "QY234-seat-3",
+        "flightNumber": "QY234",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "QY234-seat-4",
+        "flightNumber": "QY234",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JX251-seat-1",
+        "flightNumber": "JX251",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JX251-seat-2",
+        "flightNumber": "JX251",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JX251-seat-3",
+        "flightNumber": "JX251",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JX251-seat-4",
+        "flightNumber": "JX251",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "WV268-seat-1",
+        "flightNumber": "WV268",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "WV268-seat-2",
+        "flightNumber": "WV268",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "WV268-seat-3",
+        "flightNumber": "WV268",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "WV268-seat-4",
+        "flightNumber": "WV268",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "WV268-seat-5",
+        "flightNumber": "WV268",
+        "indexInFlight": 5,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YF285-seat-1",
+        "flightNumber": "YF285",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YF285-seat-2",
+        "flightNumber": "YF285",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YF285-seat-3",
+        "flightNumber": "YF285",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YF285-seat-4",
+        "flightNumber": "YF285",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YF285-seat-5",
+        "flightNumber": "YF285",
+        "indexInFlight": 5,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "KG302-seat-1",
+        "flightNumber": "KG302",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "KG302-seat-2",
+        "flightNumber": "KG302",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "KG302-seat-3",
+        "flightNumber": "KG302",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "KG302-seat-4",
+        "flightNumber": "KG302",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "VK319-seat-1",
+        "flightNumber": "VK319",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "VK319-seat-2",
+        "flightNumber": "VK319",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "VK319-seat-3",
+        "flightNumber": "VK319",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "VK319-seat-4",
+        "flightNumber": "VK319",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JH336-seat-1",
+        "flightNumber": "JH336",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JH336-seat-2",
+        "flightNumber": "JH336",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JH336-seat-3",
+        "flightNumber": "JH336",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JH336-seat-4",
+        "flightNumber": "JH336",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XD353-seat-1",
+        "flightNumber": "XD353",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XD353-seat-2",
+        "flightNumber": "XD353",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XD353-seat-3",
+        "flightNumber": "XD353",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XD353-seat-4",
+        "flightNumber": "XD353",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YJ370-seat-1",
+        "flightNumber": "YJ370",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YJ370-seat-2",
+        "flightNumber": "YJ370",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YJ370-seat-3",
+        "flightNumber": "YJ370",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YJ370-seat-4",
+        "flightNumber": "YJ370",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XN387-seat-1",
+        "flightNumber": "XN387",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XN387-seat-2",
+        "flightNumber": "XN387",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XN387-seat-3",
+        "flightNumber": "XN387",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XN387-seat-4",
+        "flightNumber": "XN387",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZF404-seat-1",
+        "flightNumber": "ZF404",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZF404-seat-2",
+        "flightNumber": "ZF404",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZF404-seat-3",
+        "flightNumber": "ZF404",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZF404-seat-4",
+        "flightNumber": "ZF404",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XQ421-seat-1",
+        "flightNumber": "XQ421",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XQ421-seat-2",
+        "flightNumber": "XQ421",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XQ421-seat-3",
+        "flightNumber": "XQ421",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XQ421-seat-4",
+        "flightNumber": "XQ421",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZJ438-seat-1",
+        "flightNumber": "ZJ438",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZJ438-seat-2",
+        "flightNumber": "ZJ438",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZJ438-seat-3",
+        "flightNumber": "ZJ438",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZJ438-seat-4",
+        "flightNumber": "ZJ438",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "QY455-seat-1",
+        "flightNumber": "QY455",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "QY455-seat-2",
+        "flightNumber": "QY455",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "QY455-seat-3",
+        "flightNumber": "QY455",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "QY455-seat-4",
+        "flightNumber": "QY455",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JX472-seat-1",
+        "flightNumber": "JX472",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JX472-seat-2",
+        "flightNumber": "JX472",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JX472-seat-3",
+        "flightNumber": "JX472",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JX472-seat-4",
+        "flightNumber": "JX472",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "WV489-seat-1",
+        "flightNumber": "WV489",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "WV489-seat-2",
+        "flightNumber": "WV489",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "WV489-seat-3",
+        "flightNumber": "WV489",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "WV489-seat-4",
+        "flightNumber": "WV489",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YF506-seat-1",
+        "flightNumber": "YF506",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YF506-seat-2",
+        "flightNumber": "YF506",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YF506-seat-3",
+        "flightNumber": "YF506",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YF506-seat-4",
+        "flightNumber": "YF506",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YF506-seat-5",
+        "flightNumber": "YF506",
+        "indexInFlight": 5,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "KG523-seat-1",
+        "flightNumber": "KG523",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "KG523-seat-2",
+        "flightNumber": "KG523",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "KG523-seat-3",
+        "flightNumber": "KG523",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "KG523-seat-4",
+        "flightNumber": "KG523",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "KG523-seat-5",
+        "flightNumber": "KG523",
+        "indexInFlight": 5,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "VK540-seat-1",
+        "flightNumber": "VK540",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "VK540-seat-2",
+        "flightNumber": "VK540",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "VK540-seat-3",
+        "flightNumber": "VK540",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "VK540-seat-4",
+        "flightNumber": "VK540",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JH557-seat-1",
+        "flightNumber": "JH557",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JH557-seat-2",
+        "flightNumber": "JH557",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JH557-seat-3",
+        "flightNumber": "JH557",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JH557-seat-4",
+        "flightNumber": "JH557",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XD574-seat-1",
+        "flightNumber": "XD574",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XD574-seat-2",
+        "flightNumber": "XD574",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XD574-seat-3",
+        "flightNumber": "XD574",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XD574-seat-4",
+        "flightNumber": "XD574",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YJ591-seat-1",
+        "flightNumber": "YJ591",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YJ591-seat-2",
+        "flightNumber": "YJ591",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YJ591-seat-3",
+        "flightNumber": "YJ591",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YJ591-seat-4",
+        "flightNumber": "YJ591",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XN608-seat-1",
+        "flightNumber": "XN608",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XN608-seat-2",
+        "flightNumber": "XN608",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XN608-seat-3",
+        "flightNumber": "XN608",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XN608-seat-4",
+        "flightNumber": "XN608",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZF625-seat-1",
+        "flightNumber": "ZF625",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZF625-seat-2",
+        "flightNumber": "ZF625",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZF625-seat-3",
+        "flightNumber": "ZF625",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZF625-seat-4",
+        "flightNumber": "ZF625",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XQ642-seat-1",
+        "flightNumber": "XQ642",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XQ642-seat-2",
+        "flightNumber": "XQ642",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XQ642-seat-3",
+        "flightNumber": "XQ642",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XQ642-seat-4",
+        "flightNumber": "XQ642",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZJ659-seat-1",
+        "flightNumber": "ZJ659",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZJ659-seat-2",
+        "flightNumber": "ZJ659",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZJ659-seat-3",
+        "flightNumber": "ZJ659",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZJ659-seat-4",
+        "flightNumber": "ZJ659",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "QY676-seat-1",
+        "flightNumber": "QY676",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "QY676-seat-2",
+        "flightNumber": "QY676",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "QY676-seat-3",
+        "flightNumber": "QY676",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "QY676-seat-4",
+        "flightNumber": "QY676",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JX693-seat-1",
+        "flightNumber": "JX693",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JX693-seat-2",
+        "flightNumber": "JX693",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JX693-seat-3",
+        "flightNumber": "JX693",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JX693-seat-4",
+        "flightNumber": "JX693",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "WV710-seat-1",
+        "flightNumber": "WV710",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "WV710-seat-2",
+        "flightNumber": "WV710",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "WV710-seat-3",
+        "flightNumber": "WV710",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "WV710-seat-4",
+        "flightNumber": "WV710",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YF727-seat-1",
+        "flightNumber": "YF727",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YF727-seat-2",
+        "flightNumber": "YF727",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YF727-seat-3",
+        "flightNumber": "YF727",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YF727-seat-4",
+        "flightNumber": "YF727",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "KG744-seat-1",
+        "flightNumber": "KG744",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "KG744-seat-2",
+        "flightNumber": "KG744",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "KG744-seat-3",
+        "flightNumber": "KG744",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "KG744-seat-4",
+        "flightNumber": "KG744",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "VK761-seat-1",
+        "flightNumber": "VK761",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "VK761-seat-2",
+        "flightNumber": "VK761",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "VK761-seat-3",
+        "flightNumber": "VK761",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "VK761-seat-4",
+        "flightNumber": "VK761",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JH778-seat-1",
+        "flightNumber": "JH778",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JH778-seat-2",
+        "flightNumber": "JH778",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JH778-seat-3",
+        "flightNumber": "JH778",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JH778-seat-4",
+        "flightNumber": "JH778",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XD795-seat-1",
+        "flightNumber": "XD795",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XD795-seat-2",
+        "flightNumber": "XD795",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XD795-seat-3",
+        "flightNumber": "XD795",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XD795-seat-4",
+        "flightNumber": "XD795",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YJ812-seat-1",
+        "flightNumber": "YJ812",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YJ812-seat-2",
+        "flightNumber": "YJ812",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YJ812-seat-3",
+        "flightNumber": "YJ812",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YJ812-seat-4",
+        "flightNumber": "YJ812",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XN829-seat-1",
+        "flightNumber": "XN829",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XN829-seat-2",
+        "flightNumber": "XN829",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XN829-seat-3",
+        "flightNumber": "XN829",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XN829-seat-4",
+        "flightNumber": "XN829",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZF846-seat-1",
+        "flightNumber": "ZF846",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZF846-seat-2",
+        "flightNumber": "ZF846",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZF846-seat-3",
+        "flightNumber": "ZF846",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZF846-seat-4",
+        "flightNumber": "ZF846",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XQ863-seat-1",
+        "flightNumber": "XQ863",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XQ863-seat-2",
+        "flightNumber": "XQ863",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "XQ863-seat-3",
+        "flightNumber": "XQ863",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "XQ863-seat-4",
+        "flightNumber": "XQ863",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZJ880-seat-1",
+        "flightNumber": "ZJ880",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZJ880-seat-2",
+        "flightNumber": "ZJ880",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "ZJ880-seat-3",
+        "flightNumber": "ZJ880",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "ZJ880-seat-4",
+        "flightNumber": "ZJ880",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "QY897-seat-1",
+        "flightNumber": "QY897",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "QY897-seat-2",
+        "flightNumber": "QY897",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "QY897-seat-3",
+        "flightNumber": "QY897",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "QY897-seat-4",
+        "flightNumber": "QY897",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JX914-seat-1",
+        "flightNumber": "JX914",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JX914-seat-2",
+        "flightNumber": "JX914",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "JX914-seat-3",
+        "flightNumber": "JX914",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JX914-seat-4",
+        "flightNumber": "JX914",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "JX914-seat-5",
+        "flightNumber": "JX914",
+        "indexInFlight": 5,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "WV931-seat-1",
+        "flightNumber": "WV931",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "WV931-seat-2",
+        "flightNumber": "WV931",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "WV931-seat-3",
+        "flightNumber": "WV931",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "WV931-seat-4",
+        "flightNumber": "WV931",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "WV931-seat-5",
+        "flightNumber": "WV931",
+        "indexInFlight": 5,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YF948-seat-1",
+        "flightNumber": "YF948",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YF948-seat-2",
+        "flightNumber": "YF948",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "YF948-seat-3",
+        "flightNumber": "YF948",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "YF948-seat-4",
+        "flightNumber": "YF948",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "KG965-seat-1",
+        "flightNumber": "KG965",
+        "indexInFlight": 1,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "KG965-seat-2",
+        "flightNumber": "KG965",
+        "indexInFlight": 2,
+        "requiredSkill": "Pilot"
+      },
+      {
+        "id": "KG965-seat-3",
+        "flightNumber": "KG965",
+        "indexInFlight": 3,
+        "requiredSkill": "Flight attendant"
+      },
+      {
+        "id": "KG965-seat-4",
+        "flightNumber": "KG965",
+        "indexInFlight": 4,
+        "requiredSkill": "Flight attendant"
+      }
+    ]
+  }
+}

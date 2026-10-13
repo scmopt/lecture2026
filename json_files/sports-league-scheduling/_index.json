@@ -1,0 +1,14 @@
+[
+  {
+    "id": "BASIC",
+    "shortDescription": "Demonstrates a double round-robin league season with travel distances and classic matches.",
+    "longDescription": "Schedules 182 matches of a fourteen-team South American league onto 32 matchdays. Every pairing is played twice, once at either venue, and about 5% of them are classics, such as derbies. Once solved, no team plays twice on the same matchday or four matchdays in a row at home or away, no pairing is replayed the very next matchday, the classics land on a weekend, and the kilometres the teams travel between consecutive venues are as few as possible.",
+    "tags": [
+      "schedule conflicts",
+      "team fairness",
+      "travel distance",
+      "match attractiveness"
+    ],
+    "config": []
+  }
+]

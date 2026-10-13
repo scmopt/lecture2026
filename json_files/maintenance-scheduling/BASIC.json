@@ -1,0 +1,348 @@
+{
+  "config": {
+    "run": {
+      "name": "BASIC",
+      "tags": []
+    },
+    "model": {}
+  },
+  "modelInput": {
+    "workCalendar": {
+      "id": "1",
+      "fromDate": "2026-10-12",
+      "toDate": "2027-01-04"
+    },
+    "crews": [
+      {
+        "id": "1",
+        "name": "Alpha crew"
+      },
+      {
+        "id": "2",
+        "name": "Beta crew"
+      },
+      {
+        "id": "3",
+        "name": "Gamma crew"
+      },
+      {
+        "id": "4",
+        "name": "Delta crew"
+      }
+    ],
+    "jobs": [
+      {
+        "id": "0",
+        "name": "Downtown Street",
+        "durationInDays": 7,
+        "minStartDate": "2026-10-21",
+        "maxEndDate": "2026-11-24",
+        "idealEndDate": "2026-11-19",
+        "tags": [
+          "Downtown",
+          "Subway"
+        ]
+      },
+      {
+        "id": "1",
+        "name": "Downtown Bridge",
+        "durationInDays": 5,
+        "minStartDate": "2026-11-27",
+        "maxEndDate": "2027-01-01",
+        "idealEndDate": "2026-12-26",
+        "tags": [
+          "Downtown"
+        ]
+      },
+      {
+        "id": "2",
+        "name": "Downtown Tunnel",
+        "durationInDays": 1,
+        "minStartDate": "2026-10-24",
+        "maxEndDate": "2026-12-26",
+        "idealEndDate": "2026-12-24",
+        "tags": [
+          "Downtown"
+        ]
+      },
+      {
+        "id": "3",
+        "name": "Downtown Highway",
+        "durationInDays": 4,
+        "minStartDate": "2026-10-12",
+        "maxEndDate": "2027-01-01",
+        "idealEndDate": "2026-12-30",
+        "tags": [
+          "Downtown"
+        ]
+      },
+      {
+        "id": "4",
+        "name": "Downtown Boulevard",
+        "durationInDays": 9,
+        "minStartDate": "2026-11-21",
+        "maxEndDate": "2026-12-18",
+        "idealEndDate": "2026-12-17",
+        "tags": [
+          "Downtown",
+          "Subway"
+        ]
+      },
+      {
+        "id": "5",
+        "name": "Downtown Avenue",
+        "durationInDays": 5,
+        "minStartDate": "2026-11-20",
+        "maxEndDate": "2026-12-09",
+        "idealEndDate": "2026-12-05",
+        "tags": [
+          "Downtown"
+        ]
+      },
+      {
+        "id": "6",
+        "name": "Downtown Square",
+        "durationInDays": 3,
+        "minStartDate": "2026-11-07",
+        "maxEndDate": "2026-12-05",
+        "idealEndDate": "2026-12-03",
+        "tags": [
+          "Downtown"
+        ]
+      },
+      {
+        "id": "7",
+        "name": "Downtown Plaza",
+        "durationInDays": 2,
+        "minStartDate": "2026-11-11",
+        "maxEndDate": "2026-12-31",
+        "idealEndDate": "2026-12-25",
+        "tags": [
+          "Downtown"
+        ]
+      },
+      {
+        "id": "8",
+        "name": "Uptown Street",
+        "durationInDays": 3,
+        "minStartDate": "2026-10-28",
+        "maxEndDate": "2026-11-10",
+        "idealEndDate": "2026-11-06",
+        "tags": [
+          "Uptown"
+        ]
+      },
+      {
+        "id": "9",
+        "name": "Uptown Bridge",
+        "durationInDays": 4,
+        "minStartDate": "2026-10-17",
+        "maxEndDate": "2026-11-11",
+        "idealEndDate": "2026-11-07",
+        "tags": [
+          "Uptown"
+        ]
+      },
+      {
+        "id": "10",
+        "name": "Uptown Tunnel",
+        "durationInDays": 8,
+        "minStartDate": "2026-10-20",
+        "maxEndDate": "2027-01-01",
+        "idealEndDate": "2026-12-29",
+        "tags": [
+          "Uptown"
+        ]
+      },
+      {
+        "id": "11",
+        "name": "Uptown Highway",
+        "durationInDays": 3,
+        "minStartDate": "2026-10-20",
+        "maxEndDate": "2026-11-05",
+        "idealEndDate": "2026-11-04",
+        "tags": [
+          "Uptown"
+        ]
+      },
+      {
+        "id": "12",
+        "name": "Uptown Boulevard",
+        "durationInDays": 10,
+        "minStartDate": "2026-10-15",
+        "maxEndDate": "2027-01-02",
+        "idealEndDate": "2026-12-29",
+        "tags": [
+          "Uptown"
+        ]
+      },
+      {
+        "id": "13",
+        "name": "Uptown Avenue",
+        "durationInDays": 3,
+        "minStartDate": "2026-10-17",
+        "maxEndDate": "2026-12-22",
+        "idealEndDate": "2026-12-17",
+        "tags": [
+          "Uptown"
+        ]
+      },
+      {
+        "id": "14",
+        "name": "Uptown Square",
+        "durationInDays": 3,
+        "minStartDate": "2026-11-10",
+        "maxEndDate": "2026-11-27",
+        "idealEndDate": "2026-11-21",
+        "tags": [
+          "Uptown"
+        ]
+      },
+      {
+        "id": "15",
+        "name": "Uptown Plaza",
+        "durationInDays": 3,
+        "minStartDate": "2026-10-12",
+        "maxEndDate": "2026-11-18",
+        "idealEndDate": "2026-11-12",
+        "tags": [
+          "Uptown"
+        ]
+      },
+      {
+        "id": "16",
+        "name": "Park Street",
+        "durationInDays": 8,
+        "minStartDate": "2026-10-16",
+        "maxEndDate": "2026-12-24",
+        "idealEndDate": "2026-12-23",
+        "tags": [
+          "Park"
+        ]
+      },
+      {
+        "id": "17",
+        "name": "Park Bridge",
+        "durationInDays": 10,
+        "minStartDate": "2026-10-13",
+        "maxEndDate": "2026-12-18",
+        "idealEndDate": "2026-12-12",
+        "tags": [
+          "Park"
+        ]
+      },
+      {
+        "id": "18",
+        "name": "Park Tunnel",
+        "durationInDays": 6,
+        "minStartDate": "2026-10-30",
+        "maxEndDate": "2026-12-23",
+        "idealEndDate": "2026-12-17",
+        "tags": [
+          "Park"
+        ]
+      },
+      {
+        "id": "19",
+        "name": "Park Highway",
+        "durationInDays": 8,
+        "minStartDate": "2026-10-16",
+        "maxEndDate": "2026-12-30",
+        "idealEndDate": "2026-12-25",
+        "tags": [
+          "Park"
+        ]
+      },
+      {
+        "id": "20",
+        "name": "Park Boulevard",
+        "durationInDays": 9,
+        "minStartDate": "2026-10-24",
+        "maxEndDate": "2027-01-01",
+        "idealEndDate": "2026-12-30",
+        "tags": [
+          "Park",
+          "Subway"
+        ]
+      },
+      {
+        "id": "21",
+        "name": "Park Avenue",
+        "durationInDays": 8,
+        "minStartDate": "2026-10-16",
+        "maxEndDate": "2026-12-03",
+        "idealEndDate": "2026-11-28",
+        "tags": [
+          "Park"
+        ]
+      },
+      {
+        "id": "22",
+        "name": "Park Square",
+        "durationInDays": 6,
+        "minStartDate": "2026-10-13",
+        "maxEndDate": "2026-11-07",
+        "idealEndDate": "2026-11-03",
+        "tags": [
+          "Park",
+          "Subway"
+        ]
+      },
+      {
+        "id": "23",
+        "name": "Park Plaza",
+        "durationInDays": 7,
+        "minStartDate": "2026-10-12",
+        "maxEndDate": "2026-12-08",
+        "idealEndDate": "2026-12-03",
+        "tags": [
+          "Park"
+        ]
+      },
+      {
+        "id": "24",
+        "name": "Airport Street",
+        "durationInDays": 4,
+        "minStartDate": "2026-10-21",
+        "maxEndDate": "2026-12-24",
+        "idealEndDate": "2026-12-23",
+        "tags": [
+          "Airport"
+        ]
+      },
+      {
+        "id": "25",
+        "name": "Airport Bridge",
+        "durationInDays": 2,
+        "minStartDate": "2026-10-20",
+        "maxEndDate": "2026-11-21",
+        "idealEndDate": "2026-11-18",
+        "tags": [
+          "Airport"
+        ]
+      },
+      {
+        "id": "26",
+        "name": "Airport Tunnel",
+        "durationInDays": 1,
+        "minStartDate": "2026-10-28",
+        "maxEndDate": "2026-12-31",
+        "idealEndDate": "2026-12-26",
+        "tags": [
+          "Airport"
+        ]
+      },
+      {
+        "id": "27",
+        "name": "Airport Highway",
+        "durationInDays": 8,
+        "minStartDate": "2026-10-28",
+        "maxEndDate": "2026-12-25",
+        "idealEndDate": "2026-12-23",
+        "tags": [
+          "Airport"
+        ]
+      }
+    ]
+  }
+}

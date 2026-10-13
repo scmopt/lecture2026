@@ -1,0 +1,1855 @@
+{
+  "projects": [
+    {
+      "id": "0",
+      "releaseDate": 0,
+      "criticalPathDuration": 10
+    },
+    {
+      "id": "1",
+      "releaseDate": 4,
+      "criticalPathDuration": 19
+    }
+  ],
+  "resources": [
+    {
+      "@type": "global",
+      "id": "0",
+      "capacity": 16,
+      "renewable": true
+    },
+    {
+      "@type": "local",
+      "id": "1",
+      "capacity": 13,
+      "project": "0",
+      "renewable": true
+    },
+    {
+      "@type": "local",
+      "id": "2",
+      "capacity": 44,
+      "project": "0",
+      "renewable": false
+    },
+    {
+      "@type": "local",
+      "id": "3",
+      "capacity": 39,
+      "project": "0",
+      "renewable": false
+    },
+    {
+      "@type": "local",
+      "id": "4",
+      "capacity": 24,
+      "project": "1",
+      "renewable": true
+    },
+    {
+      "@type": "local",
+      "id": "5",
+      "capacity": 66,
+      "project": "1",
+      "renewable": false
+    },
+    {
+      "@type": "local",
+      "id": "6",
+      "capacity": 56,
+      "project": "1",
+      "renewable": false
+    }
+  ],
+  "jobs": [
+    {
+      "id": "0",
+      "project": "0",
+      "jobType": "SOURCE",
+      "executionModes": [
+        {
+          "id": "0",
+          "job": "0",
+          "duration": 0,
+          "resourceRequirements": []
+        }
+      ],
+      "successorJobs": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "id": "1",
+      "project": "0",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "1",
+          "job": "1",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "0",
+              "executionMode": "1",
+              "resource": "0",
+              "requirement": 1
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "job": "1",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "1",
+              "executionMode": "2",
+              "resource": "1",
+              "requirement": 5
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "job": "1",
+          "duration": 5,
+          "resourceRequirements": [
+            {
+              "id": "2",
+              "executionMode": "3",
+              "resource": "0",
+              "requirement": 4
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "id": "2",
+      "project": "0",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "4",
+          "job": "2",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "3",
+              "executionMode": "4",
+              "resource": "3",
+              "requirement": 1
+            },
+            {
+              "id": "4",
+              "executionMode": "4",
+              "resource": "0",
+              "requirement": 5
+            }
+          ]
+        },
+        {
+          "id": "5",
+          "job": "2",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "5",
+              "executionMode": "5",
+              "resource": "0",
+              "requirement": 4
+            },
+            {
+              "id": "6",
+              "executionMode": "5",
+              "resource": "1",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "6",
+          "job": "2",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "7",
+              "executionMode": "6",
+              "resource": "0",
+              "requirement": 4
+            },
+            {
+              "id": "8",
+              "executionMode": "6",
+              "resource": "3",
+              "requirement": 1
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "4"
+      ]
+    },
+    {
+      "id": "3",
+      "project": "0",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "7",
+          "job": "3",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "9",
+              "executionMode": "7",
+              "resource": "3",
+              "requirement": 2
+            },
+            {
+              "id": "10",
+              "executionMode": "7",
+              "resource": "2",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "8",
+          "job": "3",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "11",
+              "executionMode": "8",
+              "resource": "3",
+              "requirement": 2
+            },
+            {
+              "id": "12",
+              "executionMode": "8",
+              "resource": "2",
+              "requirement": 2
+            }
+          ]
+        },
+        {
+          "id": "9",
+          "job": "3",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "13",
+              "executionMode": "9",
+              "resource": "1",
+              "requirement": 3
+            },
+            {
+              "id": "14",
+              "executionMode": "9",
+              "resource": "3",
+              "requirement": 1
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "10",
+        "7"
+      ]
+    },
+    {
+      "id": "4",
+      "project": "0",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "10",
+          "job": "4",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "15",
+              "executionMode": "10",
+              "resource": "0",
+              "requirement": 4
+            }
+          ]
+        },
+        {
+          "id": "11",
+          "job": "4",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "16",
+              "executionMode": "11",
+              "resource": "0",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "12",
+          "job": "4",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "17",
+              "executionMode": "12",
+              "resource": "2",
+              "requirement": 1
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "9"
+      ]
+    },
+    {
+      "id": "5",
+      "project": "0",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "13",
+          "job": "5",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "18",
+              "executionMode": "13",
+              "resource": "3",
+              "requirement": 3
+            },
+            {
+              "id": "19",
+              "executionMode": "13",
+              "resource": "2",
+              "requirement": 5
+            },
+            {
+              "id": "20",
+              "executionMode": "13",
+              "resource": "0",
+              "requirement": 2
+            }
+          ]
+        },
+        {
+          "id": "14",
+          "job": "5",
+          "duration": 2,
+          "resourceRequirements": [
+            {
+              "id": "21",
+              "executionMode": "14",
+              "resource": "3",
+              "requirement": 4
+            },
+            {
+              "id": "22",
+              "executionMode": "14",
+              "resource": "1",
+              "requirement": 4
+            },
+            {
+              "id": "23",
+              "executionMode": "14",
+              "resource": "2",
+              "requirement": 2
+            }
+          ]
+        },
+        {
+          "id": "15",
+          "job": "5",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "24",
+              "executionMode": "15",
+              "resource": "3",
+              "requirement": 3
+            },
+            {
+              "id": "25",
+              "executionMode": "15",
+              "resource": "2",
+              "requirement": 4
+            },
+            {
+              "id": "26",
+              "executionMode": "15",
+              "resource": "0",
+              "requirement": 2
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "6"
+      ]
+    },
+    {
+      "id": "6",
+      "project": "0",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "16",
+          "job": "6",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "27",
+              "executionMode": "16",
+              "resource": "3",
+              "requirement": 5
+            },
+            {
+              "id": "28",
+              "executionMode": "16",
+              "resource": "1",
+              "requirement": 4
+            },
+            {
+              "id": "29",
+              "executionMode": "16",
+              "resource": "0",
+              "requirement": 1
+            }
+          ]
+        },
+        {
+          "id": "17",
+          "job": "6",
+          "duration": 2,
+          "resourceRequirements": [
+            {
+              "id": "30",
+              "executionMode": "17",
+              "resource": "2",
+              "requirement": 3
+            },
+            {
+              "id": "31",
+              "executionMode": "17",
+              "resource": "3",
+              "requirement": 3
+            },
+            {
+              "id": "32",
+              "executionMode": "17",
+              "resource": "0",
+              "requirement": 4
+            }
+          ]
+        },
+        {
+          "id": "18",
+          "job": "6",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "33",
+              "executionMode": "18",
+              "resource": "0",
+              "requirement": 2
+            },
+            {
+              "id": "34",
+              "executionMode": "18",
+              "resource": "1",
+              "requirement": 2
+            },
+            {
+              "id": "35",
+              "executionMode": "18",
+              "resource": "2",
+              "requirement": 4
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "10"
+      ]
+    },
+    {
+      "id": "7",
+      "project": "0",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "19",
+          "job": "7",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "36",
+              "executionMode": "19",
+              "resource": "0",
+              "requirement": 4
+            },
+            {
+              "id": "37",
+              "executionMode": "19",
+              "resource": "2",
+              "requirement": 1
+            },
+            {
+              "id": "38",
+              "executionMode": "19",
+              "resource": "3",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "20",
+          "job": "7",
+          "duration": 5,
+          "resourceRequirements": [
+            {
+              "id": "39",
+              "executionMode": "20",
+              "resource": "0",
+              "requirement": 3
+            },
+            {
+              "id": "40",
+              "executionMode": "20",
+              "resource": "3",
+              "requirement": 4
+            },
+            {
+              "id": "41",
+              "executionMode": "20",
+              "resource": "2",
+              "requirement": 1
+            }
+          ]
+        },
+        {
+          "id": "21",
+          "job": "7",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "42",
+              "executionMode": "21",
+              "resource": "0",
+              "requirement": 4
+            },
+            {
+              "id": "43",
+              "executionMode": "21",
+              "resource": "1",
+              "requirement": 4
+            },
+            {
+              "id": "44",
+              "executionMode": "21",
+              "resource": "2",
+              "requirement": 1
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "10"
+      ]
+    },
+    {
+      "id": "8",
+      "project": "0",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "22",
+          "job": "8",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "45",
+              "executionMode": "22",
+              "resource": "3",
+              "requirement": 5
+            },
+            {
+              "id": "46",
+              "executionMode": "22",
+              "resource": "2",
+              "requirement": 5
+            }
+          ]
+        },
+        {
+          "id": "23",
+          "job": "8",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "47",
+              "executionMode": "23",
+              "resource": "0",
+              "requirement": 1
+            },
+            {
+              "id": "48",
+              "executionMode": "23",
+              "resource": "1",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "24",
+          "job": "8",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "49",
+              "executionMode": "24",
+              "resource": "0",
+              "requirement": 3
+            },
+            {
+              "id": "50",
+              "executionMode": "24",
+              "resource": "1",
+              "requirement": 1
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "11"
+      ]
+    },
+    {
+      "id": "9",
+      "project": "0",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "25",
+          "job": "9",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "51",
+              "executionMode": "25",
+              "resource": "2",
+              "requirement": 1
+            },
+            {
+              "id": "52",
+              "executionMode": "25",
+              "resource": "3",
+              "requirement": 3
+            },
+            {
+              "id": "53",
+              "executionMode": "25",
+              "resource": "0",
+              "requirement": 1
+            }
+          ]
+        },
+        {
+          "id": "26",
+          "job": "9",
+          "duration": 5,
+          "resourceRequirements": [
+            {
+              "id": "54",
+              "executionMode": "26",
+              "resource": "2",
+              "requirement": 4
+            },
+            {
+              "id": "55",
+              "executionMode": "26",
+              "resource": "3",
+              "requirement": 4
+            },
+            {
+              "id": "56",
+              "executionMode": "26",
+              "resource": "1",
+              "requirement": 2
+            }
+          ]
+        },
+        {
+          "id": "27",
+          "job": "9",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "57",
+              "executionMode": "27",
+              "resource": "2",
+              "requirement": 5
+            },
+            {
+              "id": "58",
+              "executionMode": "27",
+              "resource": "3",
+              "requirement": 4
+            },
+            {
+              "id": "59",
+              "executionMode": "27",
+              "resource": "0",
+              "requirement": 5
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "10"
+      ]
+    },
+    {
+      "id": "10",
+      "project": "0",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "28",
+          "job": "10",
+          "duration": 5,
+          "resourceRequirements": [
+            {
+              "id": "60",
+              "executionMode": "28",
+              "resource": "3",
+              "requirement": 2
+            },
+            {
+              "id": "61",
+              "executionMode": "28",
+              "resource": "1",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "29",
+          "job": "10",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "62",
+              "executionMode": "29",
+              "resource": "0",
+              "requirement": 3
+            },
+            {
+              "id": "63",
+              "executionMode": "29",
+              "resource": "1",
+              "requirement": 2
+            }
+          ]
+        },
+        {
+          "id": "30",
+          "job": "10",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "64",
+              "executionMode": "30",
+              "resource": "0",
+              "requirement": 5
+            },
+            {
+              "id": "65",
+              "executionMode": "30",
+              "resource": "3",
+              "requirement": 3
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "11"
+      ]
+    },
+    {
+      "id": "11",
+      "project": "0",
+      "jobType": "SINK",
+      "executionModes": [
+        {
+          "id": "31",
+          "job": "11",
+          "duration": 0,
+          "resourceRequirements": []
+        }
+      ],
+      "successorJobs": []
+    },
+    {
+      "id": "12",
+      "project": "1",
+      "jobType": "SOURCE",
+      "executionModes": [
+        {
+          "id": "32",
+          "job": "12",
+          "duration": 0,
+          "resourceRequirements": []
+        }
+      ],
+      "successorJobs": [
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "id": "13",
+      "project": "1",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "33",
+          "job": "13",
+          "duration": 2,
+          "resourceRequirements": [
+            {
+              "id": "66",
+              "executionMode": "33",
+              "resource": "0",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "34",
+          "job": "13",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "67",
+              "executionMode": "34",
+              "resource": "6",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "35",
+          "job": "13",
+          "duration": 2,
+          "resourceRequirements": [
+            {
+              "id": "68",
+              "executionMode": "35",
+              "resource": "6",
+              "requirement": 4
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "23"
+      ]
+    },
+    {
+      "id": "14",
+      "project": "1",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "36",
+          "job": "14",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "69",
+              "executionMode": "36",
+              "resource": "4",
+              "requirement": 2
+            },
+            {
+              "id": "70",
+              "executionMode": "36",
+              "resource": "6",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "37",
+          "job": "14",
+          "duration": 2,
+          "resourceRequirements": [
+            {
+              "id": "71",
+              "executionMode": "37",
+              "resource": "6",
+              "requirement": 3
+            },
+            {
+              "id": "72",
+              "executionMode": "37",
+              "resource": "5",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "38",
+          "job": "14",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "73",
+              "executionMode": "38",
+              "resource": "6",
+              "requirement": 5
+            },
+            {
+              "id": "74",
+              "executionMode": "38",
+              "resource": "0",
+              "requirement": 1
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "19"
+      ]
+    },
+    {
+      "id": "15",
+      "project": "1",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "39",
+          "job": "15",
+          "duration": 5,
+          "resourceRequirements": [
+            {
+              "id": "75",
+              "executionMode": "39",
+              "resource": "5",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "40",
+          "job": "15",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "76",
+              "executionMode": "40",
+              "resource": "4",
+              "requirement": 5
+            }
+          ]
+        },
+        {
+          "id": "41",
+          "job": "15",
+          "duration": 2,
+          "resourceRequirements": [
+            {
+              "id": "77",
+              "executionMode": "41",
+              "resource": "0",
+              "requirement": 2
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "18",
+        "22"
+      ]
+    },
+    {
+      "id": "16",
+      "project": "1",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "42",
+          "job": "16",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "78",
+              "executionMode": "42",
+              "resource": "5",
+              "requirement": 2
+            }
+          ]
+        },
+        {
+          "id": "43",
+          "job": "16",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "79",
+              "executionMode": "43",
+              "resource": "6",
+              "requirement": 2
+            }
+          ]
+        },
+        {
+          "id": "44",
+          "job": "16",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "80",
+              "executionMode": "44",
+              "resource": "5",
+              "requirement": 2
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "17",
+        "19",
+        "21"
+      ]
+    },
+    {
+      "id": "17",
+      "project": "1",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "45",
+          "job": "17",
+          "duration": 5,
+          "resourceRequirements": [
+            {
+              "id": "81",
+              "executionMode": "45",
+              "resource": "5",
+              "requirement": 2
+            },
+            {
+              "id": "82",
+              "executionMode": "45",
+              "resource": "0",
+              "requirement": 3
+            }
+          ]
+        },
+        {
+          "id": "46",
+          "job": "17",
+          "duration": 5,
+          "resourceRequirements": [
+            {
+              "id": "83",
+              "executionMode": "46",
+              "resource": "6",
+              "requirement": 3
+            },
+            {
+              "id": "84",
+              "executionMode": "46",
+              "resource": "0",
+              "requirement": 4
+            }
+          ]
+        },
+        {
+          "id": "47",
+          "job": "17",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "85",
+              "executionMode": "47",
+              "resource": "0",
+              "requirement": 1
+            },
+            {
+              "id": "86",
+              "executionMode": "47",
+              "resource": "4",
+              "requirement": 3
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "21"
+      ]
+    },
+    {
+      "id": "18",
+      "project": "1",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "48",
+          "job": "18",
+          "duration": 2,
+          "resourceRequirements": [
+            {
+              "id": "87",
+              "executionMode": "48",
+              "resource": "6",
+              "requirement": 4
+            }
+          ]
+        },
+        {
+          "id": "49",
+          "job": "18",
+          "duration": 2,
+          "resourceRequirements": [
+            {
+              "id": "88",
+              "executionMode": "49",
+              "resource": "0",
+              "requirement": 2
+            }
+          ]
+        },
+        {
+          "id": "50",
+          "job": "18",
+          "duration": 5,
+          "resourceRequirements": [
+            {
+              "id": "89",
+              "executionMode": "50",
+              "resource": "0",
+              "requirement": 5
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "21",
+        "23"
+      ]
+    },
+    {
+      "id": "19",
+      "project": "1",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "51",
+          "job": "19",
+          "duration": 2,
+          "resourceRequirements": [
+            {
+              "id": "90",
+              "executionMode": "51",
+              "resource": "6",
+              "requirement": 4
+            },
+            {
+              "id": "91",
+              "executionMode": "51",
+              "resource": "5",
+              "requirement": 2
+            }
+          ]
+        },
+        {
+          "id": "52",
+          "job": "19",
+          "duration": 4,
+          "resourceRequirements": [
+            {
+              "id": "92",
+              "executionMode": "52",
+              "resource": "0",
+              "requirement": 2
+            },
+            {
+              "id": "93",
+              "executionMode": "52",
+              "resource": "5",
+              "requirement": 5
+            }
+          ]
+        },
+        {
+          "id": "53",
+          "job": "19",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "94",
+              "executionMode": "53",
+              "resource": "0",
+              "requirement": 1
+            },
+            {
+              "id": "95",
+              "executionMode": "53",
+              "resource": "6",
+              "requirement": 4
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "23"
+      ]
+    },
+    {
+      "id": "20",
+      "project": "1",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "54",
+          "job": "20",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "96",
+              "executionMode": "54",
+              "resource": "5",
+              "requirement": 3
+            },
+            {
+              "id": "97",
+              "executionMode": "54",
+              "resource": "6",
+              "requirement": 5
+            }
+          ]
+        },
+        {
+          "id": "55",
+          "job": "20",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "98",
+              "executionMode": "55",
+              "resource": "6",
+              "requirement": 3
+            },
+            {
+              "id": "99",
+              "executionMode": "55",
+              "resource": "5",
+              "requirement": 5
+            }
+          ]
+        },
+        {
+          "id": "56",
+          "job": "20",
+          "duration": 2,
+          "resourceRequirements": [
+            {
+              "id": "100",
+              "executionMode": "56",
+              "resource": "4",
+              "requirement": 3
+            },
+            {
+              "id": "101",
+              "executionMode": "56",
+              "resource": "5",
+              "requirement": 3
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "21",
+        "22"
+      ]
+    },
+    {
+      "id": "21",
+      "project": "1",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "57",
+          "job": "21",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "102",
+              "executionMode": "57",
+              "resource": "5",
+              "requirement": 4
+            }
+          ]
+        },
+        {
+          "id": "58",
+          "job": "21",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "103",
+              "executionMode": "58",
+              "resource": "0",
+              "requirement": 2
+            }
+          ]
+        },
+        {
+          "id": "59",
+          "job": "21",
+          "duration": 3,
+          "resourceRequirements": [
+            {
+              "id": "104",
+              "executionMode": "59",
+              "resource": "4",
+              "requirement": 3
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "22",
+        "23"
+      ]
+    },
+    {
+      "id": "22",
+      "project": "1",
+      "jobType": "STANDARD",
+      "executionModes": [
+        {
+          "id": "60",
+          "job": "22",
+          "duration": 1,
+          "resourceRequirements": [
+            {
+              "id": "105",
+              "executionMode": "60",
+              "resource": "4",
+              "requirement": 5
+            }
+          ]
+        },
+        {
+          "id": "61",
+          "job": "22",
+          "duration": 5,
+          "resourceRequirements": [
+            {
+              "id": "106",
+              "executionMode": "61",
+              "resource": "0",
+              "requirement": 1
+            }
+          ]
+        },
+        {
+          "id": "62",
+          "job": "22",
+          "duration": 5,
+          "resourceRequirements": [
+            {
+              "id": "107",
+              "executionMode": "62",
+              "resource": "6",
+              "requirement": 1
+            }
+          ]
+        }
+      ],
+      "successorJobs": [
+        "23"
+      ]
+    },
+    {
+      "id": "23",
+      "project": "1",
+      "jobType": "SINK",
+      "executionModes": [
+        {
+          "id": "63",
+          "job": "23",
+          "duration": 0,
+          "resourceRequirements": []
+        }
+      ],
+      "successorJobs": []
+    }
+  ],
+  "allocations": [
+    {
+      "id": "0",
+      "pinned": true,
+      "job": "0",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [],
+      "successorAllocations": [
+        "1",
+        "2",
+        "3"
+      ],
+      "executionMode": "0",
+      "delay": 0,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "1",
+      "pinned": false,
+      "job": "1",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [
+        "0"
+      ],
+      "successorAllocations": [
+        "8",
+        "9"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "2",
+      "pinned": false,
+      "job": "2",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [
+        "0"
+      ],
+      "successorAllocations": [
+        "4"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "3",
+      "pinned": false,
+      "job": "3",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [
+        "0"
+      ],
+      "successorAllocations": [
+        "10",
+        "7"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "4",
+      "pinned": false,
+      "job": "4",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [
+        "2"
+      ],
+      "successorAllocations": [
+        "9"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "5",
+      "pinned": false,
+      "job": "5",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [],
+      "successorAllocations": [
+        "6"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "6",
+      "pinned": false,
+      "job": "6",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [
+        "5"
+      ],
+      "successorAllocations": [
+        "10"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "7",
+      "pinned": false,
+      "job": "7",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [
+        "3"
+      ],
+      "successorAllocations": [
+        "10"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "8",
+      "pinned": false,
+      "job": "8",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [
+        "1"
+      ],
+      "successorAllocations": [
+        "11"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "9",
+      "pinned": false,
+      "job": "9",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [
+        "1",
+        "4"
+      ],
+      "successorAllocations": [
+        "10"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "10",
+      "pinned": false,
+      "job": "10",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [
+        "3",
+        "6",
+        "7",
+        "9"
+      ],
+      "successorAllocations": [
+        "11"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "11",
+      "pinned": true,
+      "job": "11",
+      "sourceAllocation": "0",
+      "sinkAllocation": "11",
+      "predecessorAllocations": [
+        "8",
+        "10"
+      ],
+      "successorAllocations": [],
+      "executionMode": "31",
+      "delay": 0,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "12",
+      "pinned": true,
+      "job": "12",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [],
+      "successorAllocations": [
+        "13",
+        "14",
+        "15"
+      ],
+      "executionMode": "32",
+      "delay": 0,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "13",
+      "pinned": false,
+      "job": "13",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [
+        "12"
+      ],
+      "successorAllocations": [
+        "23"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "14",
+      "pinned": false,
+      "job": "14",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [
+        "12"
+      ],
+      "successorAllocations": [
+        "19"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "15",
+      "pinned": false,
+      "job": "15",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [
+        "12"
+      ],
+      "successorAllocations": [
+        "18",
+        "22"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "16",
+      "pinned": false,
+      "job": "16",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [],
+      "successorAllocations": [
+        "17",
+        "19",
+        "21"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "17",
+      "pinned": false,
+      "job": "17",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [
+        "16"
+      ],
+      "successorAllocations": [
+        "21"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "18",
+      "pinned": false,
+      "job": "18",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [
+        "15"
+      ],
+      "successorAllocations": [
+        "21",
+        "23"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "19",
+      "pinned": false,
+      "job": "19",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [
+        "14",
+        "16"
+      ],
+      "successorAllocations": [
+        "23"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "20",
+      "pinned": false,
+      "job": "20",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [],
+      "successorAllocations": [
+        "21",
+        "22"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "21",
+      "pinned": false,
+      "job": "21",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [
+        "16",
+        "17",
+        "18",
+        "20"
+      ],
+      "successorAllocations": [
+        "22",
+        "23"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "22",
+      "pinned": false,
+      "job": "22",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [
+        "15",
+        "20",
+        "21"
+      ],
+      "successorAllocations": [
+        "23"
+      ],
+      "executionMode": null,
+      "delay": null,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    },
+    {
+      "id": "23",
+      "pinned": true,
+      "job": "23",
+      "sourceAllocation": "12",
+      "sinkAllocation": "23",
+      "predecessorAllocations": [
+        "13",
+        "18",
+        "19",
+        "21",
+        "22"
+      ],
+      "successorAllocations": [],
+      "executionMode": "63",
+      "delay": 0,
+      "predecessorsDoneDate": 0,
+      "startDate": 0,
+      "endDate": 0
+    }
+  ],
+  "score": null,
+  "solverStatus": null
+}

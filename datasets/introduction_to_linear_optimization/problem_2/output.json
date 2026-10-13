@@ -1,0 +1,35 @@
+{
+  "system_output": [
+    {
+      "num_produced": 1800.0,
+      "total_256K_boards_used": 6250.0,
+      "total_alt_boards_used": 950.0,
+      "total_disk_drives_used": 540.0
+    },
+    {
+      "num_produced": 1700.0,
+      "total_256K_boards_used": 3400.0,
+      "total_alt_boards_used": 0.0,
+      "total_disk_drives_used": 2890.0
+    },
+    {
+      "num_produced": 300.0,
+      "total_256K_boards_used": 600.0,
+      "total_alt_boards_used": 0.0,
+      "total_disk_drives_used": 0.0
+    },
+    {
+      "num_produced": 2550.0,
+      "total_256K_boards_used": 5100.0,
+      "total_alt_boards_used": 0.0,
+      "total_disk_drives_used": 3570.0
+    },
+    {
+      "num_produced": 650.0,
+      "total_256K_boards_used": 650.0,
+      "total_alt_boards_used": 0.0,
+      "total_disk_drives_used": 0.0
+    }
+  ],
+  "profit": 271250000.0
+}

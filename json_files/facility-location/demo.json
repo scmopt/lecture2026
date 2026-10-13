@@ -1,0 +1,953 @@
+{
+  "facilities": [
+    {
+      "id": "1",
+      "location": [
+        51.5277161344852,
+        -0.12391953764927713
+      ],
+      "setupCost": 70809,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "2",
+      "location": [
+        51.51170543333566,
+        -0.11001724007850254
+      ],
+      "setupCost": 57637,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "3",
+      "location": [
+        51.48622270216889,
+        -0.012273768970028659
+      ],
+      "setupCost": 46099,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "4",
+      "location": [
+        51.45759219891758,
+        -0.1565142816274166
+      ],
+      "setupCost": 43567,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "5",
+      "location": [
+        51.505608770863816,
+        -0.015326970898472486
+      ],
+      "setupCost": 41761,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "6",
+      "location": [
+        51.48929554345893,
+        -0.04355315630876014
+      ],
+      "setupCost": 52607,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "7",
+      "location": [
+        51.55888673428578,
+        -0.08691507294547858
+      ],
+      "setupCost": 59049,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "8",
+      "location": [
+        51.53807564856912,
+        -0.034166447492947255
+      ],
+      "setupCost": 58568,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "9",
+      "location": [
+        51.50320393215259,
+        -0.02509974825827599
+      ],
+      "setupCost": 54411,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "10",
+      "location": [
+        51.49555493821069,
+        -0.15932715967256722
+      ],
+      "setupCost": 42682,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "11",
+      "location": [
+        51.448579797785584,
+        -0.10773696553125033
+      ],
+      "setupCost": 46001,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "12",
+      "location": [
+        51.556585638662206,
+        -0.030138117967894257
+      ],
+      "setupCost": 58913,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "13",
+      "location": [
+        51.51350973256518,
+        -0.13315180232067741
+      ],
+      "setupCost": 46095,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "14",
+      "location": [
+        51.441160819676114,
+        -0.056156048957060015
+      ],
+      "setupCost": 54901,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "15",
+      "location": [
+        51.532557555940485,
+        -0.05309688577814661
+      ],
+      "setupCost": 43421,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "16",
+      "location": [
+        51.55343998867516,
+        -0.1578645467344498
+      ],
+      "setupCost": 56450,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "17",
+      "location": [
+        51.48730442633328,
+        -0.03193138370378909
+      ],
+      "setupCost": 55957,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "18",
+      "location": [
+        51.49297121284109,
+        -0.09068680145710084
+      ],
+      "setupCost": 60225,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "19",
+      "location": [
+        51.54233929599194,
+        -0.08472477246913974
+      ],
+      "setupCost": 48631,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "20",
+      "location": [
+        51.44859483481014,
+        -0.15563387309175464
+      ],
+      "setupCost": 45778,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "21",
+      "location": [
+        51.498040422812615,
+        -0.014207481856938237
+      ],
+      "setupCost": 50096,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "22",
+      "location": [
+        51.47709898246978,
+        -0.03275792495914864
+      ],
+      "setupCost": 33084,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "23",
+      "location": [
+        51.44625014458087,
+        -0.15847368181956561
+      ],
+      "setupCost": 47581,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "24",
+      "location": [
+        51.54203738183172,
+        -0.15944846464664494
+      ],
+      "setupCost": 43160,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "25",
+      "location": [
+        51.476947180116134,
+        -0.08025871656268035
+      ],
+      "setupCost": 54049,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "26",
+      "location": [
+        51.54491146523399,
+        -0.06851777297308548
+      ],
+      "setupCost": 47846,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "27",
+      "location": [
+        51.54903670516361,
+        -0.15332640697648076
+      ],
+      "setupCost": 72138,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "28",
+      "location": [
+        51.50080419151434,
+        -0.08189667701605759
+      ],
+      "setupCost": 49518,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "29",
+      "location": [
+        51.48396328934168,
+        -0.0883544632364618
+      ],
+      "setupCost": 61843,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    },
+    {
+      "id": "30",
+      "location": [
+        51.44139858059318,
+        -0.05484415927263932
+      ],
+      "setupCost": 39710,
+      "capacity": 150,
+      "used": false,
+      "usedCapacity": 0
+    }
+  ],
+  "consumers": [
+    {
+      "id": "31",
+      "location": [
+        51.529442343246984,
+        -0.06890676271560735
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "32",
+      "location": [
+        51.4682098071037,
+        -0.10164352246695572
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "33",
+      "location": [
+        51.54937620342116,
+        -0.13489163671233897
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "34",
+      "location": [
+        51.44046962367406,
+        -0.12026562588212926
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "35",
+      "location": [
+        51.54713803485875,
+        -0.11536476026338278
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "36",
+      "location": [
+        51.491468537519566,
+        -0.05686725427242044
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "37",
+      "location": [
+        51.489019572164125,
+        -0.10704212508351704
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "38",
+      "location": [
+        51.52061102809994,
+        -0.048937422974592595
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "39",
+      "location": [
+        51.54733222694076,
+        -0.07300633250969993
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "40",
+      "location": [
+        51.50129065759379,
+        -0.11320453945993128
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "41",
+      "location": [
+        51.50482752850057,
+        -0.01403385232375609
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "42",
+      "location": [
+        51.51363651230327,
+        -0.15592464071966702
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "43",
+      "location": [
+        51.52268210174496,
+        -0.06545660860656932
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "44",
+      "location": [
+        51.53814050073021,
+        -0.04883224803482887
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "45",
+      "location": [
+        51.515771609687825,
+        -0.1127661477236567
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "46",
+      "location": [
+        51.530042196553396,
+        -0.13146703956120662
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "47",
+      "location": [
+        51.45470015930057,
+        -0.05300665059469102
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "48",
+      "location": [
+        51.551965175852786,
+        -0.11333368348549064
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "49",
+      "location": [
+        51.5035439330735,
+        -0.1331533083222688
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "50",
+      "location": [
+        51.45366584295652,
+        -0.0574088002797908
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "51",
+      "location": [
+        51.48551000383808,
+        -0.07113564360636121
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "52",
+      "location": [
+        51.55287311182606,
+        -0.07987816979657097
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "53",
+      "location": [
+        51.465703363336736,
+        -0.10994054842231235
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "54",
+      "location": [
+        51.470064341178634,
+        -0.04966894525283069
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "55",
+      "location": [
+        51.450937587431106,
+        -0.12031789232705141
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "56",
+      "location": [
+        51.46264019093235,
+        -0.11533579272699224
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "57",
+      "location": [
+        51.53101650559462,
+        -0.1530117956377137
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "58",
+      "location": [
+        51.4503282281478,
+        -0.026166445521920018
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "59",
+      "location": [
+        51.50415665139158,
+        -0.14715365215544787
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "60",
+      "location": [
+        51.50376230548337,
+        -0.14899141585371045
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "61",
+      "location": [
+        51.461212285696156,
+        -0.027478333694170187
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "62",
+      "location": [
+        51.48205193924409,
+        -0.012114126065947778
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "63",
+      "location": [
+        51.5091071046126,
+        -0.06936288105747283
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "64",
+      "location": [
+        51.47277303619192,
+        -0.08302197285925443
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "65",
+      "location": [
+        51.55336883119389,
+        -0.1273374324606363
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "66",
+      "location": [
+        51.549178608737996,
+        -0.15709538277203242
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "67",
+      "location": [
+        51.47290512499194,
+        -0.059680977434449514
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "68",
+      "location": [
+        51.474545215749906,
+        -0.1504011420354298
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "69",
+      "location": [
+        51.46715145276044,
+        -0.13898995090381253
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "70",
+      "location": [
+        51.512438092845635,
+        -0.050837829090730785
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "71",
+      "location": [
+        51.47646368289742,
+        -0.06619554417986186
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "72",
+      "location": [
+        51.444295132564754,
+        -0.08839545477260559
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "73",
+      "location": [
+        51.45112042791709,
+        -0.053406029974200464
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "74",
+      "location": [
+        51.49209703226741,
+        -0.03709787357412313
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "75",
+      "location": [
+        51.512542288006266,
+        -0.059163267714199705
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "76",
+      "location": [
+        51.49400813362999,
+        -0.10831588253968508
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "77",
+      "location": [
+        51.472327373430815,
+        -0.04822792481826986
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "78",
+      "location": [
+        51.46473966959992,
+        -0.1375703451656401
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "79",
+      "location": [
+        51.55044466473823,
+        -0.05684594881957922
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "80",
+      "location": [
+        51.550004328732115,
+        -0.15468900441559774
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "81",
+      "location": [
+        51.46341893059845,
+        -0.07359901174144384
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "82",
+      "location": [
+        51.55579816964435,
+        -0.11023718867438875
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "83",
+      "location": [
+        51.45658314777971,
+        -0.14540478412191277
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "84",
+      "location": [
+        51.53836322738907,
+        -0.059511758326691436
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "85",
+      "location": [
+        51.49146653636348,
+        -0.08800807184304074
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "86",
+      "location": [
+        51.53955121075106,
+        -0.07906932830386185
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "87",
+      "location": [
+        51.510128507389155,
+        -0.07039190263229299
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "88",
+      "location": [
+        51.48492597585375,
+        -0.15975390599053874
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "89",
+      "location": [
+        51.522741010742536,
+        -0.05293789457098877
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    },
+    {
+      "id": "90",
+      "location": [
+        51.448309585389104,
+        -0.08449572278537502
+      ],
+      "demand": 15,
+      "facility": null,
+      "assigned": false
+    }
+  ],
+  "score": null,
+  "constraintWeightOverrides": {
+    "distance from facility": "0hard/6soft"
+  },
+  "bounds": [
+    [
+      51.44,
+      -0.16
+    ],
+    [
+      51.56,
+      -0.01
+    ]
+  ],
+  "totalCost": 0,
+  "potentialCost": 1542587,
+  "totalDistance": "0 km"
+}

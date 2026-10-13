@@ -1,0 +1,15 @@
+[
+  {
+    "id": "BASIC",
+    "shortDescription": "Demonstrates a road maintenance scheduling problem with crews, due dates and area conflicts.",
+    "longDescription": "Schedules 28 road maintenance jobs onto 4 crews over a 12-week window of workdays. Each job takes 1 to 10 workdays, may only start once it is ready, must be finished by its due date, and carries the area it takes place in as a tag. Once solved, every job runs on exactly one crew inside its window, as close as possible to its ideal end date, and jobs in the same area no longer overlap.",
+    "tags": [
+      "crew conflicts",
+      "ready dates",
+      "due dates",
+      "ideal end dates",
+      "area tags"
+    ],
+    "config": []
+  }
+]

@@ -1,0 +1,719 @@
+% !TEX program = lualatex
+% LuaLaTeX でコンパイル: latexmk -lualatex latex_basics.tex
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usetheme[progressbar=frametitle,numbering=fraction]{metropolis}
+\usepackage{luatexja}
+\usepackage[haranoaji]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+
+% --- スタイル・色設定 ---
+\definecolor{codebg}{RGB}{246, 248, 250}
+\definecolor{codeframe}{RGB}{218, 222, 229}
+\definecolor{codecmd}{RGB}{24, 76, 156}
+\definecolor{accentcolor}{RGB}{38, 120, 113}
+
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{codeframe},
+  keywordstyle=\color{codecmd}\bfseries,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=2,
+  aboveskip=3pt,
+  belowskip=3pt
+}
+
+\newcommand{\cmd}[1]{\texttt{\textbackslash #1}}
+\newcommand{\inlinecode}[1]{\texttt{\color{codecmd}#1}}
+
+% --- ロゴの文字重なり防止 ---
+% 標準の \LaTeX マクロはセリフ体(Computer Modern)専用の負のカーニングを持っているため、
+% サンセリフ体（Fira Sans等）では 'L' と 'A' が重なってしまいます。
+% スライド全体で美しく可読性を保つため、重ならない表記に再定義します。
+\DeclareRobustCommand{\LaTeX}{LaTeX}
+\DeclareRobustCommand{\TeX}{TeX}
+
+% --- タイトル情報 ---
+\title{\LaTeX 入門講義}
+\subtitle{美しく構造的な文書を作成するための基本と実践}
+\author{LaTeX 基礎講座}
+\date{\today}
+\institute{LaTeX Beginner Workshop}
+
+\begin{document}
+
+% 1. タイトル
+\maketitle
+
+% 2. 目次
+\begin{frame}{本講義のロードマップ}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \tableofcontents[sections={1-4},hideallsubsections]
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \tableofcontents[sections={5-7},hideallsubsections]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%======================================================================
+\section{\LaTeX の概要と特徴}
+
+\begin{frame}{\LaTeX とは何か？}
+  \begin{itemize}
+    \item \alert{\textbf{\LaTeX（ラテック／レイテック）}}
+      \begin{itemize}
+        \item Leslie Lamport が Donald Knuth の \TeX を基に開発した文書処理システム
+        \item 学術論文・レポート・書籍・プレゼンスライドで世界標準として広く利用
+      \end{itemize}
+    \vspace{0.5em}
+    \item \textbf{Word（WYSIWYG）との最大の違い}
+      \begin{itemize}
+        \item Word: 「見たまま」を直接編集（What You See Is What You Get）
+        \item \LaTeX: \textbf{テキストコード（マークアップ）}で文書構造を記述し、コンパイルして PDF を生成
+      \end{itemize}
+  \end{itemize}
+
+  \begin{block}{\LaTeX の設計哲学}
+    執筆者は「見栄えの微調整」ではなく、\textbf{「文書の論理構造」と「中身（文章）」}に集中する。
+  \end{block}
+\end{frame}
+
+\begin{frame}{\LaTeX を使うメリット}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item \textbf{圧倒的に美しい数式組版}
+          \begin{itemize}
+            \item 複雑な数式も統一されたフォントと間隔で極めて美しく出力
+          \end{itemize}
+        \item \textbf{自動化された番号付け}
+          \begin{itemize}
+            \item 章節・図表・数式の番号や文献引用を完全自動追従
+          \end{itemize}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item \textbf{プレーンテキスト管理}
+          \begin{itemize}
+            \item Git による差分管理や共同開発が極めて容易
+          \end{itemize}
+        \item \textbf{高いレイアウトの一貫性}
+          \begin{itemize}
+            \item ページ毎のズレが起きず、学会指定のスタイルにもワンタッチで適用可能
+          \end{itemize}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{文書作成の基本ワークフロー}
+  \centering
+  \begin{tabular}{ccccc}
+    \fcolorbox{codeframe}{codebg}{\begin{minipage}{2.6cm}\centering \textbf{1. ソース作成}\\[2pt]\scriptsize \texttt{document.tex}\end{minipage}}
+    & $\xrightarrow{\text{コンパイル}}$ &
+    \fcolorbox{codeframe}{codebg}{\begin{minipage}{2.8cm}\centering \textbf{2. エンジン実行}\\[2pt]\scriptsize Lua\LaTeX{} / \texttt{latexmk}\end{minipage}}
+    & $\xrightarrow{\text{生成}}$ &
+    \fcolorbox{codeframe}{codebg}{\begin{minipage}{2.6cm}\centering \textbf{3. 完成文書}\\[2pt]\scriptsize \texttt{document.pdf}\end{minipage}}
+  \end{tabular}
+
+  \vspace{1.5em}
+  \begin{itemize}
+    \item \textbf{エンジンの種類}:
+      \begin{itemize}
+        \item \textbf{Lua\LaTeX} (推奨・現代標準): UTF-8 ネイティブ対応、モダンな日本語処理
+        \item up\LaTeX{} / p\LaTeX: 日本で長年使われてきた伝統的エンジン
+      \end{itemize}
+    \item \textbf{執筆環境の選択肢}:
+      \begin{itemize}
+        \item \textbf{Overleaf / Cloud LaTeX}: ブラウザ上で即座に動くクラウド環境（環境構築不要）
+        \item \textbf{VS Code + LaTeX Workshop}: 最も人気のあるローカル開発環境
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%======================================================================
+\section{文書の基本構造}
+
+\begin{frame}[fragile]{最も最小限の \LaTeX ソース}
+\begin{lstlisting}[language=TeX]
+\documentclass{jlreq}          % 1. 文書クラスの指定（プリアンブル）
+\usepackage{amsmath}           % 2. パッケージの読み込み
+
+\title{はじめてのLaTeX}        % メタデータ
+\author{電通 太郎}
+\date{\today}
+
+\begin{document}               % 3. 本文の開始
+\maketitle                     % タイトルを出力
+
+こんにちは、\LaTeX{} の世界へ！
+\end{document}                 % 4. 本文の終了
+\end{lstlisting}
+
+\begin{itemize}
+  \item \textbf{プリアンブル}（\texttt{\textbackslash begin\{document\}} より前）：文書全体の設定やパッケージ読込
+  \item \textbf{本文}（\texttt{\textbackslash begin\{document\}} $\sim$ \texttt{\textbackslash end\{document\}}）：実際に出力される内容
+\end{itemize}
+\end{frame}
+
+\begin{frame}{文書クラス（\textbackslash documentclass）の選択}
+  文書の種類に応じた基本クラスを指定します：
+
+  \vspace{0.5em}
+  \begin{table}
+    \centering
+    \small
+    \begin{tabular}{lll}
+      \toprule
+      \textbf{クラス名} & \textbf{用途} & \textbf{対象言語・特徴} \\
+      \midrule
+      \texttt{jlreq} & レポート・論文・書籍 & 日本語組版の標準（推奨） \\
+      \texttt{ltjsarticle} & 一般的な論文・レポート & Lua\LaTeX{} 専用の日本語クラス \\
+      \texttt{article} & 英語の短編論文・レポート & 英語標準 \\
+      \texttt{beamer} & プレゼンテーションスライド & 本スライドもこれで作成 \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+
+  \vspace{0.5em}
+  \begin{exampleblock}{オプション指定の例}
+    \texttt{\textbackslash documentclass[a4paper,11pt]\{jlreq\}} \\
+    用紙サイズや基本フォントサイズを括弧 \texttt{[ ]} 内で指定可能。
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{見出しと構造化}
+  見出しコマンドを使うことで、章節番号が\alert{自動採番}され目次も自動生成されます。
+
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{入力コード}
+\begin{lstlisting}[language=TeX]
+\section{序論}
+本稿の目的を述べます。
+
+\subsection{背景}
+研究の歴史的背景です。
+
+\subsection{課題}
+既存手法の問題点です。
+
+\section{提案手法}
+新しいアルゴリズムです。
+\end{lstlisting}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{見出しの階層順序}
+      \begin{enumerate}
+        \item \texttt{\textbackslash chapter\{...\}}（書籍・学位論文のみ）
+        \item \texttt{\textbackslash section\{...\}}（第1節）
+        \item \texttt{\textbackslash subsection\{...\}}（第1.1小節）
+        \item \texttt{\textbackslash subsubsection\{...\}}（第1.1.1項）
+        \item \texttt{\textbackslash paragraph\{...\}}（段落見出し）
+      \end{enumerate}
+      \vspace{0.3em}
+      \footnotesize ※ \texttt{\textbackslash section*\{...\}} のように \texttt{*} を付けると、番号なし見出しになります。
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{特殊文字とコメントアウト}
+  \begin{itemize}
+    \item \textbf{コメントアウト}: \inlinecode{\%} 以降の行末まではコンパイル時に無視されます。
+    \item \textbf{予約文字（特殊文字）}: \LaTeX の構文として意味を持つ記号は、そのまま書けません。
+  \end{itemize}
+
+  \vspace{0.5em}
+  \begin{table}
+    \centering
+    \small
+    \begin{tabular}{cll}
+      \toprule
+      \textbf{文字} & \textbf{入力方法} & \textbf{主な役割} \\
+      \midrule
+      \texttt{\%} & \texttt{\textbackslash\%} & コメント開始記号 \\
+      \texttt{\$} & \texttt{\textbackslash\$} & 数式モードの切り替え \\
+      \texttt{\&} & \texttt{\textbackslash\&} & 表や数式のアライメント（列区切り） \\
+      \texttt{\_} , \texttt{\^{}} & \texttt{\textbackslash\_} , \texttt{\textbackslash\^{}\{\}} & 下付き・上付き文字 \\
+      \texttt{\{} , \texttt{\}} & \texttt{\textbackslash\{} , \texttt{\textbackslash\}} & コマンド引数・グループ化 \\
+      \texttt{\textbackslash} & \texttt{\textbackslash textbackslash} & コマンドの開始 \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+%======================================================================
+\section{本文の記述と箇条書き}
+
+\begin{frame}[fragile]{改行と段落のルール}
+  \begin{alertblock}{初心者が最も間違えやすいポイント！}
+    ソースコード内での「単なる改行（Enter 1回）」は、\textbf{空白1個}として扱われます。
+  \end{alertblock}
+
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{正しい段落分け（空行を挟む）}
+\begin{lstlisting}[language=TeX]
+吾輩は猫である。
+名前はまだ無い。
+
+どこで生れたかとんと
+見当がつかぬ。
+\end{lstlisting}
+      $\Rightarrow$ 2つの独立した段落となり、自動字下げされます。
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \textbf{やってはいけないこと}
+      \begin{itemize}
+        \item 段落分けに \texttt{\textbackslash\textbackslash}（強制改行）を連打する
+        \item 行頭に全角スペースを手動で入力する
+      \end{itemize}
+      \vspace{0.5em}
+      \footnotesize \LaTeX{} が行末揃え（組版）を自動最適化するため、余計な改行は入れずに文章を続けましょう。
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{文字装飾とフォント変更}
+  \begin{table}
+    \centering
+    \small
+    \begin{tabular}{lll}
+      \toprule
+      \textbf{効果} & \textbf{コマンド} & \textbf{出力例} \\
+      \midrule
+      太字 & \texttt{\textbackslash textbf\{強調テキスト\}} & \textbf{強調テキスト} \\
+      斜体（イタリック） & \texttt{\textbackslash textit\{Italic Text\}} & \textit{Italic Text} \\
+      論理的強調 & \texttt{\textbackslash emph\{重要ポイント\}} & \emph{重要ポイント} \\
+      等幅フォント & \texttt{\textbackslash texttt\{source code\}} & \texttt{source code} \\
+      文字色変更 & \texttt{\textbackslash textcolor\{red\}\{赤色\}} & \textcolor{red}{赤色} \\
+      サイズ変更 & \texttt{\{\textbackslash Large 大きな文字\}} & {\Large 大きな文字} \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+
+  \vspace{0.5em}
+  \footnotesize
+  ※ サイズ変更コマンドは小さい順に：\texttt{\textbackslash tiny}, \texttt{\textbackslash footnotesize}, \texttt{\textbackslash small}, \texttt{\textbackslash normalsize}, \texttt{\textbackslash large}, \texttt{\textbackslash Large}, \texttt{\textbackslash huge}
+\end{frame}
+
+\begin{frame}[fragile]{箇条書きの 3 大環境}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{1. 記号箇条書き (\texttt{itemize})}
+\begin{lstlisting}[language=TeX]
+\begin{itemize}
+  \item リンゴ
+  \item バナナ
+  \item オレンジ
+\end{itemize}
+\end{lstlisting}
+      \begin{itemize}
+        \item リンゴ
+        \item バナナ
+        \item オレンジ
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{2. 連番箇条書き (\texttt{enumerate})}
+\begin{lstlisting}[language=TeX]
+\begin{enumerate}
+  \item 問題を把握する
+  \item 解法を立案する
+  \item コードを実装する
+\end{enumerate}
+\end{lstlisting}
+      \begin{enumerate}
+        \item 問題を把握する
+        \item 解法を立案する
+        \item コードを実装する
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.8em}
+  \footnotesize ※ 3つ目の \texttt{description} 環境は、用語定義リスト（\texttt{\textbackslash item[見出し] 説明}）を作成する際に用います。
+\end{frame}
+
+%======================================================================
+\section{数式の記述（\LaTeX の真骨頂）}
+
+\begin{frame}[fragile]{行内数式 vs 別行立て数式}
+  \LaTeX では \alert{\texttt{amsmath}} パッケージの利用がデファクトスタンダードです。
+
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{行内数式 (Inline Math)}
+      \begin{itemize}
+        \item 文中に埋め込む数式
+        \item \texttt{\$ ... \$} で囲む
+      \end{itemize}
+\begin{lstlisting}[language=TeX]
+オイラーの等式は $e^{i\pi} + 1 = 0$
+として有名です。
+\end{lstlisting}
+      \vspace{3pt}
+      出力例:\\
+      オイラーの等式は $e^{i\pi} + 1 = 0$ として有名です。
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \textbf{別行立て数式 (Display Math)}
+      \begin{itemize}
+        \item 行を独立させて中央配置
+        \item \texttt{\textbackslash[ ... \textbackslash]} または \texttt{equation}
+      \end{itemize}
+\begin{lstlisting}[language=TeX]
+\[
+  f(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt
+\]
+\end{lstlisting}
+      \vspace{3pt}
+      出力例:
+      \[
+        f(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt
+      \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{基本的な数式記法}
+  \begin{table}
+    \centering
+    \small
+    \begin{tabular}{lll}
+      \toprule
+      \textbf{対象} & \textbf{記法（ソースコード）} & \textbf{出力} \\
+      \midrule
+      添字（上下） & \texttt{x\_i\^{}2, \ a\_\{n+1\}} & $x_i^2, \ a_{n+1}$ \\
+      分数 & \texttt{\textbackslash frac\{a\}\{b\}, \ \textbackslash frac\{\textbackslash partial y\}\{\textbackslash partial x\}} & $\frac{a}{b}, \ \frac{\partial y}{\partial x}$ \\
+      平方根 & \texttt{\textbackslash sqrt\{x\^{}2 + y\^{}2\}, \ \textbackslash sqrt[3]\{8\}} & $\sqrt{x^2 + y^2}, \ \sqrt[3]{8}$ \\
+      総和・積分 & \texttt{\textbackslash sum\_\{k=1\}\^{}n k, \ \textbackslash int\_0\^{}1 x dx} & $\sum_{k=1}^n k, \ \int_0^1 x dx$ \\
+      ギリシャ文字 & \texttt{\textbackslash alpha, \textbackslash beta, \textbackslash theta, \textbackslash lambda} & $\alpha, \beta, \theta, \lambda$ \\
+      極限 & \texttt{\textbackslash lim\_\{x \textbackslash to 0\} \textbackslash frac\{\textbackslash sin x\}\{x\}} & $\lim_{x \to 0} \frac{\sin x}{x}$ \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+
+  \begin{block}{グループ化の波括弧 \texttt{\{ \}}}
+    添字や分母分子が2文字以上のときは必ず \texttt{\{ \}} で囲みます（例：\texttt{x\^{}\{10\}} $\to x^{10}$、\texttt{x\^{}10}（括弧なし）だと $x^10$ になります）。
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{複数行の数式と等号揃え (\texttt{align})}
+  複数の式を整理するときは \texttt{amsmath} の \alert{\texttt{align}} 環境を使います。
+  \begin{itemize}
+    \item \texttt{\&} : 揃える位置（通常は等号の前）
+    \item \texttt{\textbackslash\textbackslash} : 改行
+  \end{itemize}
+
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+\begin{lstlisting}[language=TeX]
+\begin{align}
+  (x + y)^2 &= (x + y)(x + y) \\
+            &= x^2 + 2xy + y^2
+\end{align}
+\end{lstlisting}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      出力結果:
+      \begin{align*}
+        (x + y)^2 &= (x + y)(x + y) \\
+                  &= x^2 + 2xy + y^2
+      \end{align*}
+      \footnotesize ※ 番号を消したい場合は \texttt{align*} を使用します。
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{行列と括弧の自動伸縮}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{行列の書き方 (\texttt{bmatrix})}
+\begin{lstlisting}[language=TeX]
+A = \begin{bmatrix}
+      a_{11} & a_{12} \\
+      a_{21} & a_{22}
+    \end{bmatrix}
+\end{lstlisting}
+      出力結果:
+      \[
+        A = \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}
+      \]
+      \footnotesize ※ 丸括弧は \texttt{pmatrix}、縦棒行列式は \texttt{vmatrix}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \textbf{括弧サイズの自動調整}
+      分数などを囲む括弧は \texttt{\textbackslash left(} と \texttt{\textbackslash right)} で中身に合わせて自動拡大します。
+\begin{lstlisting}[language=TeX]
+\left( \frac{1}{1 - x^2} \right)
+\end{lstlisting}
+      出力結果:
+      \[
+        \left( \frac{1}{1 - x^2} \right) \quad \text{vs} \quad ( \frac{1}{1 - x^2} )
+      \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%======================================================================
+\section{表・図の挿入と相互参照}
+
+\begin{frame}[fragile]{美しい表の作り方 (\texttt{booktabs})}
+  表は \texttt{table}（配置枠）と \texttt{tabular}（表本体）を組み合わせて作ります。
+
+  \begin{columns}[T]
+    \begin{column}{0.54\textwidth}
+\begin{lstlisting}[language=TeX]
+\begin{table}[htbp]
+  \centering
+  \caption{学生の成績一覧}
+  \label{tab:grades}
+  \begin{tabular}{lcr}
+    \toprule
+    氏名 & 学年 & 得点 \\
+    \midrule
+    山田 & 2 & 85 \\
+    佐藤 & 3 & 92 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\end{lstlisting}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      出力例:
+      \begin{table}
+        \centering
+        \caption{学生の成績一覧}
+        \begin{tabular}{lcr}
+          \toprule
+          氏名 & 学年 & 得点 \\
+          \midrule
+          山田 & 2 & 85 \\
+          佐藤 & 3 & 92 \\
+          \bottomrule
+        \end{tabular}
+      \end{table}
+
+      \footnotesize
+      \begin{itemize}
+        \item \texttt{l}: 左揃え, \texttt{c}: 中央, \texttt{r}: 右揃え
+        \item 学術論文では縦線を引かず、\texttt{booktabs} の横線（\texttt{\textbackslash toprule}等）を使うのが美しさの鉄則！
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{画像の挿入 (\texttt{graphicx})}
+  画像を表示するには、プリアンブルに \inlinecode{\textbackslash usepackage\{graphicx\}} を追加します。
+
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+\begin{lstlisting}[language=TeX]
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{sample.png}
+  \caption{提案モデルの全体概要図}
+  \label{fig:overview}
+\end{figure}
+\end{lstlisting}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \textbf{オプションの指定}:
+      \begin{itemize}
+        \item \texttt{width=0.8\textbackslash linewidth}: 本文幅の80\%に拡縮
+        \item \texttt{height=5cm}: 高さを指定
+        \item \texttt{[htbp]}: 配置の優先指定（h: ここ, t: ページ上, b: 下, p: 単独頁）
+      \end{itemize}
+      \vspace{0.3em}
+      \footnotesize \LaTeX{} はレイアウトが崩れないよう画像を「浮動体（float）」として最適位置に自動配置します。
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{相互参照（クロスリファレンス）の威力}
+  「図3に示すように」と手打ちすると、図を追加したときに番号が狂ってしまいます。\\
+  \LaTeX の \alert{\texttt{\textbackslash label}} と \alert{\texttt{\textbackslash ref}} で自動リンクしましょう！
+
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{ラベル付け（定義側）}
+\begin{lstlisting}[language=TeX]
+\begin{table}[htbp]
+  \caption{実験パラメータ}
+  \label{tab:param} % ラベルを付与
+  ...
+\end{table}
+\end{lstlisting}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \textbf{本文中での参照（引用側）}
+\begin{lstlisting}[language=TeX]
+表\ref{tab:param}に実験設定を示す。
+数式は式\eqref{eq:loss}を参照。
+\end{lstlisting}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.8em}
+  \begin{block}{ラベル命名のベストプラクティス}
+    プレフィックスを付けると管理しやすくなります：
+    \texttt{fig:...}（図）, \texttt{tab:...}（表）, \texttt{eq:...}（式）, \texttt{sec:...}（節）
+  \end{block}
+\end{frame}
+
+%======================================================================
+\section{参考文献とマクロ定義}
+
+\begin{frame}[fragile]{参考文献の記述と引用}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{1. 参考文献リストの定義}
+\begin{lstlisting}[language=TeX]
+\begin{thebibliography}{99}
+\bibitem{knuth84}
+  D.~E.~Knuth, 
+  ``The \TeX{}book,'' 
+  Addison-Wesley, 1984.
+\bibitem{lamport94}
+  L.~Lamport, 
+  ``\LaTeX: A Document Preparation System,'' 
+  1994.
+\end{thebibliography}
+\end{lstlisting}
+    \end{column}
+
+    \begin{column}{0.46\textwidth}
+      \textbf{2. 本文での引用}
+\begin{lstlisting}[language=TeX]
+\TeX の基本理論は Knuth によって
+確立された\cite{knuth84}。
+\end{lstlisting}
+      \vspace{0.5em}
+      出力例:\\
+      \TeX の基本理論は Knuth によって確立された[1]。
+
+      \vspace{1em}
+      \footnotesize
+      ※ 大規模な論文では \textbf{Bib\TeX{} / Bib\LaTeX} を使い、\texttt{.bib} ファイルから文献情報を自動抽出するのが標準的です。
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{独自マクロ（\textbackslash newcommand）の定義}
+  頻出する長い数式記号や表記揺れを防ぐため、自分専用のコマンドを作れます。
+
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{引数なしの略記コマンド}
+\begin{lstlisting}[language=TeX]
+% プリアンブルで定義
+\newcommand{\R}{\mathbb{R}}
+
+% 本文で使用
+$x \in \R^n$
+\end{lstlisting}
+      $\to x \in \mathbb{R}^n$ と出力
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \textbf{引数をとるコマンド}
+\begin{lstlisting}[language=TeX]
+% #1 に引数が入る
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+
+% 本文で使用
+$\norm{\mathbf{w}}^2$
+\end{lstlisting}
+      $\to \left\| \mathbf{w} \right\|^2$ と出力
+    \end{column}
+  \end{columns}
+
+  \vspace{0.8em}
+  \begin{alertblock}{メリット}
+    表記ルールを変えたいとき、定義箇所の1行を修正するだけで文書全体が一括更新されます。
+  \end{alertblock}
+\end{frame}
+
+%======================================================================
+\section{初学者がつまずく罠と対処法}
+
+\begin{frame}[fragile]{よくあるエラーと解決法}
+  \begin{itemize}
+    \item \textbf{1. \texttt{! Undefined control sequence}}
+      \begin{itemize}
+        \item 原因: コマンド名のスペルミス、または必要なパッケージ（\texttt{amsmath}等）の読込忘れ
+      \end{itemize}
+    \item \textbf{2. \texttt{! Missing \$ inserted}}
+      \begin{itemize}
+        \item 原因: 下付き文字 \inlinecode{\_} や \inlinecode{\^{}} などの数式用記号を、本文中に \texttt{\$} なしで書いた
+      \end{itemize}
+    \item \textbf{3. 括弧や環境の閉じ忘れ}
+      \begin{itemize}
+        \item \texttt{\textbackslash begin\{...\}} に対応する \texttt{\textbackslash end\{...\}} がない、\texttt{\{} に対応する \texttt{\}} が不足
+      \end{itemize}
+  \end{itemize}
+
+  \begin{block}{エラーが出たときのデバッグ鉄則}
+    ログに表示される \alert{\textbf{行番号（l. 42 など）}} を確認し、その直前で開いた括弧や環境が閉じられているかチェックする！
+  \end{block}
+\end{frame}
+
+\begin{frame}{おすすめ学習リソース}
+  \begin{itemize}
+    \item \textbf{\TeX Wiki} (\url{https://texwiki.texjp.org/})
+      \begin{itemize}
+        \item 日本語 \TeX 環境に関する最も網羅的で信頼できる情報源
+      \end{itemize}
+    \item \textbf{LaTeX Cheat Sheet}
+      \begin{itemize}
+        \item 数式記号やコマンドの一覧シート（机の前に貼っておくと便利）
+      \end{itemize}
+    \item \textbf{Overleaf ドキュメント} (\url{https://www.overleaf.com/learn})
+      \begin{itemize}
+        \item 豊富な実例とプレビュー付きの分かりやすい英語チュートリアル
+      \end{itemize}
+    \item \textbf{Detexify} (\url{https://detexify.kirelabs.org/classify.html})
+      \begin{itemize}
+        \item 手書きした記号から \LaTeX コマンドを逆引き検索できる Web ツール
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%======================================================================
+\begin{frame}[standout]
+  \Huge \textbf{まとめ}
+
+  \vspace{1em}
+  \normalsize
+  1. \textbf{構造化}: 見た目ではなく論理構造（章節・箇条書き）を意識する\\
+  2. \textbf{数式と自動化}: 綺麗な数式と自動採番（\texttt{\textbackslash label}, \texttt{\textbackslash ref}）の恩恵を受ける\\
+  3. \textbf{小さく始める}: まずは動くテンプレートから始め、徐々に表現を広げる
+
+  \vspace{2em}
+  \large
+  \textbf{Happy \LaTeX{}ing!}
+\end{frame}
+
+\end{document}

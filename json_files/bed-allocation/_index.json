@@ -1,0 +1,15 @@
+[
+  {
+    "id": "BASIC",
+    "shortDescription": "Demonstrates a hospital bed allocation problem with room capacity, equipment, and gender rules.",
+    "longDescription": "Assigns patient stays to beds in a single department of 10 rooms over a 28-day horizon. Stays carry a required specialty and preferred equipment (telemetry, television, oxygen, nitrogen), and rooms enforce gender-mix rules across nights. Once solved, every patient is assigned to a bed that respects gender, age, specialty, and equipment preferences while keeping stays in the same bed night to night.",
+    "tags": [
+      "room capacity",
+      "equipment",
+      "gender rules",
+      "specialty",
+      "age"
+    ],
+    "config": []
+  }
+]

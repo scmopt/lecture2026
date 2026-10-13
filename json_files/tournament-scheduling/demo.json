@@ -1,0 +1,646 @@
+{
+  "teams": [
+    {
+      "id": 0,
+      "name": "Maarten"
+    },
+    {
+      "id": 1,
+      "name": "Geoffrey"
+    },
+    {
+      "id": 2,
+      "name": "Lukas"
+    },
+    {
+      "id": 3,
+      "name": "Chris"
+    },
+    {
+      "id": 4,
+      "name": "Fred"
+    },
+    {
+      "id": 5,
+      "name": "Radek"
+    },
+    {
+      "id": 6,
+      "name": "Maciej"
+    }
+  ],
+  "days": [
+    {
+      "dateIndex": 0
+    },
+    {
+      "dateIndex": 1
+    },
+    {
+      "dateIndex": 2
+    },
+    {
+      "dateIndex": 3
+    },
+    {
+      "dateIndex": 4
+    },
+    {
+      "dateIndex": 5
+    },
+    {
+      "dateIndex": 6
+    },
+    {
+      "dateIndex": 7
+    },
+    {
+      "dateIndex": 8
+    },
+    {
+      "dateIndex": 9
+    },
+    {
+      "dateIndex": 10
+    },
+    {
+      "dateIndex": 11
+    },
+    {
+      "dateIndex": 12
+    },
+    {
+      "dateIndex": 13
+    },
+    {
+      "dateIndex": 14
+    },
+    {
+      "dateIndex": 15
+    },
+    {
+      "dateIndex": 16
+    },
+    {
+      "dateIndex": 17
+    }
+  ],
+  "unavailabilityPenalties": [
+    {
+      "team": 5,
+      "day": 16
+    },
+    {
+      "team": 4,
+      "day": 11
+    },
+    {
+      "team": 2,
+      "day": 3
+    },
+    {
+      "team": 6,
+      "day": 2
+    },
+    {
+      "team": 1,
+      "day": 17
+    },
+    {
+      "team": 0,
+      "day": 10
+    },
+    {
+      "team": 4,
+      "day": 14
+    },
+    {
+      "team": 3,
+      "day": 15
+    },
+    {
+      "team": 1,
+      "day": 0
+    },
+    {
+      "team": 3,
+      "day": 5
+    },
+    {
+      "team": 2,
+      "day": 10
+    },
+    {
+      "team": 6,
+      "day": 16
+    }
+  ],
+  "teamAssignments": [
+    {
+      "id": 0,
+      "day": 0,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 1,
+      "day": 0,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 2,
+      "day": 0,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 3,
+      "day": 0,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 4,
+      "day": 1,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 5,
+      "day": 1,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 6,
+      "day": 1,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 7,
+      "day": 1,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 8,
+      "day": 2,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 9,
+      "day": 2,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 10,
+      "day": 2,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 11,
+      "day": 2,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 12,
+      "day": 3,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 13,
+      "day": 3,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 14,
+      "day": 3,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 15,
+      "day": 3,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 16,
+      "day": 4,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 17,
+      "day": 4,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 18,
+      "day": 4,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 19,
+      "day": 4,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 20,
+      "day": 5,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 21,
+      "day": 5,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 22,
+      "day": 5,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 23,
+      "day": 5,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 24,
+      "day": 6,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 25,
+      "day": 6,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 26,
+      "day": 6,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 27,
+      "day": 6,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 28,
+      "day": 7,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 29,
+      "day": 7,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 30,
+      "day": 7,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 31,
+      "day": 7,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 32,
+      "day": 8,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 33,
+      "day": 8,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 34,
+      "day": 8,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 35,
+      "day": 8,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 36,
+      "day": 9,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 37,
+      "day": 9,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 38,
+      "day": 9,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 39,
+      "day": 9,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 40,
+      "day": 10,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 41,
+      "day": 10,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 42,
+      "day": 10,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 43,
+      "day": 10,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 44,
+      "day": 11,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 45,
+      "day": 11,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 46,
+      "day": 11,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 47,
+      "day": 11,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 48,
+      "day": 12,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 49,
+      "day": 12,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 50,
+      "day": 12,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 51,
+      "day": 12,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 52,
+      "day": 13,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 53,
+      "day": 13,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 54,
+      "day": 13,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 55,
+      "day": 13,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 56,
+      "day": 14,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 57,
+      "day": 14,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 58,
+      "day": 14,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 59,
+      "day": 14,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 60,
+      "day": 15,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 61,
+      "day": 15,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 62,
+      "day": 15,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 63,
+      "day": 15,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 64,
+      "day": 16,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 65,
+      "day": 16,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 66,
+      "day": 16,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 67,
+      "day": 16,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    },
+    {
+      "id": 68,
+      "day": 17,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 0
+    },
+    {
+      "id": 69,
+      "day": 17,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 1
+    },
+    {
+      "id": 70,
+      "day": 17,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 2
+    },
+    {
+      "id": 71,
+      "day": 17,
+      "pinned": false,
+      "team": null,
+      "indexInDay": 3
+    }
+  ],
+  "score": null,
+  "solverStatus": null
+}

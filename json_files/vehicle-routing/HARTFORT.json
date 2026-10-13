@@ -1,0 +1,996 @@
+{
+  "name": "demo",
+  "southWestCorner": [
+    41.48366520850297,
+    -73.15901689943055
+  ],
+  "northEastCorner": [
+    41.99512052869307,
+    -72.25114548877427
+  ],
+  "startDateTime": "2026-10-09T07:30:00",
+  "endDateTime": "2026-10-10T00:00:00",
+  "vehicles": [
+    {
+      "id": "1",
+      "capacity": 24,
+      "homeLocation": [
+        41.53505276952964,
+        -72.78911395234681
+      ],
+      "departureTime": "2026-10-09T07:30:00",
+      "visits": [],
+      "totalDemand": 0,
+      "arrivalTime": "2026-10-09T07:30:00",
+      "totalDrivingTimeSeconds": 0
+    },
+    {
+      "id": "2",
+      "capacity": 22,
+      "homeLocation": [
+        41.65383511689145,
+        -72.28041897677072
+      ],
+      "departureTime": "2026-10-09T07:30:00",
+      "visits": [],
+      "totalDemand": 0,
+      "arrivalTime": "2026-10-09T07:30:00",
+      "totalDrivingTimeSeconds": 0
+    },
+    {
+      "id": "3",
+      "capacity": 26,
+      "homeLocation": [
+        41.56178295126472,
+        -73.0141405462113
+      ],
+      "departureTime": "2026-10-09T07:30:00",
+      "visits": [],
+      "totalDemand": 0,
+      "arrivalTime": "2026-10-09T07:30:00",
+      "totalDrivingTimeSeconds": 0
+    },
+    {
+      "id": "4",
+      "capacity": 21,
+      "homeLocation": [
+        41.96811308839884,
+        -72.30826680701155
+      ],
+      "departureTime": "2026-10-09T07:30:00",
+      "visits": [],
+      "totalDemand": 0,
+      "arrivalTime": "2026-10-09T07:30:00",
+      "totalDrivingTimeSeconds": 0
+    },
+    {
+      "id": "5",
+      "capacity": 26,
+      "homeLocation": [
+        41.951116383896924,
+        -73.01435707600143
+      ],
+      "departureTime": "2026-10-09T07:30:00",
+      "visits": [],
+      "totalDemand": 0,
+      "arrivalTime": "2026-10-09T07:30:00",
+      "totalDrivingTimeSeconds": 0
+    },
+    {
+      "id": "6",
+      "capacity": 25,
+      "homeLocation": [
+        41.742708954288155,
+        -73.05373369562864
+      ],
+      "departureTime": "2026-10-09T07:30:00",
+      "visits": [],
+      "totalDemand": 0,
+      "arrivalTime": "2026-10-09T07:30:00",
+      "totalDrivingTimeSeconds": 0
+    }
+  ],
+  "visits": [
+    {
+      "id": "1",
+      "name": "Amy Poe",
+      "location": [
+        41.56383423960818,
+        -72.81565807503183
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "2",
+      "name": "Amy Rye",
+      "location": [
+        41.48614706253464,
+        -72.3852802540025
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "3",
+      "name": "Carl Jones",
+      "location": [
+        41.73004771122995,
+        -72.6646311569006
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "4",
+      "name": "Elsa Cole",
+      "location": [
+        41.58094514027215,
+        -73.15783795872231
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "5",
+      "name": "Flo Smith",
+      "location": [
+        41.760054162301756,
+        -72.2749008431006
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "6",
+      "name": "Beth Fox",
+      "location": [
+        41.69159268010868,
+        -72.29668445602654
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "7",
+      "name": "Jay Li",
+      "location": [
+        41.78664072434686,
+        -72.5642035161327
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "8",
+      "name": "Flo Fox",
+      "location": [
+        41.97579509516717,
+        -72.9182899911844
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "9",
+      "name": "Elsa King",
+      "location": [
+        41.71034857419223,
+        -72.70132663132446
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 2400.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "10",
+      "name": "Dan Rye",
+      "location": [
+        41.658027992409174,
+        -72.91771415588735
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "11",
+      "name": "Amy Poe",
+      "location": [
+        41.8505435671042,
+        -72.28526820548917
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "12",
+      "name": "Beth Cole",
+      "location": [
+        41.89342125199276,
+        -73.05929534363126
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "13",
+      "name": "Ivy Smith",
+      "location": [
+        41.58832715037861,
+        -72.92759189628937
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "14",
+      "name": "Dan King",
+      "location": [
+        41.958792805490155,
+        -72.48813726056518
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "15",
+      "name": "Hugo Rye",
+      "location": [
+        41.48814577054772,
+        -72.58597764513719
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "16",
+      "name": "Gus Smith",
+      "location": [
+        41.897044271731225,
+        -72.7710358675428
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 2400.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "17",
+      "name": "Amy Watt",
+      "location": [
+        41.84709245764547,
+        -72.4109482196791
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "18",
+      "name": "Hugo Smith",
+      "location": [
+        41.61966279508828,
+        -73.10141314571342
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "19",
+      "name": "Flo Green",
+      "location": [
+        41.52101475505365,
+        -73.09179090324072
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "20",
+      "name": "Ivy Green",
+      "location": [
+        41.56292799409144,
+        -72.82603570753042
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "21",
+      "name": "Gus Watt",
+      "location": [
+        41.9319264663873,
+        -72.48333394691724
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "22",
+      "name": "Jay Watt",
+      "location": [
+        41.9251829986849,
+        -72.44102564721352
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "23",
+      "name": "Gus Li",
+      "location": [
+        41.92476972397241,
+        -72.3401859254261
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "24",
+      "name": "Gus Fox",
+      "location": [
+        41.78884387495279,
+        -72.28021611458827
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 2400.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "25",
+      "name": "Gus Rye",
+      "location": [
+        41.82226190851657,
+        -72.33532224549604
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "26",
+      "name": "Carl Watt",
+      "location": [
+        41.92047351068573,
+        -72.45295469613765
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "27",
+      "name": "Ivy Rye",
+      "location": [
+        41.71433590661661,
+        -72.82389040769472
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 2400.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "28",
+      "name": "Amy Li",
+      "location": [
+        41.905254720371566,
+        -72.63478730275283
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "29",
+      "name": "Ivy Jones",
+      "location": [
+        41.81304871915309,
+        -73.05870632034521
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "30",
+      "name": "Ivy Poe",
+      "location": [
+        41.67263370043742,
+        -72.65510828474518
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "31",
+      "name": "Flo King",
+      "location": [
+        41.564286224559716,
+        -73.12072407813167
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "32",
+      "name": "Elsa Watt",
+      "location": [
+        41.633173804728834,
+        -72.43493220126385
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 2400.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "33",
+      "name": "Gus Smith",
+      "location": [
+        41.82484342395227,
+        -72.7718614484144
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "34",
+      "name": "Jay Green",
+      "location": [
+        41.52223281444149,
+        -72.56786127989771
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "35",
+      "name": "Amy King",
+      "location": [
+        41.550752195818745,
+        -73.13014978701602
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 2400.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "36",
+      "name": "Elsa Smith",
+      "location": [
+        41.674768177696336,
+        -73.13366336920798
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "37",
+      "name": "Flo Rye",
+      "location": [
+        41.99334242947295,
+        -72.94193900178493
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "38",
+      "name": "Carl Smith",
+      "location": [
+        41.81606050079668,
+        -73.00389725873954
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "39",
+      "name": "Carl Green",
+      "location": [
+        41.954347920502606,
+        -72.50194386886699
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "40",
+      "name": "Elsa Watt",
+      "location": [
+        41.77472501088431,
+        -72.74678041857209
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "41",
+      "name": "Elsa Rye",
+      "location": [
+        41.63882394866086,
+        -73.09964481360556
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "42",
+      "name": "Gus Jones",
+      "location": [
+        41.75033634045123,
+        -72.78899126162567
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "43",
+      "name": "Ivy King",
+      "location": [
+        41.68248286470045,
+        -72.9182072206828
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "44",
+      "name": "Dan Fox",
+      "location": [
+        41.733686418347126,
+        -72.25954697672206
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "45",
+      "name": "Gus King",
+      "location": [
+        41.62573638493543,
+        -73.0538958825497
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 600.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "46",
+      "name": "Flo Li",
+      "location": [
+        41.6855378545751,
+        -72.85221537915697
+      ],
+      "demand": 3,
+      "minStartTime": "2026-10-09T13:00:00",
+      "maxEndTime": "2026-10-09T18:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "47",
+      "name": "Ivy Smith",
+      "location": [
+        41.662153595900485,
+        -73.11081486113993
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1200.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "48",
+      "name": "Amy King",
+      "location": [
+        41.936448449237325,
+        -72.98727774427668
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "49",
+      "name": "Hugo Cole",
+      "location": [
+        41.71105795475673,
+        -72.51659479280869
+      ],
+      "demand": 2,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    },
+    {
+      "id": "50",
+      "name": "Beth Cole",
+      "location": [
+        41.755140356075735,
+        -72.98760173161368
+      ],
+      "demand": 1,
+      "minStartTime": "2026-10-09T08:00:00",
+      "maxEndTime": "2026-10-09T12:00:00",
+      "serviceDuration": 1800.0,
+      "vehicle": null,
+      "previousVisit": null,
+      "arrivalTime": null,
+      "departureTime": null,
+      "startServiceTime": null,
+      "drivingTimeSecondsFromPreviousStandstill": null
+    }
+  ],
+  "totalDrivingTimeSeconds": 0
+}

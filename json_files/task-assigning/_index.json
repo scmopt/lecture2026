@@ -1,0 +1,13 @@
+[
+  {
+    "id": "BASIC",
+    "shortDescription": "Demonstrates a task assigning problem with required skills, customer affinities and task priorities.",
+    "longDescription": "Assigns 31 tasks of 5 kinds across 4 customers to 8 employees with varying skills and customer affinities. Once solved, every employee is only assigned tasks they have the skills for, as few tasks as possible are left unassigned, the employee who finishes last finishes as early as possible, and higher priority tasks are finished earlier than lower priority ones.",
+    "tags": [
+      "skills",
+      "workload",
+      "priority"
+    ],
+    "config": []
+  }
+]

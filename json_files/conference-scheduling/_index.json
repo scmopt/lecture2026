@@ -1,0 +1,15 @@
+[
+  {
+    "id": "BASIC",
+    "shortDescription": "Demonstrates a conference scheduling problem with talk, speaker, room, and audience tags.",
+    "longDescription": "Schedules 20 talks by 12 speakers into 6 timeslots across 7 rooms. Talks and speakers carry theme, sector, audience, and content tags that drive requirements, preferences, diversity, and conflict rules. Once solved, talks are placed so speaker and room conflicts are avoided and tag-based preferences (required rooms, preferred timeslots, audience-level flow) are honored.",
+    "tags": [
+      "talk tags",
+      "speaker tags",
+      "room tags",
+      "theme tracks",
+      "audience diversity"
+    ],
+    "config": []
+  }
+]

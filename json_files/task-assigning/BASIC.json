@@ -1,0 +1,447 @@
+{
+  "config": {
+    "run": {
+      "name": "BASIC",
+      "tags": []
+    },
+    "model": {}
+  },
+  "modelInput": {
+    "customers": [
+      {
+        "id": "1",
+        "name": "Steel Inc"
+      },
+      {
+        "id": "2",
+        "name": "Paper Corp"
+      },
+      {
+        "id": "3",
+        "name": "Stone Limited"
+      },
+      {
+        "id": "4",
+        "name": "Wood Express"
+      }
+    ],
+    "taskTypes": [
+      {
+        "code": "IS",
+        "title": "Improve Sales",
+        "baseDurationInMinutes": 46,
+        "requiredSkills": [
+          "Strategic Planning"
+        ]
+      },
+      {
+        "code": "ET",
+        "title": "Expand Tax",
+        "baseDurationInMinutes": 63,
+        "requiredSkills": [
+          "Problem Solving",
+          "Team Building"
+        ]
+      },
+      {
+        "code": "SV",
+        "title": "Shrink VAT",
+        "baseDurationInMinutes": 63,
+        "requiredSkills": [
+          "Strategic Planning"
+        ]
+      },
+      {
+        "code": "AL",
+        "title": "Approve Legal",
+        "baseDurationInMinutes": 40,
+        "requiredSkills": [
+          "Risk Management"
+        ]
+      },
+      {
+        "code": "PI",
+        "title": "Pitch Investors",
+        "baseDurationInMinutes": 50,
+        "requiredSkills": [
+          "Business Storytelling"
+        ]
+      }
+    ],
+    "employees": [
+      {
+        "id": "1",
+        "fullName": "Amy",
+        "skills": [
+          "Problem Solving",
+          "Team Building"
+        ],
+        "customerAffinities": {
+          "4": "MEDIUM",
+          "3": "HIGH",
+          "2": "MEDIUM",
+          "1": "HIGH"
+        },
+        "taskIds": []
+      },
+      {
+        "id": "2",
+        "fullName": "Beth",
+        "skills": [
+          "Risk Management",
+          "Creative Thinking"
+        ],
+        "customerAffinities": {
+          "4": "MEDIUM",
+          "3": "LOW",
+          "2": "HIGH",
+          "1": "LOW"
+        },
+        "taskIds": []
+      },
+      {
+        "id": "3",
+        "fullName": "Carl",
+        "skills": [
+          "Strategic Planning",
+          "Problem Solving"
+        ],
+        "customerAffinities": {
+          "4": "LOW",
+          "3": "MEDIUM",
+          "2": "HIGH",
+          "1": "MEDIUM"
+        },
+        "taskIds": []
+      },
+      {
+        "id": "4",
+        "fullName": "Dan",
+        "skills": [
+          "Business Storytelling",
+          "Team Building"
+        ],
+        "customerAffinities": {
+          "4": "MEDIUM",
+          "3": "HIGH",
+          "2": "HIGH",
+          "1": "LOW"
+        },
+        "taskIds": []
+      },
+      {
+        "id": "5",
+        "fullName": "Elsa",
+        "skills": [
+          "Risk Management",
+          "Strategic Planning",
+          "Creative Thinking"
+        ],
+        "customerAffinities": {
+          "4": "MEDIUM",
+          "3": "HIGH",
+          "2": "HIGH",
+          "1": "MEDIUM"
+        },
+        "taskIds": []
+      },
+      {
+        "id": "6",
+        "fullName": "Flo",
+        "skills": [
+          "Problem Solving",
+          "Team Building"
+        ],
+        "customerAffinities": {
+          "4": "MEDIUM",
+          "3": "NONE",
+          "2": "HIGH",
+          "1": "HIGH"
+        },
+        "taskIds": []
+      },
+      {
+        "id": "7",
+        "fullName": "Gus",
+        "skills": [
+          "Risk Management",
+          "Creative Thinking",
+          "Business Storytelling"
+        ],
+        "customerAffinities": {
+          "4": "LOW",
+          "3": "MEDIUM",
+          "2": "MEDIUM",
+          "1": "LOW"
+        },
+        "taskIds": []
+      },
+      {
+        "id": "8",
+        "fullName": "Hugo",
+        "skills": [
+          "Strategic Planning",
+          "Problem Solving",
+          "Team Building"
+        ],
+        "customerAffinities": {
+          "4": "LOW",
+          "3": "NONE",
+          "2": "MEDIUM",
+          "1": "NONE"
+        },
+        "taskIds": []
+      }
+    ],
+    "tasks": [
+      {
+        "id": "1",
+        "taskTypeCode": "SV",
+        "indexInTaskType": 1,
+        "customerId": "2",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "2",
+        "taskTypeCode": "AL",
+        "indexInTaskType": 1,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "3",
+        "taskTypeCode": "SV",
+        "indexInTaskType": 2,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "4",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 1,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "5",
+        "taskTypeCode": "AL",
+        "indexInTaskType": 2,
+        "customerId": "3",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "6",
+        "taskTypeCode": "AL",
+        "indexInTaskType": 3,
+        "customerId": "3",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "7",
+        "taskTypeCode": "ET",
+        "indexInTaskType": 1,
+        "customerId": "2",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "8",
+        "taskTypeCode": "ET",
+        "indexInTaskType": 2,
+        "customerId": "1",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "9",
+        "taskTypeCode": "ET",
+        "indexInTaskType": 3,
+        "customerId": "1",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "10",
+        "taskTypeCode": "SV",
+        "indexInTaskType": 3,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "11",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 2,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "12",
+        "taskTypeCode": "ET",
+        "indexInTaskType": 4,
+        "customerId": "1",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "13",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 3,
+        "customerId": "3",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "14",
+        "taskTypeCode": "ET",
+        "indexInTaskType": 5,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "15",
+        "taskTypeCode": "ET",
+        "indexInTaskType": 6,
+        "customerId": "3",
+        "minStartTimeInMinutes": 0,
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "16",
+        "taskTypeCode": "ET",
+        "indexInTaskType": 7,
+        "customerId": "2",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "17",
+        "taskTypeCode": "AL",
+        "indexInTaskType": 4,
+        "customerId": "3",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "18",
+        "taskTypeCode": "AL",
+        "indexInTaskType": 5,
+        "customerId": "1",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "19",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 4,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "20",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 5,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "21",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 6,
+        "customerId": "1",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "22",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 7,
+        "customerId": "2",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "23",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 8,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "24",
+        "taskTypeCode": "AL",
+        "indexInTaskType": 6,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      },
+      {
+        "id": "25",
+        "taskTypeCode": "AL",
+        "indexInTaskType": 7,
+        "customerId": "1",
+        "minStartTimeInMinutes": 0,
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "26",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 9,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "27",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 10,
+        "customerId": "1",
+        "minStartTimeInMinutes": 0,
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "28",
+        "taskTypeCode": "IS",
+        "indexInTaskType": 11,
+        "customerId": "4",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "29",
+        "taskTypeCode": "PI",
+        "indexInTaskType": 1,
+        "customerId": "1",
+        "minStartTimeInMinutes": 0,
+        "priority": "MAJOR"
+      },
+      {
+        "id": "30",
+        "taskTypeCode": "PI",
+        "indexInTaskType": 2,
+        "customerId": "2",
+        "minStartTimeInMinutes": 0,
+        "priority": "CRITICAL"
+      },
+      {
+        "id": "31",
+        "taskTypeCode": "PI",
+        "indexInTaskType": 3,
+        "customerId": "3",
+        "minStartTimeInMinutes": 0,
+        "priority": "MINOR"
+      }
+    ]
+  }
+}

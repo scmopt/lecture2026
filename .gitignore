@@ -8,9 +8,14 @@
 *.snm
 *.toc
 *.synctex.gz
+*.vrb
 
 # Python
 __pycache__/
 *.pyc
 .venv/
 .pytest_cache/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

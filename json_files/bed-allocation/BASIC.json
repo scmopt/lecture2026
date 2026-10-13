@@ -1,0 +1,2041 @@
+{
+  "config": {
+    "run": {
+      "name": "BASIC",
+      "tags": []
+    },
+    "model": {}
+  },
+  "modelInput": {
+    "departments": [
+      {
+        "id": "1",
+        "name": "General Ward",
+        "minimumAge": 1,
+        "maximumAge": 100,
+        "specialtyToPriority": {
+          "Cardiology": 1,
+          "Neurology": 2,
+          "Oncology": 2
+        },
+        "rooms": [
+          {
+            "id": "R1",
+            "name": "Room 1",
+            "capacity": 1,
+            "genderLimitation": "ANY_GENDER",
+            "equipments": [
+              "telemetry",
+              "oxygen"
+            ],
+            "beds": [
+              {
+                "id": "R1-bed0"
+              }
+            ]
+          },
+          {
+            "id": "R2",
+            "name": "Room 2",
+            "capacity": 1,
+            "genderLimitation": "ANY_GENDER",
+            "equipments": [
+              "television",
+              "nitrogen"
+            ],
+            "beds": [
+              {
+                "id": "R2-bed0"
+              }
+            ]
+          },
+          {
+            "id": "R3",
+            "name": "Room 3",
+            "capacity": 2,
+            "genderLimitation": "ANY_GENDER",
+            "equipments": [
+              "telemetry",
+              "television",
+              "oxygen",
+              "nitrogen"
+            ],
+            "beds": [
+              {
+                "id": "R3-bed0"
+              },
+              {
+                "id": "R3-bed1"
+              }
+            ]
+          },
+          {
+            "id": "R4",
+            "name": "Room 4",
+            "capacity": 1,
+            "genderLimitation": "ANY_GENDER",
+            "equipments": [],
+            "beds": [
+              {
+                "id": "R4-bed0"
+              }
+            ]
+          },
+          {
+            "id": "R5",
+            "name": "Room 5",
+            "capacity": 2,
+            "genderLimitation": "SAME_GENDER",
+            "equipments": [],
+            "beds": [
+              {
+                "id": "R5-bed0"
+              },
+              {
+                "id": "R5-bed1"
+              }
+            ]
+          },
+          {
+            "id": "R6",
+            "name": "Room 6",
+            "capacity": 1,
+            "genderLimitation": "ANY_GENDER",
+            "equipments": [
+              "oxygen",
+              "nitrogen"
+            ],
+            "beds": [
+              {
+                "id": "R6-bed0"
+              }
+            ]
+          },
+          {
+            "id": "R7",
+            "name": "Room 7",
+            "capacity": 1,
+            "genderLimitation": "ANY_GENDER",
+            "equipments": [
+              "telemetry",
+              "television"
+            ],
+            "beds": [
+              {
+                "id": "R7-bed0"
+              }
+            ]
+          },
+          {
+            "id": "R8",
+            "name": "Room 8",
+            "capacity": 2,
+            "genderLimitation": "ANY_GENDER",
+            "equipments": [
+              "telemetry",
+              "television",
+              "oxygen",
+              "nitrogen"
+            ],
+            "beds": [
+              {
+                "id": "R8-bed0"
+              },
+              {
+                "id": "R8-bed1"
+              }
+            ]
+          },
+          {
+            "id": "R9",
+            "name": "Room 9",
+            "capacity": 1,
+            "genderLimitation": "ANY_GENDER",
+            "equipments": [],
+            "beds": [
+              {
+                "id": "R9-bed0"
+              }
+            ]
+          },
+          {
+            "id": "R10",
+            "name": "Room 10",
+            "capacity": 2,
+            "genderLimitation": "SAME_GENDER",
+            "equipments": [],
+            "beds": [
+              {
+                "id": "R10-bed0"
+              },
+              {
+                "id": "R10-bed1"
+              }
+            ]
+          },
+          {
+            "id": "R11",
+            "name": "Room 11",
+            "capacity": 2,
+            "genderLimitation": "MALE_ONLY",
+            "equipments": [
+              "oxygen",
+              "telemetry"
+            ],
+            "beds": [
+              {
+                "id": "R11-bed0"
+              },
+              {
+                "id": "R11-bed1"
+              }
+            ]
+          },
+          {
+            "id": "R12",
+            "name": "Room 12",
+            "capacity": 2,
+            "genderLimitation": "FEMALE_ONLY",
+            "equipments": [
+              "television",
+              "nitrogen"
+            ],
+            "beds": [
+              {
+                "id": "R12-bed0"
+              },
+              {
+                "id": "R12-bed1"
+              }
+            ]
+          },
+          {
+            "id": "R13",
+            "name": "Room 13",
+            "capacity": 1,
+            "genderLimitation": "ANY_GENDER",
+            "equipments": [
+              "oxygen",
+              "telemetry",
+              "nitrogen"
+            ],
+            "beds": [
+              {
+                "id": "R13-bed0"
+              }
+            ]
+          },
+          {
+            "id": "R14",
+            "name": "Room 14",
+            "capacity": 2,
+            "genderLimitation": "ANY_GENDER",
+            "equipments": [
+              "telemetry",
+              "television",
+              "oxygen",
+              "nitrogen"
+            ],
+            "beds": [
+              {
+                "id": "R14-bed0"
+              },
+              {
+                "id": "R14-bed1"
+              }
+            ]
+          },
+          {
+            "id": "R15",
+            "name": "Room 15",
+            "capacity": 2,
+            "genderLimitation": "SAME_GENDER",
+            "equipments": [],
+            "beds": [
+              {
+                "id": "R15-bed0"
+              },
+              {
+                "id": "R15-bed1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "stays": [
+      {
+        "id": "stay-1",
+        "patientName": "Bob",
+        "patientGender": "MALE",
+        "patientAge": 5,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-14",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-2",
+        "patientName": "Alice",
+        "patientGender": "FEMALE",
+        "patientAge": 12,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-16",
+        "departureDate": "2026-10-20",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-3",
+        "patientName": "David",
+        "patientGender": "MALE",
+        "patientAge": 19,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "telemetry",
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-22",
+        "departureDate": "2026-10-25",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-4",
+        "patientName": "Carol",
+        "patientGender": "FEMALE",
+        "patientAge": 25,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-28",
+        "departureDate": "2026-11-03",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-5",
+        "patientName": "Frank",
+        "patientGender": "MALE",
+        "patientAge": 28,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "telemetry"
+        ],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-11-06",
+        "departureDate": "2026-11-11",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-6",
+        "patientName": "Eve",
+        "patientGender": "FEMALE",
+        "patientAge": 33,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-16",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-7",
+        "patientName": "Hank",
+        "patientGender": "MALE",
+        "patientAge": 36,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "television",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-18",
+        "departureDate": "2026-10-21",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-8",
+        "patientName": "Grace",
+        "patientGender": "FEMALE",
+        "patientAge": 41,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-24",
+        "departureDate": "2026-10-30",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-9",
+        "patientName": "Jack",
+        "patientGender": "MALE",
+        "patientAge": 44,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-02",
+        "departureDate": "2026-11-07",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-10",
+        "patientName": "Ivy",
+        "patientGender": "FEMALE",
+        "patientAge": 47,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "nitrogen",
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-10",
+        "departureDate": "2026-11-12",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-11",
+        "patientName": "Leo",
+        "patientGender": "MALE",
+        "patientAge": 50,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "oxygen",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-15",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-12",
+        "patientName": "Karen",
+        "patientGender": "FEMALE",
+        "patientAge": 52,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "nitrogen",
+          "telemetry",
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-17",
+        "departureDate": "2026-10-23",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-13",
+        "patientName": "Oscar",
+        "patientGender": "MALE",
+        "patientAge": 54,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "telemetry",
+          "television",
+          "oxygen",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [],
+        "arrivalDate": "2026-10-26",
+        "departureDate": "2026-10-31",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-14",
+        "patientName": "Mona",
+        "patientGender": "FEMALE",
+        "patientAge": 55,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-11-03",
+        "departureDate": "2026-11-05",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-15",
+        "patientName": "Quinn",
+        "patientGender": "MALE",
+        "patientAge": 58,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-07",
+        "departureDate": "2026-11-11",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-16",
+        "patientName": "Nora",
+        "patientGender": "FEMALE",
+        "patientAge": 60,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "nitrogen",
+          "telemetry",
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-18",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-17",
+        "patientName": "Priya",
+        "patientGender": "FEMALE",
+        "patientAge": 66,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-29",
+        "departureDate": "2026-10-31",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-18",
+        "patientName": "Victor",
+        "patientGender": "MALE",
+        "patientAge": 68,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-02",
+        "departureDate": "2026-11-06",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-19",
+        "patientName": "Rosa",
+        "patientGender": "FEMALE",
+        "patientAge": 70,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "nitrogen",
+          "telemetry"
+        ],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-11-08",
+        "departureDate": "2026-11-11",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-20",
+        "patientName": "Zack",
+        "patientGender": "MALE",
+        "patientAge": 72,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-17",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-21",
+        "patientName": "Tina",
+        "patientGender": "FEMALE",
+        "patientAge": 75,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-20",
+        "departureDate": "2026-10-22",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-22",
+        "patientName": "Aaron",
+        "patientGender": "MALE",
+        "patientAge": 80,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-24",
+        "departureDate": "2026-10-28",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-23",
+        "patientName": "Uma",
+        "patientGender": "FEMALE",
+        "patientAge": 88,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-30",
+        "departureDate": "2026-11-02",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-24",
+        "patientName": "Caleb",
+        "patientGender": "MALE",
+        "patientAge": 92,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-04",
+        "departureDate": "2026-11-10",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-25",
+        "patientName": "Wendy",
+        "patientGender": "FEMALE",
+        "patientAge": 5,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-14",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-26",
+        "patientName": "Xandra",
+        "patientGender": "FEMALE",
+        "patientAge": 12,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-16",
+        "departureDate": "2026-10-20",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-27",
+        "patientName": "Yara",
+        "patientGender": "FEMALE",
+        "patientAge": 19,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-22",
+        "departureDate": "2026-10-25",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-28",
+        "patientName": "Bella",
+        "patientGender": "FEMALE",
+        "patientAge": 25,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-28",
+        "departureDate": "2026-11-03",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-29",
+        "patientName": "Dana",
+        "patientGender": "FEMALE",
+        "patientAge": 28,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-11-06",
+        "departureDate": "2026-11-11",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-30",
+        "patientName": "Fiona",
+        "patientGender": "FEMALE",
+        "patientAge": 33,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-16",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-31",
+        "patientName": "Gina",
+        "patientGender": "FEMALE",
+        "patientAge": 36,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-18",
+        "departureDate": "2026-10-21",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-32",
+        "patientName": "Iris",
+        "patientGender": "FEMALE",
+        "patientAge": 41,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-24",
+        "departureDate": "2026-10-30",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-33",
+        "patientName": "Kira",
+        "patientGender": "FEMALE",
+        "patientAge": 44,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-11-02",
+        "departureDate": "2026-11-07",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-34",
+        "patientName": "Mira",
+        "patientGender": "FEMALE",
+        "patientAge": 47,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-11-10",
+        "departureDate": "2026-11-12",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-35",
+        "patientName": "Olga",
+        "patientGender": "FEMALE",
+        "patientAge": 50,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-15",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-36",
+        "patientName": "Ethan",
+        "patientGender": "MALE",
+        "patientAge": 52,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "oxygen",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-17",
+        "departureDate": "2026-10-23",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-37",
+        "patientName": "Queenie",
+        "patientGender": "FEMALE",
+        "patientAge": 54,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-26",
+        "departureDate": "2026-10-31",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-38",
+        "patientName": "Hugo",
+        "patientGender": "MALE",
+        "patientAge": 55,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-03",
+        "departureDate": "2026-11-05",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-39",
+        "patientName": "Sofia",
+        "patientGender": "FEMALE",
+        "patientAge": 58,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "nitrogen",
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-07",
+        "departureDate": "2026-11-11",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-40",
+        "patientName": "Jorge",
+        "patientGender": "MALE",
+        "patientAge": 60,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "telemetry",
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-18",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-41",
+        "patientName": "Ursula",
+        "patientGender": "FEMALE",
+        "patientAge": 63,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-21",
+        "departureDate": "2026-10-26",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-42",
+        "patientName": "Liam",
+        "patientGender": "MALE",
+        "patientAge": 66,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "telemetry"
+        ],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-29",
+        "departureDate": "2026-10-31",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-43",
+        "patientName": "Noah",
+        "patientGender": "MALE",
+        "patientAge": 70,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-08",
+        "departureDate": "2026-11-11",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-44",
+        "patientName": "Delia",
+        "patientGender": "FEMALE",
+        "patientAge": 72,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "television",
+          "oxygen",
+          "nitrogen",
+          "telemetry"
+        ],
+        "patientPreferredEquipments": [],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-17",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-45",
+        "patientName": "Pablo",
+        "patientGender": "MALE",
+        "patientAge": 75,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-20",
+        "departureDate": "2026-10-22",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-46",
+        "patientName": "Elena",
+        "patientGender": "FEMALE",
+        "patientAge": 80,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-24",
+        "departureDate": "2026-10-28",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-47",
+        "patientName": "Ravi",
+        "patientGender": "MALE",
+        "patientAge": 88,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "telemetry",
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-30",
+        "departureDate": "2026-11-02",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-48",
+        "patientName": "Helga",
+        "patientGender": "FEMALE",
+        "patientAge": 92,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "television",
+          "oxygen",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-04",
+        "departureDate": "2026-11-10",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-49",
+        "patientName": "Theo",
+        "patientGender": "MALE",
+        "patientAge": 5,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-14",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-50",
+        "patientName": "Alice",
+        "patientGender": "FEMALE",
+        "patientAge": 12,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-16",
+        "departureDate": "2026-10-20",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-51",
+        "patientName": "Vince",
+        "patientGender": "MALE",
+        "patientAge": 19,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "telemetry",
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-22",
+        "departureDate": "2026-10-25",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-52",
+        "patientName": "Carol",
+        "patientGender": "FEMALE",
+        "patientAge": 25,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "television",
+          "oxygen",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-28",
+        "departureDate": "2026-11-03",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-53",
+        "patientName": "Eve",
+        "patientGender": "FEMALE",
+        "patientAge": 33,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-16",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-54",
+        "patientName": "Aiden",
+        "patientGender": "MALE",
+        "patientAge": 36,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-18",
+        "departureDate": "2026-10-21",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-55",
+        "patientName": "Grace",
+        "patientGender": "FEMALE",
+        "patientAge": 41,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-24",
+        "departureDate": "2026-10-30",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-56",
+        "patientName": "Carlos",
+        "patientGender": "MALE",
+        "patientAge": 44,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-11-02",
+        "departureDate": "2026-11-07",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-57",
+        "patientName": "Ivy",
+        "patientGender": "FEMALE",
+        "patientAge": 47,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-11-10",
+        "departureDate": "2026-11-12",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-58",
+        "patientName": "Elian",
+        "patientGender": "MALE",
+        "patientAge": 50,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-15",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-59",
+        "patientName": "Felix",
+        "patientGender": "MALE",
+        "patientAge": 52,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-17",
+        "departureDate": "2026-10-23",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-60",
+        "patientName": "Gustavo",
+        "patientGender": "MALE",
+        "patientAge": 54,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-26",
+        "departureDate": "2026-10-31",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-61",
+        "patientName": "Ian",
+        "patientGender": "MALE",
+        "patientAge": 55,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-11-03",
+        "departureDate": "2026-11-05",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-62",
+        "patientName": "Marcus",
+        "patientGender": "MALE",
+        "patientAge": 58,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-07",
+        "departureDate": "2026-11-11",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-63",
+        "patientName": "Bob",
+        "patientGender": "MALE",
+        "patientAge": 60,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-18",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-64",
+        "patientName": "David",
+        "patientGender": "MALE",
+        "patientAge": 63,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-21",
+        "departureDate": "2026-10-26",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-65",
+        "patientName": "Frank",
+        "patientGender": "MALE",
+        "patientAge": 66,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-29",
+        "departureDate": "2026-10-31",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-66",
+        "patientName": "Hank",
+        "patientGender": "MALE",
+        "patientAge": 68,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-02",
+        "departureDate": "2026-11-06",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-67",
+        "patientName": "Jack",
+        "patientGender": "MALE",
+        "patientAge": 70,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-11-08",
+        "departureDate": "2026-11-11",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-68",
+        "patientName": "Leo",
+        "patientGender": "MALE",
+        "patientAge": 72,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "oxygen",
+          "telemetry"
+        ],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-17",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-69",
+        "patientName": "Oscar",
+        "patientGender": "MALE",
+        "patientAge": 75,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-20",
+        "departureDate": "2026-10-22",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-70",
+        "patientName": "Quinn",
+        "patientGender": "MALE",
+        "patientAge": 80,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-24",
+        "departureDate": "2026-10-28",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-71",
+        "patientName": "Victor",
+        "patientGender": "MALE",
+        "patientAge": 92,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-11-04",
+        "departureDate": "2026-11-10",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-72",
+        "patientName": "Zack",
+        "patientGender": "MALE",
+        "patientAge": 5,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-14",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-73",
+        "patientName": "Aaron",
+        "patientGender": "MALE",
+        "patientAge": 12,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-16",
+        "departureDate": "2026-10-20",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-74",
+        "patientName": "Caleb",
+        "patientGender": "MALE",
+        "patientAge": 19,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "telemetry",
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-22",
+        "departureDate": "2026-10-25",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-75",
+        "patientName": "Ethan",
+        "patientGender": "MALE",
+        "patientAge": 25,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-28",
+        "departureDate": "2026-11-03",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-76",
+        "patientName": "Hugo",
+        "patientGender": "MALE",
+        "patientAge": 28,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "telemetry"
+        ],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-11-06",
+        "departureDate": "2026-11-11",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-77",
+        "patientName": "Karen",
+        "patientGender": "FEMALE",
+        "patientAge": 33,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-16",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-78",
+        "patientName": "Mona",
+        "patientGender": "FEMALE",
+        "patientAge": 36,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "nitrogen",
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-18",
+        "departureDate": "2026-10-21",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-79",
+        "patientName": "Nora",
+        "patientGender": "FEMALE",
+        "patientAge": 41,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-24",
+        "departureDate": "2026-10-30",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-80",
+        "patientName": "Priya",
+        "patientGender": "FEMALE",
+        "patientAge": 44,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-02",
+        "departureDate": "2026-11-07",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-81",
+        "patientName": "Rosa",
+        "patientGender": "FEMALE",
+        "patientAge": 47,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "television",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-10",
+        "departureDate": "2026-11-12",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-82",
+        "patientName": "Tina",
+        "patientGender": "FEMALE",
+        "patientAge": 50,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "nitrogen",
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-15",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-83",
+        "patientName": "Uma",
+        "patientGender": "FEMALE",
+        "patientAge": 52,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-17",
+        "departureDate": "2026-10-23",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-84",
+        "patientName": "Wendy",
+        "patientGender": "FEMALE",
+        "patientAge": 54,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-26",
+        "departureDate": "2026-10-31",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-85",
+        "patientName": "Xandra",
+        "patientGender": "FEMALE",
+        "patientAge": 55,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "television",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-03",
+        "departureDate": "2026-11-05",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-86",
+        "patientName": "Yara",
+        "patientGender": "FEMALE",
+        "patientAge": 58,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-11-07",
+        "departureDate": "2026-11-11",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-87",
+        "patientName": "Jorge",
+        "patientGender": "MALE",
+        "patientAge": 60,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "oxygen",
+          "telemetry"
+        ],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-18",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-88",
+        "patientName": "Bella",
+        "patientGender": "FEMALE",
+        "patientAge": 63,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "telemetry",
+          "nitrogen",
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-21",
+        "departureDate": "2026-10-26",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-89",
+        "patientName": "Liam",
+        "patientGender": "MALE",
+        "patientAge": 66,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-29",
+        "departureDate": "2026-10-31",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-90",
+        "patientName": "Dana",
+        "patientGender": "FEMALE",
+        "patientAge": 68,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-11-02",
+        "departureDate": "2026-11-06",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-91",
+        "patientName": "Noah",
+        "patientGender": "MALE",
+        "patientAge": 70,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "telemetry",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-11-08",
+        "departureDate": "2026-11-11",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-92",
+        "patientName": "Fiona",
+        "patientGender": "FEMALE",
+        "patientAge": 72,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "nitrogen",
+          "telemetry",
+          "television",
+          "oxygen"
+        ],
+        "patientPreferredEquipments": [],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-17",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-93",
+        "patientName": "Pablo",
+        "patientGender": "MALE",
+        "patientAge": 75,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-20",
+        "departureDate": "2026-10-22",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-94",
+        "patientName": "Gina",
+        "patientGender": "FEMALE",
+        "patientAge": 80,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-24",
+        "departureDate": "2026-10-28",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-95",
+        "patientName": "Ravi",
+        "patientGender": "MALE",
+        "patientAge": 88,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "oxygen",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-30",
+        "departureDate": "2026-11-02",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-96",
+        "patientName": "Iris",
+        "patientGender": "FEMALE",
+        "patientAge": 92,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "nitrogen",
+          "telemetry",
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-11-04",
+        "departureDate": "2026-11-10",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-97",
+        "patientName": "Theo",
+        "patientGender": "MALE",
+        "patientAge": 5,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-14",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-98",
+        "patientName": "Kira",
+        "patientGender": "FEMALE",
+        "patientAge": 12,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-16",
+        "departureDate": "2026-10-20",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-99",
+        "patientName": "Vince",
+        "patientGender": "MALE",
+        "patientAge": 19,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "oxygen",
+          "nitrogen"
+        ],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-22",
+        "departureDate": "2026-10-25",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-100",
+        "patientName": "Mira",
+        "patientGender": "FEMALE",
+        "patientAge": 25,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [
+          "nitrogen",
+          "telemetry",
+          "television"
+        ],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-28",
+        "departureDate": "2026-11-03",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-101",
+        "patientName": "Olga",
+        "patientGender": "FEMALE",
+        "patientAge": 33,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-16",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-102",
+        "patientName": "Queenie",
+        "patientGender": "FEMALE",
+        "patientAge": 36,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-18",
+        "departureDate": "2026-10-21",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-103",
+        "patientName": "Sofia",
+        "patientGender": "FEMALE",
+        "patientAge": 41,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-24",
+        "departureDate": "2026-10-30",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-104",
+        "patientName": "Ursula",
+        "patientGender": "FEMALE",
+        "patientAge": 44,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-11-02",
+        "departureDate": "2026-11-07",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-105",
+        "patientName": "Delia",
+        "patientGender": "FEMALE",
+        "patientAge": 50,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-10-12",
+        "departureDate": "2026-10-15",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-106",
+        "patientName": "Elena",
+        "patientGender": "FEMALE",
+        "patientAge": 52,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "nitrogen"
+        ],
+        "arrivalDate": "2026-10-17",
+        "departureDate": "2026-10-23",
+        "specialty": "Cardiology",
+        "pinned": false
+      },
+      {
+        "id": "stay-107",
+        "patientName": "Helga",
+        "patientGender": "FEMALE",
+        "patientAge": 54,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "telemetry"
+        ],
+        "arrivalDate": "2026-10-26",
+        "departureDate": "2026-10-31",
+        "specialty": "Neurology",
+        "pinned": false
+      },
+      {
+        "id": "stay-108",
+        "patientName": "Alice",
+        "patientGender": "FEMALE",
+        "patientAge": 55,
+        "patientPreferredMaximumRoomCapacity": 1,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "television"
+        ],
+        "arrivalDate": "2026-11-03",
+        "departureDate": "2026-11-05",
+        "specialty": "Oncology",
+        "pinned": false
+      },
+      {
+        "id": "stay-109",
+        "patientName": "Carol",
+        "patientGender": "FEMALE",
+        "patientAge": 58,
+        "patientPreferredMaximumRoomCapacity": 2,
+        "patientRequiredEquipments": [],
+        "patientPreferredEquipments": [
+          "oxygen"
+        ],
+        "arrivalDate": "2026-11-07",
+        "departureDate": "2026-11-11",
+        "specialty": "Cardiology",
+        "pinned": false
+      }
+    ]
+  }
+}

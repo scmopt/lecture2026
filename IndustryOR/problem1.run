@@ -1,0 +1,14 @@
+reset;
+model problem1.mod;
+data problem1.dat;
+
+option solver '/Users/mikiokubo/Documents/ampl/ampl.macos64/gurobi';
+solve;
+
+printf "\n========================================\n";
+printf "Optimal Objective Value: %g\n", TotalCost;
+printf "========================================\n";
+for {c in CHILDREN} {
+    printf "%-10s : %d (Cost: %g)\n", c, take[c], cost[c];
+}
+printf "========================================\n";

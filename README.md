@@ -1,7 +1,7 @@
 # lecture2026
 
 2026年度の講義資料・研究ノートおよび数理最適化・AIツール活用の教材リポジトリです。
-主に「\LaTeX 基礎講座」「主要AI開発エージェントのスラッシュコマンド比較」「Timefold と数理最適化ソルバー（AMPL / Gurobi）による配車配送計画問題（MDVRPTW）」「線形計画・組合せ最適化問題データセット」を収録しています。
+主に「\LaTeX 基礎講座」「主要AI開発エージェントのスラッシュコマンド比較」「Timefold と数理最適化ソルバー（AMPL / Gurobi）による配車配送計画問題（MDVRPTW）」「IndustryOR 意思決定問題の AMPL モデリング」「線形計画・組合せ最適化問題データセット」を収録しています。
 
 ---
 
@@ -13,7 +13,8 @@ lecture2026/
 ├── latex/          # AIツールのスラッシュコマンド比較（論文版・スライド版）
 ├── markdown/       # AIツールのスラッシュコマンド比較（レポート原本）
 ├── timefold/       # 配車配送計画問題（MDVRPTW）の Timefold vs AMPL/Gurobi 比較検証
-├── datasets/       # 数理最適化モデリング問題データセット（LP・MIP）
+├── IndustryOR/     # IndustryOR 意思決定問題の AMPL モデリングと解説レポート
+├── datasets/       # 数理最適化モデリング問題データセット（LP・MIP・IndustryOR）
 └── json_files/     # 組合せ最適化・スケジューリング問題の標準インスタンス群
 ```
 
@@ -66,9 +67,30 @@ Timefold Quickstarts の「複数デポ・時間枠付き車両ルーティン�
 
 ---
 
-### 4. 最適化モデリングデータセット (`datasets/`, `json_files/`)
+### 4. IndustryOR 意思決定問題の AMPL モデリング (`IndustryOR/`)
+実社会の意思決定問題を数理計画でモデル化する IndustryOR ベンチマークから、具体的な問題を AMPL で定式化しソルバーで求解・解説する教材群です。
 
-#### `datasets/`（数理計画モデリング教科書の問題群）
+| ファイル | 形式 | 内容 |
+|---|---|---|
+| `problem1.mod` | AMPL モデル | 問題1（旅行同伴児童選択問題）の 0-1 整数計画（BIP）定式化 |
+| `problem1.dat` | AMPL データ | 各候補児童の費用パラメータ |
+| `problem1.run` | AMPL 実行 | Gurobi ソルバーによる求解および結果表示スクリプト |
+| `problem1_explanation.tex` | LaTeX 論文 | 定式化手法・論理制約の線形化・求解結果の解説レポート |
+| `problem1_explanation.pdf` | PDF | コンパイル済み解説レポート（全6頁） |
+
+**特徴的なモデリング技法:**
+- 排他選択（At-Most-One）: $x_{\text{Harry}} + x_{\text{Fred}} \le 1$
+- 論理含意（Implication $A \implies B$）: $x_{\text{George}} \le x_{\text{Fred}}$, $x_{\text{George}} \le x_{\text{Hermione}}$
+- 求解結果: 最小費用 \$3,050（同伴者: Ginny, Ron, Fred）
+
+---
+
+### 5. 最適化モデリングデータセット (`datasets/`, `json_files/`)
+
+#### `datasets/`（数理計画モデリング教科書・ベンチマーク問題群）
+- **`IndustryOR.json`**: 実産業・ビジネス意思決定の数理最適化問題集（LP / IP / MIP / NLP 全101問）
+- **`MAMO_ComplexLP.json` / `MAMO_EasyLP.json`**: 数理モデリング自動化（MAMO）ベンチマーク問題データセット
+- **`NL4OPT_with_optimal_solution.json`**: 自然言語から線形計画問題への変換ベンチマーク（NL4Opt、最適解付き）
 - **`lectures_in_lp_modeling/`**: 線形計画モデリング講義の問題記述（生産計画、配合問題など）
 - **`model_building_in_mathematical_programming/`**: H.P. Williams 著の古典的最適化モデル群（Food Manufacture, Mining, Refinery 等）
 - **`introduction_to_linear_optimization/`**: D. Bertsimas 著の線形計画法標準問題群
@@ -86,24 +108,38 @@ Timefold Quickstarts の「複数デポ・時間枠付き車両ルーティン�
 ## ビルド・実行手順
 
 ### LaTeX 文書のコンパイル
-LaTeX 文書（論文・スライド）はすべて **LuaLaTeX** でコンパイルします（TeX Live 2020 以降推奨）。日本語フォントには原ノ味フォント（`haranoaji`）を使用しています。
+LaTeX 文書（論文・スライド・解説）はすべて **LuaLaTeX** でコンパイルします（TeX Live 2020 以降推奨）。日本語フォントには原ノ味フォント（`haranoaji`）を使用しています。
 
-#### 初学者向けスライド (`beamer/`) のコンパイル
+#### 初学者向けスライド (`beamer/`)
 ```bash
 cd beamer
 latexmk -lualatex latex_basics.tex
 ```
 
-#### スラッシュコマンド比較論文・スライド (`latex/`) のコンパイル
+#### スラッシュコマンド比較論文・スライド (`latex/`)
 ```bash
 cd latex
 latexmk -lualatex slash_commands_comparison.tex   # 論文
 latexmk -lualatex slash_commands_slides.tex       # スライド
 ```
 
+#### IndustryOR 解説レポート (`IndustryOR/`)
+```bash
+cd IndustryOR
+latexmk -lualatex problem1_explanation.tex
+```
+
 #### 中間ファイルのクリーンアップ
 ```bash
 latexmk -c
+```
+
+### AMPL の実行手順 (`IndustryOR/`)
+AMPL バイナリを指定してモデルを実行します。
+
+```bash
+cd IndustryOR
+/Users/mikiokubo/Documents/ampl/ampl.macos64/ampl problem1.run
 ```
 
 ### Python スクリプトの実行環境

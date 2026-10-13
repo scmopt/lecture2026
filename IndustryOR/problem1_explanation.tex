@@ -1,0 +1,258 @@
+% !TEX program = lualatex
+\documentclass[11pt,a4paper]{ltjsarticle}
+
+\usepackage{luatexja}
+\usepackage[haranoaji]{luatexja-preset}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\geometry{top=25mm,bottom=25mm,left=25mm,right=25mm}
+\usepackage{hyperref}
+
+\definecolor{codebg}{RGB}{248,249,250}
+\definecolor{codeframe}{RGB}{220,224,230}
+\definecolor{keywordblue}{RGB}{20,70,160}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{codeframe},
+  keywordstyle=\color{keywordblue}\bfseries,
+  breaklines=true,
+  tabsize=2,
+  showstringspaces=false
+}
+
+\title{\textbf{IndustryOR 問題1：旅行参加児童選択問題の\\AMPL による数理モデリングと最適化}}
+\author{lecture2026 演習資料}
+\date{\today}
+
+\providecommand{\alert}[1]{\textbf{\textcolor{red}{#1}}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+本稿では、IndustryOR ベンチマークに含まれる「張家の旅行参加児童選択問題（Problem 1: Children Vacation Selection Problem）」を対象とし、0-1整数計画問題（Binary Integer Programming: BIP）としての定式化、数理モデリング言語 AMPL による実装、および Gurobi ソルバーを用いた最適化結果を詳細に解説する。特に、条件付き選択（論理含意・排他関係）を線形不等式に変換するモデリング技法に焦点を当て、得られた最適解（最小費用 \$3,050）の妥当性を考察する。
+\end{abstract}
+
+\section{問題の概要}
+
+\subsection{問題の背景と設定}
+張（Zhang）家には6人の子ども（Harry, Hermione, Ron, Fred, George, Ginny）がおり、今度の旅行にどの子どもを連れて行くかを計画している。各子どもを連れて行くには個別の費用がかかる。夫妻は総費用を最小化するような同伴者の組み合わせを求めている。
+
+各子どもの同伴費用は以下の表\ref{tab:children_costs}の通りである。
+
+\begin{table}[htbp]
+  \centering
+  \caption{各子どもの同伴費用}
+  \label{tab:children_costs}
+  \begin{tabular}{lrr}
+    \toprule
+    子ども ($i$) & 記号表記 & 費用 $c_i$ [\$] \\
+    \midrule
+    Harry & $\text{Ha}$ & 1,200 \\
+    Hermione & $\text{He}$ & 1,650 \\
+    Ron & $\text{Ro}$ & 750 \\
+    Fred & $\text{Fr}$ & 800 \\
+    George & $\text{Ge}$ & 800 \\
+    Ginny & $\text{Gi}$ & 1,500 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{考慮すべき制約条件}
+夫妻は以下の諸条件を満たす必要がある：
+\begin{enumerate}
+  \item \textbf{最大人数制約}: 同伴できる子どもの人数は最大4人までである。
+  \item \textbf{最小人数制約}: 費用はかかるものの、夫妻は少なくとも3人の子どもを連れて行くことを決定している。
+  \item \textbf{必須参加条件}: Ginny は最年少であるため、張家は必ず彼女を連れて行く。
+  \item \textbf{不仲条件 1}: Harry を連れて行く場合、Harry は Fred と仲が悪いため、Fred は連れて行かない。
+  \item \textbf{不仲条件 2}: Harry を連れて行く場合、Harry は George とも仲が悪いため、George は連れて行かない。
+  \item \textbf{連動条件 1}: George を連れて行く場合、必ず Fred も連れて行かなければならない。
+  \item \textbf{連動条件 2}: George を連れて行く場合、必ず Hermione も連れて行かなければならない。
+\end{enumerate}
+
+\section{数理最適化モデルの定式化}
+
+本問題は、各子どもを「連れて行く（1）」か「連れて行かない（0）」かを決定する\textbf{0-1整数計画問題（Binary IP）}として定式化できる。
+
+\subsection{集合とパラメータ}
+\begin{itemize}
+  \item 集合 $C = \{\text{Harry}, \text{Hermione}, \text{Ron}, \text{Fred}, \text{George}, \text{Ginny}\}$：子どもの集合
+  \item パラメータ $c_i \ge 0$ ($i \in C$)：子ども $i$ を連れて行く費用
+\end{itemize}
+
+\subsection{決定変数}
+各子ども $i \in C$ について、以下の二値決定変数（0-1変数）を定義する：
+\begin{equation}
+  x_i \in \{0, 1\} \quad (\forall i \in C)
+\end{equation}
+ここで、$x_i = 1$ は子ども $i$ を旅行に同伴することを表し、$x_i = 0$ は同伴しないことを表す。
+
+\subsection{目的関数}
+旅行に連れて行く子どもの総費用を最小化する：
+\begin{equation}
+  \min \quad Z = \sum_{i \in C} c_i x_i
+\end{equation}
+具体的には以下の線形和となる：
+\[
+  Z = 1200 x_{\text{Ha}} + 1650 x_{\text{He}} + 750 x_{\text{Ro}} + 800 x_{\text{Fr}} + 800 x_{\text{Ge}} + 1500 x_{\text{Gi}}
+\]
+
+\subsection{制約条件とその線形不等式表現}
+
+論理条件を MIP（混合整数計画）で表現する標準的な手法に基づき、制約を定式化する。
+
+\subsubsection{人数制約（最大・最小）}
+同伴人数は3人以上かつ4人以下である：
+\begin{align}
+  \sum_{i \in C} x_i &\le 4 \quad \text{（最大4人）} \\
+  \sum_{i \in C} x_i &\ge 3 \quad \text{（最小3人）}
+\end{align}
+
+\subsubsection{必須参加条件}
+Ginny は必ず同伴する：
+\begin{equation}
+  x_{\text{Gi}} = 1
+\end{equation}
+
+\subsubsection{排他・不仲条件（At Most One）}
+「Harry を連れて行くならば Fred は連れて行かない（$x_{\text{Ha}} = 1 \implies x_{\text{Fr}} = 0$）」、および
+「Harry を連れて行くならば George は連れて行かない（$x_{\text{Ha}} = 1 \implies x_{\text{Ge}} = 0$）」は、
+2人のうち同時に選べるのは高々1人であることを意味するため、次の不等式となる：
+\begin{align}
+  x_{\text{Ha}} + x_{\text{Fr}} &\le 1 \\
+  x_{\text{Ha}} + x_{\text{Ge}} &\le 1
+\end{align}
+
+\subsubsection{論理含意条件（Implication: $A \implies B$）}
+「George を連れて行くならば Fred も連れて行く（$x_{\text{Ge}} = 1 \implies x_{\text{Fr}} = 1$）」は、
+$x_{\text{Ge}} \le x_{\text{Fr}}$ と表現される。同様に「George を連れて行くならば Hermione も連れて行く（$x_{\text{Ge}} = 1 \implies x_{\text{He}} = 1$）」は
+$x_{\text{Ge}} \le x_{\text{He}}$ と表される：
+\begin{align}
+  x_{\text{Ge}} - x_{\text{Fr}} &\le 0 \\
+  x_{\text{Ge}} - x_{\text{He}} &\le 0
+\end{align}
+
+\section{AMPL による実装}
+
+AMPL（A Modeling Language for Mathematical Programming）では、モデルの論理構造（\texttt{.mod}）、数値データ（\texttt{.dat}）、および解法コマンド（\texttt{.run}）を綺麗に分離して記述できる。
+
+\subsection{モデルファイル (\texttt{problem1.mod})}
+\begin{lstlisting}
+# Problem 1: Children Vacation Selection (IP)
+set CHILDREN;
+
+param cost{CHILDREN} >= 0;
+
+var take{CHILDREN} binary;
+
+minimize TotalCost:
+    sum {c in CHILDREN} cost[c] * take[c];
+
+subject to MaxChildren:
+    sum {c in CHILDREN} take[c] <= 4;
+
+subject to MinChildren:
+    sum {c in CHILDREN} take[c] >= 3;
+
+subject to MustTakeGinny:
+    take["Ginny"] = 1;
+
+subject to ConflictHarryFred:
+    take["Harry"] + take["Fred"] <= 1;
+
+subject to ConflictHarryGeorge:
+    take["Harry"] + take["George"] <= 1;
+
+subject to GeorgeRequiresFred:
+    take["George"] <= take["Fred"];
+
+subject to GeorgeRequiresHermione:
+    take["George"] <= take["Hermione"];
+\end{lstlisting}
+
+\subsection{データファイル (\texttt{problem1.dat})}
+\begin{lstlisting}
+set CHILDREN := Harry Hermione Ron Fred George Ginny;
+
+param cost :=
+    Harry     1200
+    Hermione  1650
+    Ron        750
+    Fred       800
+    George     800
+    Ginny     1500;
+\end{lstlisting}
+
+\subsection{実行スクリプト (\texttt{problem1.run})}
+\begin{lstlisting}
+reset;
+model problem1.mod;
+data problem1.dat;
+
+option solver '/Users/mikiokubo/Documents/ampl/ampl.macos64/gurobi';
+solve;
+
+display TotalCost;
+display take;
+\end{lstlisting}
+
+\section{最適化実行と結果}
+
+\subsection{ソルバー実行ログ}
+AMPL 経由で Gurobi 12.0.1 を呼び出して求解した結果は以下の通りである。
+\begin{lstlisting}
+Gurobi 12.0.1: optimal solution; objective 3050
+0 simplex iterations
+
+========================================
+Optimal Objective Value: 3050
+========================================
+Harry      : 0 (Cost: 1200)
+Hermione   : 0 (Cost: 1650)
+Ron        : 1 (Cost: 750)
+Fred       : 1 (Cost: 800)
+George     : 0 (Cost: 800)
+Ginny      : 1 (Cost: 1500)
+========================================
+\end{lstlisting}
+
+\subsection{最適解の構成}
+最適化の結果、選択された子どもおよび費用は以下の通りである：
+\begin{itemize}
+  \item \textbf{Ginny}: 選択（\$1,500）--- 必須参加
+  \item \textbf{Ron}: 選択（\$750）--- 費用最小候補
+  \item \textbf{Fred}: 選択（\$800）--- 次点費用候補
+  \item \textbf{Harry, Hermione, George}: 不参加（各 \$0）
+\end{itemize}
+\textbf{最小総費用}: \alert{\textbf{\$3,050}}
+
+\section{制約充足の検証と考察}
+
+得られた最適解がすべての制約条件を満たしているか確認する。
+\begin{enumerate}
+  \item \textbf{人数}: 同伴者数は Ginny, Ron, Fred の計3人であり、$3 \le 3 \le 4$ を満たす。
+  \item \textbf{Ginny}: $x_{\text{Gi}} = 1$ であり、条件を満たす。
+  \item \textbf{Harry と Fred/George の排他}: $x_{\text{Ha}} = 0$ であるため、Fred や George との衝突は発生しない。
+  \item \textbf{George の連動条件}: $x_{\text{Ge}} = 0$ であるため、Fred や Hermione を強制的に追加する必要はない。
+\end{enumerate}
+
+\subsection{George を選ばなかった理由の数理的背景}
+George の費用（\$800）は Fred（\$800）と同じであり、Ron（\$750）に次ぐ低廉な水準にある。しかし、もし George を同伴させた場合（$x_{\text{Ge}} = 1$）：
+\begin{itemize}
+  \item 連動条件により Fred（\$800）と Hermione（\$1,650）が強制的に選択される（$x_{\text{Fr}} = 1, x_{\text{He}} = 1$）。
+  \item 必須の Ginny（\$1,500）と合わせると、この時点ですでに4人となり、費用は $1500 + 800 + 800 + 1650 = \$4,750$ に達する。
+\end{itemize}
+したがって、連動制約が課されている George を選ばず、単独で選べる Fred と最安の Ron を選ぶことで、最低人数の3人にとどめ、費用を \$3,050 に抑える解が厳密に最適となる。
+
+\section{まとめ}
+本問題は、論理的な前提条件（If-Then）や排他選択（At-Most-One）を含む典型的な意思決定問題であり、0-1整数計画問題として自然に表現できる。AMPL を用いることで簡潔にモデルを構築し、最新の数理最適化ソルバー（Gurobi）によって瞬時に大域的最適解（\$3,050）を導出できることが確認された。
+
+\end{document}

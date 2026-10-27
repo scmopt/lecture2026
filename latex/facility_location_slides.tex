@@ -1,0 +1,362 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usetheme[progressbar=frametitle,numbering=fraction]{metropolis}
+\usepackage{luatexja}
+\usepackage[haranoaji]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% カラーパレット
+\definecolor{primary}{RGB}{33, 50, 75}
+\definecolor{accent}{RGB}{200, 70, 48}
+\definecolor{codebg}{RGB}{246, 248, 250}
+\definecolor{codeframe}{RGB}{218, 222, 229}
+\definecolor{codekw}{RGB}{24, 76, 156}
+\definecolor{codestr}{RGB}{3, 106, 7}
+\definecolor{codecom}{RGB}{110, 119, 129}
+
+\setbeamercolor{primary}{fg=primary}
+\setbeamercolor{alerted text}{fg=accent}
+
+\lstset{
+  basicstyle=\fontsize{7.5pt}{9.5pt}\selectfont\ttfamily,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{codeframe},
+  keywordstyle=\color{codekw}\bfseries,
+  stringstyle=\color{codestr},
+  commentstyle=\color{codecom}\itshape,
+  breaklines=true,
+  tabsize=2,
+  showstringspaces=false,
+  aboveskip=2pt,
+  belowskip=2pt
+}
+
+\title{\textbf{容量制約付き施設配置問題 (CFLP)}}
+\subtitle{AMPL / amplpy による厳密解法と Timefold 解の比較・検証}
+\author{数理最適化演習}
+\date{\today}
+\institute{lecture2026}
+
+\begin{document}
+
+% 1. タイトル
+\maketitle
+
+% 2. 目次
+\begin{frame}{アジェンダ}
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{問題の概要と設定}
+
+\begin{frame}{施設配置問題（Timefold quickstarts）の概要}
+  \begin{itemize}\small
+    \item \textbf{問題背景}:
+      \begin{itemize}\footnotesize
+        \item 複数の施設候補地から最適な場所を選定（開設）し、顧客の需要を充足させる代表的組合せ最適化問題（\alert{\textbf{Capacitated Facility Location Problem: CFLP}}）。
+      \end{itemize}
+    \item \textbf{データセット（ロンドン: 施設 30・顧客 60）}:
+      \begin{itemize}\footnotesize
+        \item 施設候補数: 30箇所（各施設に固有の開設費用 $f_j$、容量 $C_j = 150$）
+        \item 顧客数: 60箇所（各顧客の需要 $d_i = 15$、合計需要 = 900）
+      \end{itemize}
+    \item \textbf{最適化のトレードオフ}:
+      \begin{itemize}\footnotesize
+        \item \textbf{開設費用 (Setup Cost)}: 開設する施設数を絞るほど安くなる。
+        \item \textbf{輸送・移動距離 (Distance)}: 施設を分散配置するほど顧客への距離が短くなる。
+      \end{itemize}
+    \item \textbf{距離計算式 (Timefold 準拠)}:
+      \begin{equation*}
+        dist(i, j) = \left\lceil \sqrt{(\text{lat}_i - \text{lat}_j)^2 + (\text{lon}_i - \text{lon}_j)^2} \times 111{,}000 \right\rceil \quad \text{[m]}
+      \end{equation*}
+  \end{itemize}
+\end{frame}
+
+\section{記号と数理定式化}
+
+\begin{frame}{記号の定義（Notation）}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{集合 (Sets)}
+      \begin{itemize}\small
+        \item $I = \{1, \dots, |I|\}$: 顧客集合 ($|I|=60$)
+        \item $J = \{1, \dots, |J|\}$: 施設候補集合 ($|J|=30$)
+      \end{itemize}
+      \vspace{0.4em}
+      \textbf{重み係数 (Weights)}
+      \begin{itemize}\small
+        \item $w_{\text{setup}} = 2$: 施設開設費用の重み
+        \item $w_{\text{dist}} = 6$: 移動距離の重み
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{パラメータ (Parameters)}
+      \begin{itemize}\small
+        \item $d_i$: 顧客 $i$ の需要量 ($=15$)
+        \item $C_j$: 施設 $j$ の受入容量 ($=150$)
+        \item $f_j$: 施設 $j$ の固定開設費用
+        \item $dist_{ij}$: 顧客 $i$ と施設 $j$ 間の距離 (m)
+      \end{itemize}
+      \vspace{0.4em}
+      \textbf{決定変数 (Decision Variables)}
+      \begin{itemize}\small
+        \item $y_j \in \{0, 1\}$: 施設 $j$ を開設するとき 1, 他は 0
+        \item $x_{ij} \in \{0, 1\}$: 顧客 $i$ を施設 $j$ に割当てる時 1, 他は 0
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{数理定式化（0-1整数線形計画問題）}
+  \vspace{-0.3em}
+  {\small\textbf{目的関数：加重総ペナルティの最小化}}
+  \vspace{-0.3em}
+  \begin{equation*}
+    \min \quad \sum_{j \in J} w_{\text{setup}} f_j y_j + \sum_{i \in I}\sum_{j \in J} w_{\text{dist}} dist_{ij} x_{ij}
+  \end{equation*}
+  \vspace{-0.5em}
+  {\small\textbf{制約条件}}
+  \vspace{-0.5em}
+  \begin{align}
+    \sum_{j \in J} x_{ij} &= 1 & \forall i \in I & \quad \text{(単一割当制約)} \label{eq:assign} \\
+    \sum_{i \in I} d_i x_{ij} &\le C_j y_j & \forall j \in J & \quad \text{(施設容量制約)} \label{eq:cap} \\
+    x_{ij} &\le y_j & \forall i \in I, \forall j \in J & \quad \text{(開設連動制約 / 強定式化)} \label{eq:link} \\
+    y_j &\in \{0, 1\}, \quad x_{ij} \in \{0, 1\} & \forall i \in I, \forall j \in J & \quad \text{(0-1整数変数)} \nonumber
+  \end{align}
+\end{frame}
+
+\begin{frame}{各制約の数理的・実務的意味}
+  \begin{itemize}\small
+    \item \textbf{単一割当制約 \eqref{eq:assign}}:
+      \begin{itemize}\footnotesize
+        \item 各顧客 $i$ の需要はちょうど1つの施設から供給される（分割供給を禁止）。
+      \end{itemize}
+    \item \textbf{施設容量制約 \eqref{eq:cap}}:
+      \begin{itemize}\footnotesize
+        \item 開設された施設 ($y_j = 1$) の需要合計は最大容量 $C_j$ 以下。
+        \item 未開設の施設 ($y_j = 0$) には需要を一切割り当てられない。
+      \end{itemize}
+    \item \textbf{開設連動制約 (Linking Constraint) \eqref{eq:link}}:
+      \begin{itemize}\footnotesize
+        \item 理論的には制約 \eqref{eq:cap} から導出可能だが、加えることで\alert{\textbf{LP緩和（線形緩和）の実行可能領域を大幅に引き締める}}（Strong Formulation）。
+        \item 分枝限定法（Branch and Bound）における下界値が格段に良くなり、探索ノード数を大幅に削減。
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{AMPL コードの解説}
+
+\begin{frame}[fragile]{AMPL モデル定義（Model Formulation）}
+\begin{lstlisting}[language=bash]
+set CUSTOMERS;   # 顧客集合 I
+set FACILITIES;  # 施設候補集合 J
+
+param demand{CUSTOMERS};          # 需要量 d_i
+param capacity{FACILITIES};       # 容量 C_j
+param setup_cost{FACILITIES};     # 開設費用 f_j
+param dist{CUSTOMERS, FACILITIES};# 距離 dist_ij
+param w_setup;                    # 開設重み (2)
+param w_dist;                     # 距離重み (6)
+
+var y{FACILITIES} binary;            # 施設開設決定変数 y_j
+var x{CUSTOMERS, FACILITIES} binary; # 顧客割当決定変数 x_ij
+
+# 目的関数：加重総コスト最小化
+minimize TotalCost:
+    sum{j in FACILITIES} w_setup * setup_cost[j] * y[j]
+    + sum{i in CUSTOMERS, j in FACILITIES} w_dist * dist[i, j] * x[i, j];
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{AMPL 制約条件定義（Constraints）}
+\begin{lstlisting}[language=bash]
+# 1. 単一割当制約: 各顧客は必ず1つの施設に割り当て
+s.t. AssignOnce{i in CUSTOMERS}:
+    sum{j in FACILITIES} x[i, j] = 1;
+
+# 2. 容量制約: 各施設に割り当てられた需要合計 <= 容量 * y[j]
+s.t. Capacity{j in FACILITIES}:
+    sum{i in CUSTOMERS} demand[i] * x[i, j] <= capacity[j] * y[j];
+
+# 3. 強定式化連動制約: y[j] が 0 ならば x[i, j] も 0
+s.t. Linking{i in CUSTOMERS, j in FACILITIES}:
+    x[i, j] <= y[j];
+\end{lstlisting}
+  \begin{itemize}\footnotesize
+    \item 数理モデルの記号表記と AMPL の構文が \alert{\textbf{1対1で直観的に対応}} している。
+    \item 添字範囲（`{i in CUSTOMERS}` 等）で制約を宣言的に記述できるため、バグが混入しにくい。
+  \end{itemize}
+\end{frame}
+
+\section{Python (amplpy) 実装の解説}
+
+\begin{frame}[fragile]{Python 実装 (1)：データ読込と距離行列生成}
+\begin{lstlisting}[language=Python]
+import json, math
+from amplpy import AMPL
+
+def calculate_distance(loc1, loc2):
+    # Timefold quickstart の距離計算式（メートル単位）
+    dlat, dlon = loc1[0] - loc2[0], loc1[1] - loc2[1]
+    return int(math.ceil(math.sqrt(dlat**2 + dlon**2) * 111000))
+
+# JSONファイルから施設・顧客・重みパラメータを抽出
+with open("ロンドン（施設 30・顧客 60）.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+problem = data.get("problem", data)
+facilities, consumers = problem["facilities"], problem["consumers"]
+
+# 距離行列の事前計算 (60 x 30 = 1,800 ペア)
+dist_matrix = {
+    (c["id"], f["id"]): calculate_distance(c["location"], f["location"])
+    for c in consumers for f in facilities
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Python 実装 (2)：AMPL へのデータ投入と求解}
+\begin{lstlisting}[language=Python]
+ampl = AMPL()
+ampl.eval("... (先ほどのAMPLモデル文字列) ...")
+
+# 1. 集合データの投入
+ampl.set["CUSTOMERS"] = [c["id"] for c in consumers]
+ampl.set["FACILITIES"] = [f["id"] for f in facilities]
+
+# 2. パラメータデータの投入（辞書形式で直接注入可能）
+ampl.param["w_setup"] = 2
+ampl.param["w_dist"] = 6
+ampl.param["demand"] = {c["id"]: c["demand"] for c in consumers}
+ampl.param["capacity"] = {f["id"]: f["capacity"] for f in facilities}
+ampl.param["setup_cost"] = {f["id"]: f["setupCost"] for f in facilities}
+ampl.param["dist"] = dist_matrix  # タプルキー (i, j) の辞書
+
+# 3. ソルバーに HiGHS を指定して求解実行
+ampl.option["solver"] = "highs"
+ampl.solve()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Python 実装 (3)：結果の抽出と集計}
+\begin{lstlisting}[language=Python]
+# 目的関数値（加重コスト）の取得
+obj_val = ampl.get_objective("TotalCost").value()
+ampl_soft_score = -int(round(obj_val))
+
+# 開設された施設（y_j > 0.5 となる施設ID）を取得
+y_sol = ampl.get_variable("y").get_values().to_dict()
+ampl_open_facs = [j for j, val in y_sol.items() if val > 0.5]
+
+# 顧客の割当先施設（x_ij > 0.5 となるペア）を取得
+x_sol = ampl.get_variable("x").get_values().to_dict()
+ampl_assignment = {i: j for (i, j), val in x_sol.items() if val > 0.5}
+
+# 施設開設コスト合計と実移動距離合計を算出
+total_setup = sum(setup_cost[j] for j in ampl_open_facs)
+total_dist = sum(dist_matrix[(i, ampl_assignment[i])] for i in c_ids)
+\end{lstlisting}
+\end{frame}
+
+\section{最適化結果と Timefold 解の比較}
+
+\begin{frame}{最適化結果の比較サマリー}
+  \begin{table}\footnotesize
+    \centering
+    \setlength{\tabcolsep}{6pt}
+    \begin{tabular}{lrrr}
+      \toprule
+      \textbf{指標} & \textbf{JSON (Timefold)} & \textbf{AMPL (最適解)} & \textbf{改善効果} \\
+      \midrule
+      求解ステータス & メタヒューリスティクス & \alert{\textbf{大域的最適解 (Global)}} & 最適性保証 \\
+      Soft Score & $-1{,}510{,}342$ & $\mathbf{-1{,}467{,}636}$ & \alert{\textbf{+42,706 改善}} \\
+      総ペナルティ（目的関数） & $1{,}510{,}342$ & $\mathbf{1{,}467{,}636}$ & \alert{\textbf{2.83\% 削減}} \\
+      \midrule
+      開設施設数 & 7 施設 & 7 施設 & 同数 \\
+      施設開設コスト合計 & 313,178 & \textbf{311,028} & \textbf{2,150 削減} \\
+      顧客移動距離合計 (m) & 147,331 & \textbf{140,930} & \textbf{6,401 m 短縮} \\
+      \midrule
+      開設コスト寄与 ($w=2$) & 626,356 & \textbf{622,056} & $-4,300$ \\
+      距離コスト寄与 ($w=6$) & 883,986 & \textbf{845,580} & $-38,406$ \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  \vspace{-0.6em}
+  \scriptsize
+  ※ 開設施設数はどちらも 7 施設ですが、AMPL 最適解は開設費用と移動距離の\alert{\textbf{両方を同時に削減}}しています。
+\end{frame}
+
+\begin{frame}{開設施設と顧客割当の差異分析}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{開設施設の見直し}
+      \begin{itemize}\footnotesize
+        \item \textbf{共通開設 (5施設)}: \\
+          \{10, 11, 15, 22, 25\}
+        \item \textbf{Timefold のみ開設 (閉鎖)}: \\
+          \alert{\textbf{\{13, 26\}}} (開設費: 46,095 / 47,846)
+        \item \textbf{AMPL 最適解で新設}: \\
+          \alert{\textbf{\{19, 24\}}} (開設費: 48,631 / 43,160)
+      \end{itemize}
+      \vspace{0.5em}
+      \textbf{顧客割当の変更}
+      \begin{itemize}\footnotesize
+        \item 全60顧客中 \alert{\textbf{18顧客 (30\%)}} の割当先施設が変更。
+        \item より近接した施設への最適再配分が実現。
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{施設需要の充足量（上限容量 150）}
+      \begin{table}\tiny
+        \centering
+        \begin{tabular}{crrr}
+          \toprule
+          施設ID & 開設費用 & JSON需要 & AMPL需要 \\
+          \midrule
+          10 & 42,682 & 90 & 105 \\
+          11 & 46,001 & 135 & 135 \\
+          13 & 46,095 & 150 & \alert{\textbf{0 (閉鎖)}} \\
+          15 & 43,421 & 135 & \textbf{150 (満床)} \\
+          19 & 48,631 & 0 & \alert{\textbf{120 (新設)}} \\
+          22 & 33,084 & 135 & \textbf{150 (満床)} \\
+          24 & 43,160 & 0 & \alert{\textbf{90 (新設)}} \\
+          25 & 54,049 & 150 & \textbf{150 (満床)} \\
+          26 & 47,846 & 105 & \alert{\textbf{0 (閉鎖)}} \\
+          \bottomrule
+        \end{tabular}
+      \end{table}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{まとめ}
+
+\begin{frame}{手法の比較とまとめ}
+  \begin{itemize}\small
+    \item \textbf{Timefold (局所探索・メタヒューリスティクス)}:
+      \begin{itemize}\footnotesize
+        \item 複雑なビジネスルールや動的変更に柔軟に対応できる。
+        \item 本問題でも大域的最適解からわずか約 2.8\% 差の実用上良好な解を瞬時に探索。
+        \item ただし、解の「真の最適性」は保証されない。
+      \end{itemize}
+    \item \textbf{AMPL + HiGHS (0-1整数線形計画法 / 厳密解法)}:
+      \begin{itemize}\footnotesize
+        \item 目的関数・制約条件を明示的に定式化することで、\alert{\textbf{厳密な大域的最適解}}を算出。
+        \item 強定式化（Linking Constraint）により、HiGHS でわずか 1 分枝ノード（探索瞬時）で最適解を発見。
+        \item 開設費用を抑えつつ距離を 6.4 km 短縮し、42,706 ポイントのスコア改善を達成。
+      \end{itemize}
+    \item \textbf{結論}:
+      \begin{itemize}\footnotesize
+        \item 実務では、厳密解法（AMPL）でベースラインや大域的最適解を算定し、ヒューリスティクスの評価・改善指標とするアプローチが極めて有効である。
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\end{document}

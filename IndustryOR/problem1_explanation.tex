@@ -204,6 +204,49 @@ display TotalCost;
 display take;
 \end{lstlisting}
 
+\subsection{Python API (\texttt{amplpy}) による統合実装}
+Python から直接モデル定義・データ設定・求解・結果集計を一元管理する場合、\texttt{amplpy} を用いて以下のように記述できる。
+
+\begin{lstlisting}
+from amplpy import AMPL, modules
+
+modules.load()
+ampl = AMPL()
+ampl.set_option("solver", "highs")
+
+ampl.eval("""
+set CHILDREN;
+param cost{CHILDREN} >= 0;
+var take{CHILDREN} binary;
+
+minimize TotalCost:
+    sum {c in CHILDREN} cost[c] * take[c];
+
+subject to MinChildren:
+    sum {c in CHILDREN} take[c] >= 3;
+subject to MaxChildren:
+    sum {c in CHILDREN} take[c] <= 4;
+subject to MustTakeGinny:
+    take["Ginny"] = 1;
+subject to ConflictHarryFred:
+    take["Harry"] + take["Fred"] <= 1;
+subject to ConflictHarryGeorge:
+    take["Harry"] + take["George"] <= 1;
+subject to GeorgeRequiresFred:
+    take["George"] <= take["Fred"];
+subject to GeorgeRequiresHermione:
+    take["George"] <= take["Hermione"];
+""")
+
+children = ["Harry", "Hermione", "Ron", "Fred", "George", "Ginny"]
+costs = {"Harry": 1200, "Hermione": 1650, "Ron": 750, "Fred": 800, "George": 800, "Ginny": 1500}
+
+ampl.set["CHILDREN"] = children
+ampl.param["cost"] = costs
+ampl.solve()
+\end{lstlisting}
+
+
 \section{最適化実行と結果}
 
 \subsection{ソルバー実行ログ}

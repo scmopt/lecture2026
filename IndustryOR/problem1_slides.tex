@@ -1,0 +1,270 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usetheme[progressbar=frametitle,numbering=fraction]{metropolis}
+\usepackage{luatexja}
+\usepackage[haranoaji]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% カラーパレット設定
+\definecolor{primary}{RGB}{33, 50, 75}
+\definecolor{accent}{RGB}{200, 70, 48}
+\definecolor{codebg}{RGB}{246, 248, 250}
+\definecolor{codeframe}{RGB}{218, 222, 229}
+\definecolor{codecmd}{RGB}{24, 76, 156}
+
+\setbeamercolor{primary}{fg=primary}
+\setbeamercolor{alerted text}{fg=accent}
+
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{codeframe},
+  keywordstyle=\color{codecmd}\bfseries,
+  breaklines=true,
+  tabsize=2,
+  showstringspaces=false,
+  aboveskip=2pt,
+  belowskip=2pt
+}
+
+\title{\textbf{IndustryOR 問題1：旅行参加児童選択}}
+\subtitle{0-1整数計画法による定式化と AMPL / amplpy による最適化}
+\author{lecture2026 演習}
+\date{\today}
+\institute{数理最適化モデリング}
+
+\begin{document}
+
+% 1. タイトル
+\maketitle
+
+% 2. 目次
+\begin{frame}{アジェンダ}
+  \tableofcontents
+\end{frame}
+
+\section{問題の概要}
+
+% 3. 問題の背景と設定
+\begin{frame}{問題設定：張（Zhang）家の旅行計画}
+  \begin{itemize}\small
+    \item \textbf{状況}: 張家には 6 人の子どもがおり、家族旅行に連れて行く組み合わせを決定する。
+    \item \textbf{目的}: 条件を満たしつつ、同伴にかかる\alert{\textbf{総費用を最小化}}する。
+  \end{itemize}
+  \vspace{-0.2cm}
+
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{各子どもの同伴費用}
+        \centering
+        \footnotesize
+        \begin{tabular}{llr}
+          \toprule
+          子ども & 記号 & 費用 \\
+          \midrule
+          Harry & $\text{Ha}$ & \$1,200 \\
+          Hermione & $\text{He}$ & \$1,650 \\
+          Ron & $\text{Ro}$ & \$750 \\
+          Fred & $\text{Fr}$ & \$800 \\
+          George & $\text{Ge}$ & \$800 \\
+          Ginny & $\text{Gi}$ & \$1,500 \\
+          \bottomrule
+        \end{tabular}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{主な論理制約}
+        \begin{itemize}\footnotesize
+          \item 連れて行けるのは\textbf{最大4人}。
+          \item 少なくとも\textbf{3人}は連れて行く。
+          \item 末っ子の \textbf{Ginny は必ず同伴}。
+          \item Harry を選ぶなら \textbf{Fred, George は不可}。
+          \item George を選ぶなら \textbf{Fred, Hermione も必須}。
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{数理モデルの定式化}
+
+% 4. 変数・目的関数
+\begin{frame}{数理モデリング (1)：決定変数と目的関数}
+  \begin{block}{決定変数 (0-1 バイナリ変数)}
+    各子ども $i \in C = \{\text{Ha}, \text{He}, \text{Ro}, \text{Fr}, \text{Ge}, \text{Gi}\}$ に対し、
+    \[
+      x_i \in \{0, 1\} \quad (x_i = 1: \text{連れて行く},\; x_i = 0: \text{連れて行かない})
+    \]
+  \end{block}
+
+  \begin{block}{目的関数 (総費用の最小化)}
+    各子どもの費用を $c_i$ とすると、
+    \[
+      \min \sum_{i \in C} c_i x_i = 1200x_{\text{Ha}} + 1650x_{\text{He}} + 750x_{\text{Ro}} + 800x_{\text{Fr}} + 800x_{\text{Ge}} + 1500x_{\text{Gi}}
+    \]
+  \end{block}
+\end{frame}
+
+% 5. 制約条件
+\begin{frame}{数理モデリング (2)：論理条件の線形制約化}
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabularx}{\textwidth}{lXl}
+      \toprule
+      制約ルール & 日本語の意味 & 線形不等式 \\
+      \midrule
+      \textbf{人数制限} & 3人以上 4人以下 & $3 \le \sum_{i \in C} x_i \le 4$ \\
+      \midrule
+      \textbf{ジニー必須} & 末っ子は確定参加 & $x_{\text{Gi}} = 1$ \\
+      \midrule
+      \textbf{ハリーの不仲} & Harry $\implies$ NOT Fred & $x_{\text{Ha}} + x_{\text{Fr}} \le 1$ \\
+      & Harry $\implies$ NOT George & $x_{\text{Ha}} + x_{\text{Ge}} \le 1$ \\
+      \midrule
+      \textbf{ジョージの連動} & George $\implies$ Fred & $x_{\text{Ge}} \le x_{\text{Fr}}$ \\
+      & George $\implies$ Hermione & $x_{\text{Ge}} \le x_{\text{He}}$ \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+
+  \begin{exampleblock}{ポイント}
+    $A \implies B$ の含意関係は、0-1変数では不等式 $x_A \le x_B$ （$x_A - x_B \le 0$）で等価に表現可能。
+  \end{exampleblock}
+\end{frame}
+
+\section{AMPL / amplpy による実装}
+
+% 6. AMPL モデルコード
+\begin{frame}[fragile]{AMPL モデル定義 (\texttt{.mod})}
+\begin{lstlisting}
+set CHILDREN;
+param cost{CHILDREN} >= 0;
+var take{CHILDREN} binary;
+
+# 目的関数
+minimize TotalCost: sum {c in CHILDREN} cost[c] * take[c];
+
+# 制約条件
+subject to MinChildren: sum {c in CHILDREN} take[c] >= 3;
+subject to MaxChildren: sum {c in CHILDREN} take[c] <= 4;
+subject to MustTakeGinny: take["Ginny"] = 1;
+
+subject to ConflictHarryFred:   take["Harry"] + take["Fred"] <= 1;
+subject to ConflictHarryGeorge: take["Harry"] + take["George"] <= 1;
+
+subject to GeorgeRequiresFred:     take["George"] <= take["Fred"];
+subject to GeorgeRequiresHermione: take["George"] <= take["Hermione"];
+\end{lstlisting}
+\end{frame}
+
+% 7. amplpy 実装
+\begin{frame}[fragile]{Python API (\texttt{amplpy}) による統合実行}
+\begin{lstlisting}[basicstyle=\ttfamily\fontsize{7.5pt}{8.5pt}\selectfont]
+from amplpy import AMPL, modules
+
+modules.load()
+ampl = AMPL()
+ampl.set_option("solver", "highs")
+
+ampl.eval(model_str)  # モデルの読み込み
+
+# データのバインド
+ampl.set["CHILDREN"] = ["Harry", "Hermione", "Ron", "Fred", "George", "Ginny"]
+ampl.param["cost"] = {
+    "Harry": 1200, "Hermione": 1650, "Ron": 750,
+    "Fred": 800, "George": 800, "Ginny": 1500
+}
+
+ampl.solve()          # 求解
+print("Total Cost:", ampl.obj["TotalCost"].value())
+\end{lstlisting}
+\end{frame}
+
+\section{最適化結果と考察}
+
+% 8. 最適解
+\begin{frame}{最適化結果}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{最適解の選出結果}
+        \begin{itemize}
+          \item \textbf{Ginny}: \alert{参加} (\$1,500)
+          \item \textbf{Ron}: \alert{参加} (\$750)
+          \item \textbf{Fred}: \alert{参加} (\$800)
+          \item Harry: 不参加 (\$0)
+          \item Hermione: 不参加 (\$0)
+          \item George: 不参加 (\$0)
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{最小総費用}
+        \centering
+        \vspace{0.2cm}
+        {\Huge \textbf{\$3,050}}
+        \vspace{0.2cm}
+      \end{alertblock}
+      \begin{itemize}\small
+        \item 参加人数: \textbf{3人} ($3 \le n \le 4$ 充足)
+        \item 不仲制約: Harry 不参加で衝突なし
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 9. 数理的考察 (なぜ George ではなく Fred なのか)
+\begin{frame}{数理的考察：George が選ばれない理由}
+  \textbf{Fred と George はどちらも同額（\$800）}だが、なぜ Fred だけが選ばれるのか？
+
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{案A: Fred を選んだ場合（最適解）}
+        \begin{itemize}\footnotesize
+          \item 必須: Ginny (\$1,500)
+          \item 最安: Ron (\$750)
+          \item 追加: \textbf{Fred (\$800)}
+          \item 連動義務なし $\implies$ 3人で完了
+          \item \textbf{合計: \$3,050}
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{案B: George を選んだ場合}
+        \begin{itemize}\footnotesize
+          \item 必須: Ginny (\$1,500)
+          \item 選択: \textbf{George (\$800)}
+          \item 連動: \alert{Fred (\$800) も必須}
+          \item 連動: \alert{Hermione (\$1,650) も必須}
+          \item 計4人となり \textbf{合計: \$4,750}
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \centering
+  \footnotesize
+  \textbf{$\implies$ George の連動制約により、高額な Hermione が強制参加となるため不可！}
+\end{frame}
+
+% 10. まとめ
+\begin{frame}{まとめ}
+  \begin{itemize}
+    \item \textbf{モデリングの利点}:
+      人間が直感で考えると見落としがちな連動制約（If-Then）も、0-1整数計画問題として不等式に定式化すれば厳密に解ける。
+    \item \textbf{AMPL / amplpy の効果}:
+      モデリング言語 AMPL を用いることで数式とプログラムを 1 対 1 で直感的に記述でき、Python との連携もシームレスに行える。
+    \item \textbf{結論}:
+      張家は \textbf{Ron, Fred, Ginny} の 3 人を同伴させることで、最小費用 \alert{\textbf{\$3,050}} で旅行を実施できる。
+  \end{itemize}
+\end{frame}
+
+\end{document}

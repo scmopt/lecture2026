@@ -46,6 +46,30 @@ class Supplier(BaseModel):
 
 class SolveRequest(BaseModel):
     """求解リクエスト"""
+    # /docs の「Try it out」でそのまま実行できる入力例
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "customers": [
+                        {"ID": "C01", "name": "Concord", "lat": 43.206898, "lon": -71.537994, "demand": 9000},
+                        {"ID": "C02", "name": "Trenton", "lat": 40.220596, "lon": -74.769913, "demand": 10000},
+                        {"ID": "C03", "name": "Austin", "lat": 30.27467, "lon": -97.740349, "demand": 10000},
+                    ],
+                    "suppliers": [
+                        {"ID": "S01", "name": "Columbia", "lat": 34.000343, "lon": -81.033211, "supply": 15000},
+                        {"ID": "S03", "name": "Santa Fe", "lat": 35.68224, "lon": -105.939728, "supply": 20000},
+                    ],
+                    "cost_per_unit_distance": 1.2,
+                    "unit": "km",
+                    "solver": "highs",
+                    "allow_shortage": False,
+                    "penalty": 10000,
+                }
+            ]
+        }
+    }
+
     customers: list[Customer]
     suppliers: list[Supplier]
     cost_per_unit_distance: float = Field(1.2, ge=0)

@@ -1,9 +1,2 @@
-# AMPL のソルバーモジュールは PyPI ではなく pypi.ampl.com で配布されている
---extra-index-url https://pypi.ampl.com
-
-fastapi>=0.115
-uvicorn[standard]>=0.30
-geopy
-amplpy>=0.14
-ampl_module_base
-ampl_module_highs
+# 依存パッケージは transport_app/requirements.txt にまとめている（Vercel はそちらだけを読む）
+-r ../requirements.txt

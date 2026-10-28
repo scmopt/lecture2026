@@ -1,2 +1,9 @@
-# Vercel はプロジェクト直下の requirements.txt を読むので、backend のものを参照する
--r backend/requirements.txt
+# AMPL solver modules are published on pypi.ampl.com, not PyPI
+--extra-index-url https://pypi.ampl.com
+
+fastapi>=0.115
+uvicorn[standard]>=0.30
+geopy
+amplpy>=0.14
+ampl_module_base
+ampl_module_highs

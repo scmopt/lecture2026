@@ -4,9 +4,9 @@
 Web API から使えるように切り出したもの。
 """
 
+import csv
 from pathlib import Path
 
-import pandas as pd
 from amplpy import AMPL, modules
 from geopy.distance import geodesic
 
@@ -49,11 +49,24 @@ subject to Supply {s in SUPPLIERS}:
 """
 
 
+def _read_csv(path, numeric_cols):
+    """CSV を辞書のリストとして読み込み、数値列を float に変換する。
+
+    Vercel の関数サイズを抑えるため pandas は使わない。
+    """
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        rows = list(csv.DictReader(f))
+    for row in rows:
+        for col in numeric_cols:
+            row[col] = float(row[col])
+    return rows
+
+
 def load_sample():
     """サンプルの顧客・サプライヤーデータを読み込む。"""
-    customers = pd.read_csv(DATA_DIR / "customers.csv", encoding="utf-8-sig")
-    suppliers = pd.read_csv(DATA_DIR / "suppliers.csv", encoding="utf-8-sig")
-    return customers.to_dict("records"), suppliers.to_dict("records")
+    customers = _read_csv(DATA_DIR / "customers.csv", ["lat", "lon", "demand"])
+    suppliers = _read_csv(DATA_DIR / "suppliers.csv", ["lat", "lon", "supply"])
+    return customers, suppliers
 
 
 def available_solvers():

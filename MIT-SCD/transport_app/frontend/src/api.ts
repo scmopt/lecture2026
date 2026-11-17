@@ -6,8 +6,17 @@ export const newKey = () => `k${Date.now()}_${counter++}`;
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(path, init);
   if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(body.detail ? JSON.stringify(body.detail) : res.statusText);
+    const text = await res.text().catch(() => "");
+    let detail = "";
+    try {
+      const body = JSON.parse(text);
+      if (body?.detail) {
+        detail = typeof body.detail === "string" ? body.detail : JSON.stringify(body.detail);
+      }
+    } catch {
+      detail = text.slice(0, 300);
+    }
+    throw new Error(detail || `HTTP ${res.status} ${res.statusText}`.trim());
   }
   return res.json();
 }

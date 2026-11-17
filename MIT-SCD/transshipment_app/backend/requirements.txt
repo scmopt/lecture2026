@@ -1,0 +1,9 @@
+# 依存パッケージ一覧（Vercel ビルド時のパーサーが `-r ../requirements.txt` を解釈できないため直接記載）
+--extra-index-url https://pypi.ampl.com
+
+fastapi>=0.115
+uvicorn[standard]>=0.30
+geopy
+amplpy>=0.14
+ampl_module_base
+ampl_module_highs

@@ -1,0 +1,409 @@
+% !TEX program = lualatex
+% LuaLaTeX でコンパイル: latexmk -lualatex fde_slides.tex
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usetheme[progressbar=frametitle,numbering=fraction]{metropolis}
+\usepackage{luatexja}
+\usepackage[haranoaji]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
+\usepackage{hyperref}
+
+% --- スタイル・色設定 ---
+\definecolor{fdeNavy}{RGB}{24, 54, 92}
+\definecolor{fdeTeal}{RGB}{28, 124, 118}
+\definecolor{fdeAmber}{RGB}{214, 118, 36}
+\definecolor{fdeSlate}{RGB}{74, 85, 104}
+\definecolor{fdeLightBg}{RGB}{244, 247, 250}
+\definecolor{fdeLightTeal}{RGB}{234, 245, 244}
+\definecolor{fdeLightAmber}{RGB}{253, 244, 235}
+
+\setbeamercolor{palette primary}{bg=fdeNavy,fg=white}
+\setbeamercolor{progress bar}{fg=fdeTeal,bg=fdeLightBg}
+\setbeamercolor{alerted text}{fg=fdeAmber}
+\setbeamercolor{block title}{bg=fdeNavy,fg=white}
+\setbeamercolor{block body}{bg=fdeLightBg,fg=black}
+\setbeamercolor{block title alerted}{bg=fdeAmber,fg=white}
+\setbeamercolor{block body alerted}{bg=fdeLightAmber,fg=black}
+\setbeamercolor{block title example}{bg=fdeTeal,fg=white}
+\setbeamercolor{block body example}{bg=fdeLightTeal,fg=black}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% --- タイトル情報 ---
+\title{フォワードデプロイドエンジニア（FDE）}
+\subtitle{顧客の最前線で価値を生み出す次世代エンジニアの探求}
+\author{概念解説スライド}
+\date{\today}
+\institute{Forward Deployed Engineering Overview}
+
+\begin{document}
+
+% 1. タイトル
+\maketitle
+
+% 2. アジェンダ
+\begin{frame}{本スライドの構成}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+%======================================================================
+\section{イントロダクション：FDEとは何か？}
+
+\begin{frame}{FDE（Forward Deployed Engineer）の定義と本質}
+  \begin{itemize}
+    \item \textbf{FDE（フォワードデプロイドエンジニア）とは}
+      \begin{itemize}
+        \item Palantirにおける原型 \textbf{FDSE}（Forward Deployed Software Engineer）を含む役割
+        \item 顧客組織の最前線に直接埋め込まれ（\textbf{Embed}）、自社のプラットフォームや先端技術を活用して、最も複雑で曖昧な課題を現地で解決するエンジニア
+      \end{itemize}
+  \end{itemize}
+
+  \vspace{0.6em}
+  \begin{alertblock}{FDEの本質（So What?）}
+    「仕様書通りに機能を作成して\textbf{納品（ハンドオフ）すること}」ではない。\\
+    「構築したシステムが\textbf{実際の現場環境で稼働・定着}し、継続的かつ測定可能な\textbf{ビジネス価値を生み出すこと}」まで一元的に最終責任（\textbf{Ownership}）を持つ点にある。
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{FDEを理解する2つのキーワード}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{比喩：出張ドーサ・シェフ}
+        \small
+        \begin{itemize}
+          \item \textbf{通常の料理人（従来Dev）：}\\
+            厨房で決められた汎用メニューを作る。
+          \item \textbf{出張シェフ（FDE）：}\\
+            顧客のパーティー会場に赴き、手持ちの標準食材・器具（プラットフォーム構成要素）を使い、ゲストの注文（「辛め」「クリスピー」等）に応じて\textbf{その場で即座に仕立てて提供}する。
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{社会技術的エンジニア（Human API）}
+        \small
+        \begin{itemize}
+          \item システム導入の最大の関門は、純粋な実装以上に\textbf{組織変革管理（Change Management）}。
+          \item 顧客文化、レガシーシステムの摩擦、経営陣と現場の思惑の違いを紐解く。
+          \item 技術と組織の架け橋（\textbf{Human API}）として、人・プロセス・技術を統合し定着させる。
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{従来のソフトウェアエンジニア（Dev）との根本的対比}
+  \begin{center}
+    \textbf{「1つの機能を多くの顧客に」} \quad vs \quad \alert{\textbf{「1つの顧客に多くの機能を」}}
+  \end{center}
+  \vspace{0.3em}
+  {\footnotesize
+  \begin{tabularx}{\textwidth}{>{\bfseries}lYY}
+    \toprule
+    項目 & 従来のソフトウェアエンジニア（Dev） & フォワードデプロイドエンジニア（FDE） \\
+    \midrule
+    主たる対象 & 多数の顧客（市場全体・中央プロダクト） & 単一の特定顧客（または特定のアカウント） \\
+    \addlinespace[0.4em]
+    ミッション & 汎用的な単一機能やプロダクトコアの開発 & 顧客のミッション達成に向けた多数機能の統合・個別構築 \\
+    \addlinespace[0.4em]
+    成功の定義 & コードの堅牢性・複数顧客での再利用性 & 顧客現場での直接的・測定可能な価値創出と定着 \\
+    \addlinespace[0.4em]
+    開発スタイル & 社内での中央ロードマップに基づく開発 & 顧客現場への埋め込みとエンドユーザーとの迅速なイテレーション \\
+    \bottomrule
+  \end{tabularx}
+  }
+\end{frame}
+
+%======================================================================
+\section{ルーツと歴史的背景：軍事ドクトリンからAI最前線へ}
+
+\begin{frame}{FDEの起源と進化：3つのフェーズ}
+  \begin{center}
+  \begin{tikzpicture}[
+    node distance=0.35cm,
+    phase/.style={
+      rectangle, rounded corners=4pt, draw=fdeNavy, thick,
+      fill=fdeLightBg, text width=3.6cm, minimum height=4.6cm,
+      align=left, inner sep=6pt, anchor=north
+    },
+    titlebox/.style={
+      fill=fdeNavy, text=white, font=\bfseries\scriptsize,
+      rounded corners=2pt, inner sep=4pt, minimum width=3.4cm, align=center
+    }
+  ]
+    \node[phase] (p1) at (0,0) {
+      \vspace{1.8em}
+      \scriptsize
+      \begin{itemize}\setlength{\leftskip}{-1.4em}
+        \item 冷戦期の軍事ドクトリン（米海軍 \textbf{Forward Deployed Naval Forces} 等）が源流。
+        \item 自国基地ではなく作戦地域の最前線に兵力を配置し、\textbf{「現場で即座に行動を起こす」}作戦概念。
+      \end{itemize}
+    };
+    \node[titlebox] at ($(p1.north)+(0,-0.42cm)$) {1. 軍事ドクトリン};
+
+    \node[phase, right=0.35cm of p1] (p2) {
+      \vspace{1.8em}
+      \scriptsize
+      \begin{itemize}\setlength{\leftskip}{-1.4em}
+        \item \textbf{Palantir} がIT業界へ導入し職種として確立（内部呼称 \textbf{Delta} / \textbf{FDSE}）。
+        \item Foundry / Gotham を携え現場に常駐。
+        \item \textbf{2016年以前}は、伝統的DevよりFDEの人数の方が多かった。
+      \end{itemize}
+    };
+    \node[titlebox] at ($(p2.north)+(0,-0.42cm)$) {2. Palantirによる言語化};
+
+    \node[phase, draw=fdeTeal, fill=fdeLightTeal, right=0.35cm of p2] (p3) {
+      \vspace{1.8em}
+      \scriptsize
+      \begin{itemize}\setlength{\leftskip}{-1.4em}
+        \item \textbf{OpenAI / Anthropic} 等の先端AI企業が、研究と実務を結ぶ\textbf{「ラストマイル」}克服のためFDEを急増。
+        \item \textbf{2026年5月}：OpenAI Deployment Company設立。直後にAnthropicも専門子会社を立ち上げ。
+      \end{itemize}
+    };
+    \node[titlebox, fill=fdeTeal] at ($(p3.north)+(0,-0.42cm)$) {3. AIフロンティアでの再浮上};
+
+    \draw[-{Stealth[length=2.5mm]}, thick, fdeNavy] (p1.east) -- (p2.west);
+    \draw[-{Stealth[length=2.5mm]}, thick, fdeTeal] (p2.east) -- (p3.west);
+  \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+%======================================================================
+\section{他職種との決定的な違い：比較で理解するFDEの本質}
+
+\begin{frame}{データで見るFDEの実態（時間配分・組織・報酬）}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{典型的な時間配分}} {\scriptsize（1,500名調査 / 1,000件求人）}
+      \vspace{0.3em}
+
+      \begin{tikzpicture}
+        \fill[fdeNavy] (0,0) rectangle (4.08,0.65);
+        \node[white,font=\bfseries\scriptsize] at (2.04,0.325) {顧客対応 60\%};
+        \fill[fdeTeal] (4.08,0) rectangle (6.12,0.65);
+        \node[white,font=\bfseries\scriptsize] at (5.10,0.325) {構築 30\%};
+        \fill[fdeAmber] (6.12,0) rectangle (6.80,0.65);
+        \node[white,font=\bfseries\scriptsize] at (6.46,0.325) {10\%};
+      \end{tikzpicture}
+
+      \vspace{0.2em}
+      {\scriptsize
+      \begin{itemize}
+        \item \textbf{60\% 顧客対応}：対話・現場デバッグ・課題ヒアリング
+        \item \textbf{30\% 構築・コーディング}：プロトタイプ〜本番化
+        \item \textbf{10\% ナレッジ還元}：Pattern Harvesting（社内還流）
+      \end{itemize}
+      }
+      \vspace{0.2em}
+      \begin{alertblock}{上位25\%の共通点}
+        \scriptsize
+        下位25\%と比較して \textbf{2.4倍以上} の時間を構造化された顧客ディスカバリー（JTBD・課題検証）に費やす。
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{block}{組織構造と営業ノルマ}
+        \scriptsize
+        \begin{itemize}
+          \item 営業ノルマ（Quota）保有：\textbf{0\%}
+          \item 所属部門の内訳：
+            \begin{itemize}\scriptsize
+              \item 独立したFDE部門：\textbf{45\%}
+              \item コアエンジニアリング部門：\textbf{38\%}
+              \item 営業組織：\textbf{わずか14\%}
+            \end{itemize}
+        \end{itemize}
+      \end{block}
+      \vspace{0.2em}
+      \begin{exampleblock}{報酬水準（総報酬）}
+        \scriptsize
+        \begin{itemize}
+          \item 従来のDev比 \textbf{+20〜40\%} 高い総報酬
+          \item 先端AIラボでは年収 \textbf{35万〜75万ドル}\\
+            （シニア層で \textbf{100万ドル規模}）
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{隣接する5職種との徹底比較}
+  \begin{center}
+  \scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.25}
+  \begin{tabular}{>{\bfseries\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{2.25cm}>{\raggedright\arraybackslash}p{2.15cm}>{\raggedright\arraybackslash}p{2.15cm}>{\raggedright\arraybackslash}p{2.15cm}>{\raggedright\arraybackslash}p{2.15cm}}
+    \toprule
+    \textbf{比較軸} & \textbf{FDE} & \textbf{従来Dev} & \textbf{コンサルタント} & \textbf{SE / SA} & \textbf{MLエンジニア} \\
+    \midrule
+    対顧客時間 & \textbf{高い（約60\%）} & 極めて低い（5\%未満） & 非常に高い（80\%以上） & 中程度（約40\%） & ほぼゼロ（5\%未満） \\
+    主な成果物 & \textbf{本番稼働コード}、統合システム、還元パターン & 汎用プロダクト機能、コアコード & 提案書、レポート、ロードマップ & デモ、POC、技術提案書 & AIモデル、評価ハーネス（Evals） \\
+    関与時期 & \textbf{主に契約後}（導入・定着・本番化） & 開発フェーズ（非対顧客） & 契約前・推進期 & \textbf{契約前}（プレセールス期） & 開発・研究フェーズ \\
+    評価・報酬 & 基本給＋株式＋賞与（\textbf{ノルマ無}、定着重視） & 基本給＋株式（技術・開発成果） & 稼働時間やプロジェクト契約 & \textbf{クオータ（営業ノルマ）}連動歩合 & 基本給＋株式（モデル性能指標） \\
+    最終責任 & \textbf{本番定着と価値創出まで} & 仕様通りの出荷と保守 & 提言・計画の提出（手渡しで終了） & 技術的検証と契約締結まで & モデルの統計的性能達成 \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{混同しやすい職種との決定的な違い}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{vs IT・経営コンサルタント}
+        \small
+        \begin{itemize}
+          \item \textbf{コンサルタント（アドバイザー）：}\\
+            分析・提案を行い、仕様書を手渡して現場を離れる。
+          \vspace{0.5em}
+          \item \textbf{FDE（ビルダー／構築者）：}\\
+            自らプロダクト上のコード（Python, JS, SQL等）を書き、顧客の技術的制約の中で実際に動くシステムを構築し、\textbf{本番稼働まで責任}を持つ。
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{vs ソリューションエンジニア（SE / SA）}
+        \small
+        \begin{itemize}
+          \item \textbf{SE / SA（プレセールス）：}\\
+            目的は契約前の売上獲得。デモやPOCで製品適合性を証明した時点で役割が終了（多くが営業ノルマを負う）。
+          \vspace{0.5em}
+          \item \textbf{FDE（契約後・定着主導）：}\\
+            契約締結後に現場へ入り込み、実際のデータ統合や運用定着までを主導（\textbf{営業ノルマなし}）。
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%======================================================================
+\section{FDEの業務サイクルと求められるスキルの「二刀流」}
+
+\begin{frame}{FDEの業務サイクル（4つのフェーズ）と現場の壁}
+  \begin{center}
+  \begin{tikzpicture}[
+    stepbox/.style={
+      rectangle, rounded corners=3pt, draw=fdeNavy, thick,
+      fill=fdeLightBg, text width=2.75cm, minimum height=2.65cm,
+      align=left, inner sep=5pt, font=\scriptsize, anchor=north west
+    }
+  ]
+    \node[stepbox] (s1) at (0,0) {
+      \textbf{\color{fdeNavy}1. 課題の分解と\\スコープ定義}\\[3pt]
+      顧客の曖昧で複雑なビジネス課題を分析し、実現可能な技術仕様へ再定義。
+    };
+    \node[stepbox, right=0.25cm of s1] (s2) {
+      \textbf{\color{fdeNavy}2. 迅速な\\プロトタイピング}\\[3pt]
+      顧客環境の実データで素早く試作し、エンドユーザーと密接にイテレーション。
+    };
+    \node[stepbox, right=0.25cm of s2] (s3) {
+      \textbf{\color{fdeNavy}3. 最適化と\\プロダクション化}\\[3pt]
+      本番SLA、スケーラビリティ、セキュリティ、アクセス制御に耐える堅牢化。
+    };
+    \node[stepbox, draw=fdeTeal, fill=fdeLightTeal, right=0.25cm of s3] (s4) {
+      \textbf{\color{fdeTeal}4. 引き継ぎ＆\\ナレッジ還元}\\[3pt]
+      \textbf{ADR}・\textbf{Runbook}で運用引き継ぎ。汎用パターンを自社コアへ還元。
+    };
+
+    \draw[-{Stealth[length=2.2mm]}, thick, fdeNavy] (s1) -- (s2);
+    \draw[-{Stealth[length=2.2mm]}, thick, fdeNavy] (s2) -- (s3);
+    \draw[-{Stealth[length=2.2mm]}, thick, fdeTeal] (s3) -- (s4);
+  \end{tikzpicture}
+  \end{center}
+
+  \vspace{0.3em}
+  \begin{alertblock}{エンタープライズ現場最大のボトルネック：「データ・プランミング（配管作業）」}
+    \footnotesize
+    プロジェクト失速の最大要因はAIモデルの調整ではなく、レガシーシステムとの接続。複雑なETL、Embeddings生成、ベクターDB構築など\textbf{泥臭い配管作業}をやり切るエンジニアリング力が不可欠。
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{求められる「二刀流」スキル（Dual Stack）}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{テクニカル・スタック（技術的スキル）}
+        \scriptsize
+        \begin{itemize}\setlength{\itemsep}{3pt}
+          \item \textbf{フルスタック開発力}\\
+            Python, JS/TS, Java, C++ 等での本番コード記述
+          \item \textbf{データエンジニアリング}\\
+            大規模パイプライン構築、複雑SQL、Spark等（配管作業の主軸）
+          \item \textbf{AI / LLM実装・RAG構築}\\
+            RAG構築、プロンプト調整、量子化・蒸留等の推論最適化
+          \item \textbf{DevOps・セキュリティ}\\
+            Docker/K8s、SOC 2対応、データ居住性、アクセス制御
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{ヒューマン・スタック（対人・ビジネススキル）}
+        \scriptsize
+        \begin{itemize}\setlength{\itemsep}{3pt}
+          \item \textbf{顧客との対話力（ビジネス翻訳力）}\\
+            経営陣のビジネス言語と現場の技術言語を相互翻訳し価値を伝達
+          \item \textbf{高いEQとレジリエンス}\\
+            混沌としたレガシー環境や異なる文化に屈しない適応力
+          \item \textbf{課題分解能力}\\
+            正解のない曖昧な問題から本質的ボトルネックを抽出し構造化
+          \item \textbf{社内へのフィードバック能力}\\
+            現場の学びを論理的に整理し自社プロダクトチームへ還元
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%======================================================================
+\section{まとめと学習者へのインサイト}
+
+\begin{frame}{「ラストマイル」を埋める SLG 時代の競争優位性}
+  \begin{itemize}
+    \item \textbf{なぜFDEが注目されるのか}
+      \begin{itemize}
+        \item 「優れた製品を作るだけでは、複雑なエンタープライズ現場で価値を生み出せない」という\textbf{ラストマイルの構造的課題}を解決するキーパーソンだから。
+      \end{itemize}
+    \vspace{0.5em}
+    \item \textbf{サービス主導型成長（Services-Led Growth：SLG）}
+      \begin{itemize}
+        \item 顧客現場に入り込む高品質なサービスが、製品の定着と継続的成長を牽引。
+        \item FDE組織の存在そのものが、企業の強力な\textbf{競合優位性（参入障壁）}となる。
+      \end{itemize}
+  \end{itemize}
+
+  \vspace{0.5em}
+  \begin{block}{FDEの本質}
+    単にコードを書く存在を超え、技術をビジネスの現場に根付かせる\textbf{「社会技術的エンジニア」}。
+  \end{block}
+\end{frame}
+
+\begin{frame}{学習者・学生への3つの実践的インサイト}
+  \begin{enumerate}
+    \item \textbf{コードとビジネスの両輪を意識する}
+      \begin{itemize}
+        \item 言語やフレームワークの習得にとどまらず、「このコードが顧客のどのビジネス課題を解決し、どんな価値を生むか」を常に考える。
+      \end{itemize}
+    \vspace{0.4em}
+    \item \textbf{未知のシステムや混沌としたデータに慣れる}
+      \begin{itemize}
+        \item 綺麗な教科書データだけでなく、仕様書のないシステムや不完全なデータ構造に仮説を立てて向き合う「問題分解力」と「適応力」を養う。
+      \end{itemize}
+    \vspace{0.4em}
+    \item \textbf{技術成果を相手の言葉に翻訳する力を磨く}
+      \begin{itemize}
+        \item 高度な技術コンセプトを、非技術者のステークホルダーにも直感的に伝わる言葉へ置き換える\textbf{「技術翻訳力」}を意図的に鍛える。
+      \end{itemize}
+  \end{enumerate}
+
+  \vspace{0.4em}
+  \begin{center}
+    \alert{\textbf{ディープな技術専門性 × 現実世界のビジネスインパクト}} を体験できる次世代キャリア
+  \end{center}
+\end{frame}
+
+\end{document}
